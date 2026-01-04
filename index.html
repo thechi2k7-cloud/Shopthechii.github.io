@@ -1,41 +1,153 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Shop Thế Chí Í – Free Fire</title>
-  <style>
-    body { font-family: Arial; background-color: #f7f7f7; margin: 0; padding: 0; }
-    header { background-color: #ff6f61; color: white; padding: 20px; text-align: center; }
-    main { padding: 20px; }
-    a { color: #ff6f61; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    footer { background-color: #222; color: white; text-align: center; padding: 10px; margin-top: 20px; }
-    .acc { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; background: white; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop Thế Chíí – Thu mua & bán Acc Free Fire</title>
+<style>
+/* ===== Reset cơ bản ===== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body{background:#f5f5f5;color:#333;line-height:1.6;}
+a{text-decoration:none;}
+/* ===== Header ===== */
+header{background:#ff4d4d;color:#fff;padding:15px 20px;position:fixed;width:100%;top:0;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,0.2);}
+header h1{font-size:20px;margin-bottom:5px;}
+.navbar{display:flex;justify-content:space-between;align-items:center;}
+.nav-links{display:flex;gap:15px;}
+.nav-links a{color:#fff;font-weight:bold;}
+.nav-toggle{display:none;font-size:24px;cursor:pointer;}
+/* ===== Banner Slide ===== */
+.banner-slide{margin-top:90px;position:relative;overflow:hidden;border-radius:10px;margin:15px;}
+.slide-container{display:flex;transition:transform 0.5s ease-in-out;}
+.slide-container img{width:100%;flex-shrink:0;}
+.prev, .next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.5);color:#fff;padding:10px;border-radius:50%;cursor:pointer;font-weight:bold;}
+.prev{left:10px;} .next{right:10px;}
+/* ===== Section ===== */
+section{padding:40px 20px;max-width:1000px;margin:15px auto;background:#fff;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.1);}
+h2{text-align:center;color:#ff4d4d;margin-bottom:20px;}
+/* ===== Danh sách tài khoản ===== */
+.account-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+.account{background:#fff;padding:15px;border-radius:10px;box-shadow:0 2px 5px rgba(0,0,0,0.1);text-align:center;transition:transform 0.3s;}
+.account:hover{transform:scale(1.03);}
+.account img{max-width:100%;border-radius:8px;margin-bottom:10px;}
+.account p{margin:5px 0;font-size:16px;}
+.account a{color:#1877f2;font-weight:bold;}
+.account a:hover{text-decoration:underline;}
+.buy-btn{display:inline-block;background:#28a745;color:#fff;padding:10px 18px;border-radius:6px;margin-top:8px;transition:0.3s;}
+.buy-btn:hover{background:#218838;}
+.fb-btn{display:inline-block;background:#1877f2;color:#fff;padding:10px 18px;border-radius:6px;text-decoration:none;font-weight:bold;margin-top:10px;transition:0.3s;}
+.fb-btn:hover{background:#145dbf;}
+footer{text-align:center;padding:20px 0;background:#333;color:#fff;margin-top:20px;border-radius:10px;}
+@media(max-width:768px){
+.nav-links{display:none;flex-direction:column;background:#ff4d4d;position:absolute;top:55px;right:20px;width:200px;padding:10px;border-radius:6px;}
+.nav-links a{margin:10px 0;}
+.nav-toggle{display:block;}
+}
+</style>
 </head>
 <body>
-  <header>
-    <h1>Shop Thế Chí Í – Free Fire</h1>
-  </header>
-  <main>
-    <h2>Giới thiệu shop</h2>
-    <p>Chúng tôi chuyên kết nối nhu cầu <strong>trao đổi và chuyển nhượng tài khoản Free Fire</strong> an toàn và minh bạch.</p>
-    <p>Mọi giao dịch được thực hiện <strong>theo thỏa thuận giữa các bên</strong>. Website không phải nhà phát hành game và không chịu trách nhiệm với việc sử dụng tài khoản sau khi chuyển nhượng.</p>
-    
-    <h2>Danh sách tài khoản tham khảo</h2>
-    <div class="acc">
-      <p><strong>Acc 1:</strong> Lv.70, skin hiếm, 1000 kim cương</p>
-      <p><strong>Trạng thái:</strong> Có thể giao dịch theo thỏa thuận</p>
-    </div>
-    <div class="acc">
-      <p><strong>Acc 2:</strong> Lv.50, skin cơ bản, 500 kim cương</p>
-      <p><strong>Trạng thái:</strong> Có thể giao dịch theo thỏa thuận</p>
-    </div>
-    
-    <p><a href="lien-he.html">Liên hệ ngay</a> | <a href="dieu-khoan.html">Điều khoản sử dụng</a></p>
-  </main>
-  <footer>
-    &copy; 2026 Shop Thế Chí Í – Free Fire
-  </footer>
+
+<!-- ===== Header ===== -->
+<header>
+<div class="navbar">
+<h1>Shop Thế Chíí</h1>
+<div class="nav-toggle" onclick="toggleMenu()">☰</div>
+<div class="nav-links" id="navLinks">
+<a href="#gioithieu">Trang chủ</a>
+<a href="#dstaikhoan">Danh sách acc</a>
+<a href="#lienhe">Liên hệ</a>
+</div>
+</div>
+</header>
+
+<!-- ===== Banner Slide ===== -->
+<div class="banner-slide">
+<div class="slide-container" id="slides">
+<img src="images/slide1.png" alt="Slide 1">
+<img src="images/slide2.png" alt="Slide 2">
+<img src="images/slide3.png" alt="Slide 3">
+</div>
+<div class="prev" onclick="prevSlide()">❮</div>
+<div class="next" onclick="nextSlide()">❯</div>
+</div>
+
+<!-- ===== Giới thiệu Shop ===== -->
+<section id="gioithieu">
+<h2>Thông tin Shop</h2>
+<p><strong>Shop Thế Chíí</strong></p>
+<p>Chuyên <strong>thu mua số lượng lớn acc Free Fire</strong> và bán các tài khoản chất lượng.</p>
+<p>Giao dịch nhanh – uy tín – an toàn.</p>
+<p>📘 Facebook: <a href="https://www.facebook.com/the.chii.2025?locale=vi_VN" target="_blank">https://www.facebook.com/the.chii.2025</a></p>
+<a href="https://www.facebook.com/the.chii.2025?locale=vi_VN" target="_blank" class="fb-btn">Liên hệ ngay</a>
+</section>
+
+<!-- ===== Danh sách tài khoản ===== -->
+<section id="dstaikhoan">
+<h2>Danh sách tài khoản</h2>
+<div class="account-list">
+<div class="account">
+<img src="images/acc1.png" alt="Acc 1">
+<p><strong>Acc 1</strong></p>
+<p>Cấp độ: 50</p>
+<p>Skin: VIP</p>
+<p>Kim cương: 1000</p>
+<p>Giá: 500.000đ</p>
+<p>Trạng thái: Còn hàng</p>
+<a href="https://www.facebook.com/the.chii.2025?locale=vi_VN" target="_blank" class="buy-btn">Liên hệ ngay</a>
+</div>
+<div class="account">
+<img src="images/acc2.png" alt="Acc 2">
+<p><strong>Acc 2</strong></p>
+<p>Cấp độ: 70</p>
+<p>Skin: Huyền thoại</p>
+<p>Kim cương: 2000</p>
+<p>Giá: 1.000.000đ</p>
+<p>Trạng thái: Còn hàng</p>
+<a href="https://www.facebook.com/the.chii.2025?locale=vi_VN" target="_blank" class="buy-btn">Liên hệ ngay</a>
+</div>
+<div class="account">
+<img src="images/acc3.png" alt="Acc 3">
+<p><strong>Acc 3</strong></p>
+<p>Cấp độ: 80</p>
+<p>Skin: Huyền thoại</p>
+<p>Kim cương: 1500</p>
+<p>Giá: 750.000đ</p>
+<p>Trạng thái: Đã bán</p>
+<a href="https://www.facebook.com/the.chii.2025?locale=vi_VN" target="_blank" class="buy-btn">Liên hệ ngay</a>
+</div>
+</div>
+</section>
+
+<!-- ===== Liên hệ ===== -->
+<section id="lienhe" class="contact">
+<h2>Liên hệ Shop</h2>
+<p>📘 Facebook: <a href="https://www.facebook.com/the.chii.2025?locale=vi_VN" target="_blank">https://www.facebook.com/the.chii.2025</a></p>
+<a href="https://www.facebook.com/the.chii.2025?locale=vi_VN" target="_blank" class="fb-btn">Liên hệ ngay</a>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+© 2026 Shop Thế Chíí – Thu mua & bán Acc Free Fire
+</footer>
+
+<script>
+// ===== Hamburger menu =====
+function toggleMenu(){
+const nav=document.getElementById('navLinks');
+nav.style.display=(nav.style.display==='flex')?'none':'flex';
+}
+// ===== Slide Banner =====
+let slideIndex = 0;
+const slides = document.getElementById('slides');
+const totalSlides = slides.children.length;
+function showSlide(index){
+slides.style.transform = `translateX(-${index*100}%)`;
+}
+function nextSlide(){slideIndex=(slideIndex+1)%totalSlides;showSlide(slideIndex);}
+function prevSlide(){slideIndex=(slideIndex-1+totalSlides)%totalSlides;showSlide(slideIndex);}
+// Auto slide mỗi 5 giây
+setInterval(nextSlide,5000);
+</script>
+
 </body>
 </html>
