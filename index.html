@@ -2,30 +2,19 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Shop Thế Chíí – Bán Acc Free Fire Uy Tín</title>
+<title>Shop Thế Chíí – Acc Free Fire</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #0b0f14;
-  color: #fff;
+  margin: 0; font-family: Arial, sans-serif; background:#0b0f14; color:#fff;
 }
-a { text-decoration: none; color:#00ffcc; }
+a { text-decoration:none; color:#00ffcc; }
 
 /* Banner */
-.banner {
-  position: relative;
-  height: 300px;
-  background: url('https://i.postimg.cc/bJr5hzsY/ff31cd69-f0cf-4c13-ad3a-dd6ae8bef797.jpg') center/cover no-repeat;
-}
-.banner-overlay {
-  position: absolute; top:0; left:0;
-  width:100%; height:100%;
-  background: rgba(0,0,0,0.3);
-}
+.banner { position:relative; height:300px; background:url('https://i.postimg.cc/bJr5hzsY/ff31cd69-f0cf-4c13-ad3a-dd6ae8bef797.jpg') center/cover no-repeat; }
+.banner-overlay { position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.3); }
 
 /* Sections */
 section { max-width:1100px; margin:30px auto; padding:20px; }
@@ -33,45 +22,30 @@ h2 { color:#00ffcc; margin-bottom:15px; }
 
 /* Acc list */
 .acc-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; }
-.acc {
-  background:#121821; border-radius:15px; padding:18px;
-  box-shadow:0 0 15px rgba(0,255,204,0.25); transition:transform 0.2s, box-shadow 0.2s;
-}
+.acc { background:#121821; border-radius:15px; padding:18px; box-shadow:0 0 15px rgba(0,255,204,0.25); transition:0.2s; }
 .acc:hover { transform:translateY(-5px); box-shadow:0 0 25px rgba(0,255,204,0.5); }
 .acc img { width:100%; border-radius:10px; margin-bottom:10px; }
 .acc h3 { color:#00ffcc; margin:10px 0; }
 .price { margin:8px 0; }
-.old-price { text-decoration: line-through; color:#aaa; margin-right:8px; }
+.old-price { text-decoration:line-through; color:#aaa; margin-right:8px; }
 .new-price { color:#00ff66; font-weight:bold; font-size:18px; }
 .status { display:inline-block; margin:8px 0; color:#00ff66; font-weight:bold; }
 .acc p { margin:5px 0; }
-
-/* Button */
 .btn { display:inline-block; margin-top:10px; padding:10px 15px; background:#00ffcc; color:#000; border-radius:8px; font-weight:bold; }
 
 /* Popup */
-#accDetail img { margin-bottom:10px; }
+#accDetail { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:9999; }
+#accDetailContent { background:#121821; padding:20px; border-radius:15px; color:#fff; max-width:500px; width:90%; position:relative; text-align:center; }
+#accDetailContent img { width:100%; border-radius:10px; margin-bottom:10px; }
+#accThumbs { margin-top:10px; display:flex; justify-content:center; flex-wrap:wrap; }
+#accThumbs img { width:60px; margin:5px; border:2px solid #00ffcc; border-radius:5px; cursor:pointer; transition:0.2s; }
+#accThumbs img:hover { transform:scale(1.05); }
 
-/* Floating buttons */
-.zalo-float {
-  position: fixed; bottom:20px; right:90px;
-  background:#00ffcc; color:#000;
-  width:55px; height:55px; border-radius:50%;
-  text-align:center; line-height:55px;
-  font-size:28px; box-shadow:0 0 15px rgba(0,255,204,0.8);
-  z-index:999;
-}
-.fb-float {
-  position: fixed; bottom:20px; right:20px;
-  background:#1877f2; color:#fff;
-  width:55px; height:55px; border-radius:50%;
-  text-align:center; line-height:55px;
-  font-size:28px; box-shadow:0 0 15px rgba(24,119,242,0.8);
-  z-index:999;
-}
-
-/* Footer */
-footer { text-align:center; padding:20px; color:#aaa; font-size:14px; }
+/* Close & navigation */
+#accDetail button { margin-top:15px; padding:5px 10px; }
+.nav-btn { position:absolute; top:50%; transform:translateY(-50%); font-size:30px; background:rgba(0,255,204,0.3); color:#000; border:none; padding:5px 10px; cursor:pointer; border-radius:8px; }
+#prevBtn { left:10px; }
+#nextBtn { right:10px; }
 </style>
 </head>
 <body>
@@ -84,7 +58,17 @@ footer { text-align:center; padding:20px; color:#aaa; font-size:14px; }
 </section>
 
 <!-- Popup chi tiết -->
-<div id="accDetail"></div>
+<div id="accDetail">
+  <div id="accDetailContent">
+    <button onclick="closePopup()">Đóng</button>
+    <button id="prevBtn" class="nav-btn">&#10094;</button>
+    <button id="nextBtn" class="nav-btn">&#10095;</button>
+    <div id="popupImgContainer"><img id="popupMainImg" src=""></div>
+    <div id="accThumbs"></div>
+    <div id="popupInfo"></div>
+    <a id="buyBtn" href="#" target="_blank" class="btn">Mua Ngay ▶️</a>
+  </div>
+</div>
 
 <!-- Floating Zalo & FB -->
 <a href="https://zalo.me/0325988875" class="zalo-float" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
@@ -93,9 +77,10 @@ footer { text-align:center; padding:20px; color:#aaa; font-size:14px; }
 <footer>© 2026 Shop Thế Chíí – Free Fire | All Rights Reserved</footer>
 
 <script>
-// Danh sách acc (ở đây 1 acc mẫu)
+// Dữ liệu acc
 const accs = [
   {
+    name:'Acc 1 🔥',
     mainImg:'https://i.postimg.cc/hGFQz7hL/85ae2bd69.jpg',
     thumbs:[
       'https://i.postimg.cc/W46zdWBj/8c455720-5545-4e86-b698-0d2a2f81bec8.jpg',
@@ -104,7 +89,6 @@ const accs = [
       'https://i.postimg.cc/26gSJsvf/3b96ab71-3a56-403d-8bf9-b6a6b94dfb30.jpg',
       'https://i.postimg.cc/GmbhZJBK/2d7a5bc1-234f-4ca0-a018-e383d44fc1bf.jpg'
     ],
-    name:'Acc 1 🔥',
     oldPrice:'₫850,000',
     newPrice:'₫750,000',
     info:'Chuyên phòng tử chiến 💎',
@@ -118,8 +102,8 @@ const accs = [
   }
 ];
 
+// Render acc list
 const accList = document.getElementById('accList');
-
 accs.forEach((acc,index)=>{
   const div=document.createElement('div');
   div.className='acc';
@@ -130,37 +114,51 @@ accs.forEach((acc,index)=>{
     <span class="status">${acc.status}</span>
     <p>${acc.info}</p>
     <p>🌐 Liên hệ: Zalo, FB</p>
-    <a class="btn" href="#" onclick="showAccDetails(${index})">Xem chi tiết</a>
+    <a class="btn" href="#" onclick="showPopup(${index})">Xem chi tiết</a>
   `;
   accList.appendChild(div);
 });
 
-function showAccDetails(index){
-  const acc = accs[index];
-  let thumbsHtml='';
-  acc.thumbs.forEach(t=> thumbsHtml+=`<img src="${t}" style="width:80px;margin:5px;border:1px solid #00ffcc;border-radius:5px">`);
-  
-  const html=`
-    <div style="background:#121821;padding:20px;border-radius:15px;color:#fff;max-width:500px;margin:20px auto">
-      <h2>${acc.name}</h2>
-      <img src="${acc.mainImg}" style="width:100%;border-radius:10px;margin-bottom:10px">
-      <div>${thumbsHtml}</div>
-      <p>${acc.info}</p>
-      <p>💰 <b>Giá gốc:</b> ${acc.oldPrice} | <b>Giá hiện tại:</b> ${acc.newPrice}</p>
-      <p>✔️ <b>Trạng thái:</b> ${acc.status}</p>
-      <p>💬 <b>Zalo:</b> ${acc.zalo}</p>
-      <p>📝 <b>Tech:</b> ${acc.teck}</p>
-      <p>👤 <b>Tên người bán:</b> ${acc.ten}</p>
-      <p>🌐 <b>Fanpage:</b> <a href="${acc.fanpage}" target="_blank">${acc.fanpage}</a></p>
-      <p>🎮 <b>Danh mục:</b> ${acc.danhMuc}</p>
-      <p>⚠️ <b>Lưu ý:</b> ${acc.luuY}</p>
-      <a href="${acc.fanpage}" target="_blank" style="display:inline-block;padding:10px 15px;background:#00ffcc;color:#000;border-radius:8px;font-weight:bold;margin-top:10px;">Mua Ngay ▶️</a>
-      <br><br>
-      <button onclick="document.getElementById('accDetail').innerHTML=''" style="padding:5px 10px;">Đóng</button>
-    </div>
-  `;
-  document.getElementById('accDetail').innerHTML=html;
+// Popup
+let currentImgIndex = 0;
+let currentAcc = null;
+function showPopup(index){
+  currentAcc = accs[index];
+  currentImgIndex = 0;
+  document.getElementById('accDetail').style.display='flex';
+  updatePopup();
 }
+
+function closePopup(){ document.getElementById('accDetail').style.display='none'; }
+
+function updatePopup(){
+  document.getElementById('popupMainImg').src=currentAcc.thumbs[currentImgIndex] || currentAcc.mainImg;
+  const thumbsHtml = currentAcc.thumbs.map((t,i)=>`<img src="${t}" onclick="goToImg(${i})">`).join('');
+  document.getElementById('accThumbs').innerHTML = thumbsHtml;
+  document.getElementById('popupInfo').innerHTML=`
+    <h3>${currentAcc.name}</h3>
+    <p>${currentAcc.info}</p>
+    <p>💰 <b>Giá gốc:</b> ${currentAcc.oldPrice} | <b>Giá hiện tại:</b> ${currentAcc.newPrice}</p>
+    <p>✔️ <b>Trạng thái:</b> ${currentAcc.status}</p>
+    <p>💬 <b>Zalo:</b> ${currentAcc.zalo}</p>
+    <p>📝 <b>Tech:</b> ${currentAcc.teck}</p>
+    <p>👤 <b>Tên người bán:</b> ${currentAcc.ten}</p>
+    <p>🌐 <b>Fanpage:</b> <a href="${currentAcc.fanpage}" target="_blank">${currentAcc.fanpage}</a></p>
+    <p>🎮 <b>Danh mục:</b> ${currentAcc.danhMuc}</p>
+    <p>${currentAcc.luuY}</p>
+  `;
+  document.getElementById('buyBtn').href = currentAcc.fanpage;
+}
+
+function goToImg(i){ currentImgIndex=i; updatePopup(); }
+document.getElementById('prevBtn').onclick=function(){
+  currentImgIndex=(currentImgIndex-1+currentAcc.thumbs.length)%currentAcc.thumbs.length;
+  updatePopup();
+};
+document.getElementById('nextBtn').onclick=function(){
+  currentImgIndex=(currentImgIndex+1)%currentAcc.thumbs.length;
+  updatePopup();
+};
 </script>
 </body>
 </html>
