@@ -18,17 +18,16 @@ header h1{font-size:20px;margin-bottom:5px;}
 .nav-links a{color:#fff;font-weight:bold;}
 .nav-toggle{display:none;font-size:24px;cursor:pointer;}
 
-/* ===== Ảnh bìa lớn + đầy đủ ===== */
+/* ===== Ảnh bìa full màn hình ===== */
 .cover {
   width: 100%;
+  height: 100vh; /* cạnh cao = 100% chiều cao màn hình */
   background: url("https://i.postimg.cc/bJr5hzsY/ff31cd69-f0cf-4c13-ad3a-dd6ae8bef797.jpg") center center no-repeat;
-  background-size: contain;
+  background-size: cover; /* ảnh phủ đầy màn hình */
   margin-top: 90px; /* tránh header che */
-  padding-top: 80%; /* ảnh cao hơn so với màn hình */
-  border-radius: 10px;
 }
 
-/* ===== Section ===== */
+/* ===== Nội dung ===== */
 section{padding:40px 20px;max-width:1000px;margin:15px auto;background:#fff;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.1);}
 h2{text-align:center;color:#ff4d4d;margin-bottom:20px;}
 
@@ -68,7 +67,7 @@ footer{text-align:center;padding:20px 0;background:#333;color:#fff;margin-top:20
 </div>
 </header>
 
-<!-- ===== Ảnh bìa lớn + đầy đủ ===== -->
+<!-- ===== Ảnh bìa full màn hình ===== -->
 <div class="cover"></div>
 
 <!-- ===== Giới thiệu Shop ===== -->
