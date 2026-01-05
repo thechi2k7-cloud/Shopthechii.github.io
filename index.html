@@ -19,23 +19,33 @@
 
     /* HEADER / BÌA */
     .banner {
-      height: 260px;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      position: relative;
+      height: 300px;
+      background: url('https://i.postimg.cc/bJr5hzsY/ff31cd69-f0cf-4c13-ad3a-dd6ae8bef797.jpg') center/cover no-repeat;
+    }
+
+    .banner-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
+      padding: 20px;
     }
 
     .banner-content h1 {
       color: #00ffcc;
-      font-size: 36px;
+      font-size: 38px;
       margin: 0;
     }
 
     .banner-content p {
-      color: #ddd;
-      margin: 10px 0 10px;
+      color: #fff;
+      margin: 8px 0 8px;
+      font-size: 17px;
     }
 
     .banner-content .support {
@@ -43,7 +53,7 @@
       margin-top: 5px;
       color: #00ff66;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 18px;
     }
 
     .banner-btn {
@@ -155,11 +165,11 @@
 
     #contact a { text-decoration: none; color: #00ffcc; }
 
-    /* Zalo Float */
+    /* Nút nổi Zalo & Facebook */
     .zalo-float {
       position: fixed;
       bottom: 20px;
-      right: 20px;
+      right: 90px; /* sang trái để nhường chỗ cho FB */
       background: #00ffcc;
       color: #000;
       width: 55px;
@@ -169,6 +179,22 @@
       line-height: 55px;
       font-size: 28px;
       box-shadow: 0 0 15px rgba(0,255,204,0.8);
+      z-index: 999;
+    }
+
+    .fb-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #1877f2; /* màu xanh Facebook */
+      color: #fff;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 55px;
+      font-size: 28px;
+      box-shadow: 0 0 15px rgba(24,119,242,0.8);
       z-index: 999;
     }
 
@@ -184,11 +210,13 @@
 <body>
 
 <header class="banner">
-  <div class="banner-content">
-    <h1>🏪 SHOP THẾ CHÍÍ</h1>
-    <p>Bán Acc Free Fire Uy Tín – Giá Rẻ – Giao Dịch Nhanh</p>
-    <span class="support">💬 Hỗ trợ 24/7</span>
-    <a href="#contact" class="banner-btn">Liên hệ ngay</a>
+  <div class="banner-overlay">
+    <div class="banner-content">
+      <h1>🏪 SHOP THẾ CHÍÍ</h1>
+      <p>Bán Acc Free Fire Uy Tín – Giá Rẻ – Giao Dịch Nhanh</p>
+      <span class="support">💬 Hỗ trợ 24/7</span>
+      <a href="#contact" class="banner-btn">Liên hệ ngay</a>
+    </div>
   </div>
 </header>
 
@@ -255,7 +283,7 @@
   <h2><i class="fa-solid fa-list-check"></i> Quy Trình Mua Acc</h2>
   <ol>
     <li>Chọn acc phù hợp</li>
-    <li>Nhắn Zalo shop</li>
+    <li>Nhắn Zalo, Facebook</li>
     <li>Thanh toán</li>
     <li>Nhận acc & đổi thông tin</li>
   </ol>
@@ -264,20 +292,26 @@
 <section>
   <h2><i class="fa-solid fa-file-contract"></i> Điều Khoản Giao Dịch</h2>
   <p>
-    Shop chỉ hỗ trợ mua bán **thay thông tin tài khoản game**. Khách hàng kiểm tra kỹ trước khi giao dịch. Sau khi thay xong, shop không chịu trách nhiệm với việc sử dụng về sau.
+    Shop chỉ hỗ trợ mua bán <strong>thay thông tin tài khoản game</strong>. 
+    Khách hàng kiểm tra kỹ trước khi giao dịch. Sau khi thay xong, shop không chịu trách nhiệm với việc sử dụng về sau.
   </p>
 </section>
 
 <section id="contact">
   <h2><i class="fa-solid fa-headset"></i> Liên Hệ Shop</h2>
-  <p><i class="fa-brands fa-whatsapp"></i> Zalo: <a href="https://zalo.me/0325988875" target="_blank">032 598 8875</a></p>
+  <p><i class="fa-brands fa-whatsapp"></i> Zalo: <a href="https://zalo.me/0325988875" target="_blank">032 5988875</a></p>
   <p><i class="fa-brands fa-facebook"></i> Facebook: <a href="https://www.facebook.com/the.chii.2025" target="_blank">the.chii.2025</a></p>
   <p><i class="fa-solid fa-clock"></i> Giờ hỗ trợ: (Hỗ trợ 24/7)</p>
   <p><i class="fa-solid fa-shield-halved"></i> Cam kết: Uy tín an toàn</p>
 </section>
 
+<!-- Nút nổi Zalo & Facebook -->
 <a href="https://zalo.me/0325988875" class="zalo-float" target="_blank">
   <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<a href="https://www.facebook.com/the.chii.2025" class="fb-float" target="_blank">
+  <i class="fa-brands fa-facebook-f"></i>
 </a>
 
 <footer>
