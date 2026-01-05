@@ -7,111 +7,62 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #0b0f14;
-  color: #fff;
-}
-a { text-decoration: none; }
+body { margin:0; font-family:Arial, Helvetica, sans-serif; background:#0b0f14; color:#fff;}
+a{text-decoration:none;}
 
 /* BANNER */
-.banner {
-  position: relative;
-  height: 300px;
-  background: url('https://i.postimg.cc/bJr5hzsY/ff31cd69-f0cf-4c13-ad3a-dd6ae8bef797.jpg') center/cover no-repeat;
-}
-.banner-overlay {
-  position: absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  background: rgba(0,0,0,0.3);
-}
+.banner{position:relative;height:300px;background:url('https://i.postimg.cc/bJr5hzsY/ff31cd69-f0cf-4c13-ad3a-dd6ae8bef797.jpg') center/cover no-repeat;}
+.banner-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background: rgba(0,0,0,0.3);}
 
 /* SECTION */
-section {
-  max-width: 1100px;
-  margin: 30px auto;
-  padding: 20px;
-}
-h2 {
-  color: #00ffcc;
-  margin-bottom: 15px;
-}
+section{max-width:1100px;margin:30px auto;padding:20px;}
+h2{color:#00ffcc;margin-bottom:15px;}
 
 /* ACC LIST */
-.acc-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-}
-.acc {
-  background: #121821;
-  border-radius: 15px;
-  padding: 18px;
-  box-shadow: 0 0 15px rgba(0,255,204,0.25);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.acc:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 25px rgba(0,255,204,0.5);
-}
-.acc img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-.acc h3 { color: #00ffcc; margin:10px 0; }
-.price { margin: 8px 0; }
-.old-price { text-decoration: line-through; color: #aaa; margin-right:8px; }
-.new-price { color: #00ff66; font-weight: bold; font-size:18px; }
-.status { display:inline-block; margin:8px 0; color:#00ff66; font-weight:bold; }
-.btn { display:inline-block; margin-top:10px; padding:10px 15px; background:#00ffcc; color:#000; border-radius:8px; font-weight:bold; }
+.acc-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+.acc{background:#121821;border-radius:15px;padding:18px;box-shadow:0 0 15px rgba(0,255,204,0.25);transition:transform 0.2s,box-shadow 0.2s;}
+.acc:hover{transform:translateY(-5px);box-shadow:0 0 25px rgba(0,255,204,0.5);}
+.acc img{width:100%;border-radius:10px;margin-bottom:10px;cursor:pointer;}
+.acc h3{color:#00ffcc;margin:10px 0;}
+.price{margin:8px 0;}
+.old-price{text-decoration:line-through;color:#aaa;margin-right:8px;}
+.new-price{color:#00ff66;font-weight:bold;font-size:18px;}
+.status{display:inline-block;margin:8px 0;color:#00ff66;font-weight:bold;}
+.btn{display:inline-block;margin-top:10px;padding:10px 15px;background:#00ffcc;color:#000;border-radius:8px;font-weight:bold;text-align:center;}
 
 /* Uy tín & Cam kết */
-.trust-list { list-style:none; padding-left:0; line-height:1.8; font-size:16px; }
-.trust-list li {
-  margin: 8px 0;
-  padding-left: 20px;
-  position: relative;
-  color: #00ffcc;
-  font-weight: bold;
-}
-.trust-list li::before { content: "✔️"; position:absolute; left:0; color:#00ff66; }
+.trust-list{list-style:none;padding-left:0;line-height:1.8;font-size:16px;}
+.trust-list li{margin:8px 0;padding-left:20px;position:relative;color:#00ffcc;font-weight:bold;}
+.trust-list li::before{content:"✔️";position:absolute;left:0;color:#00ff66;}
 
 /* Contact */
-#contact i { color:#00ffcc; margin-right:8px; }
-#contact a { text-decoration:none; color:#00ffcc; }
+#contact i{color:#00ffcc;margin-right:8px;}
+#contact a{text-decoration:none;color:#00ffcc;}
 
 /* Nút nổi Zalo & Facebook */
-.zalo-float {
-  position: fixed; bottom:20px; right:90px;
-  background:#00ffcc; color:#000;
-  width:55px; height:55px; border-radius:50%;
-  text-align:center; line-height:55px;
-  font-size:28px; box-shadow:0 0 15px rgba(0,255,204,0.8);
-  z-index:999;
-}
-.fb-float {
-  position: fixed; bottom:20px; right:20px;
-  background:#1877f2; color:#fff;
-  width:55px; height:55px; border-radius:50%;
-  text-align:center; line-height:55px;
-  font-size:28px; box-shadow:0 0 15px rgba(24,119,242,0.8);
-  z-index:999;
-}
+.zalo-float{position:fixed;bottom:20px;right:90px;background:#00ffcc;color:#000;width:55px;height:55px;border-radius:50%;text-align:center;line-height:55px;font-size:28px;box-shadow:0 0 15px rgba(0,255,204,0.8);z-index:999;}
+.fb-float{position:fixed;bottom:20px;right:20px;background:#1877f2;color:#fff;width:55px;height:55px;border-radius:50%;text-align:center;line-height:55px;font-size:28px;box-shadow:0 0 15px rgba(24,119,242,0.8);z-index:999;}
 
 /* Pagination */
-.pagination { text-align:center; margin-top:25px; }
-.pagination a, .pagination span {
-  display:inline-block; margin:0 5px; padding:8px 12px;
-  color:#00ffcc; background:#121821; border-radius:6px; font-weight:bold;
-}
-.pagination a:hover { background:#00ff66; color:#000; }
-.pagination span { background:transparent; color:#888; cursor:default; }
+.pagination{text-align:center;margin-top:25px;}
+.pagination a, .pagination span{display:inline-block;margin:0 5px;padding:8px 12px;color:#00ffcc;background:#121821;border-radius:6px;font-weight:bold;}
+.pagination a:hover{background:#00ff66;color:#000;}
+.pagination span{background:transparent;color:#888;cursor:default;}
 
 /* Footer */
-footer { text-align:center; padding:20px; color:#aaa; font-size:14px; }
+footer{text-align:center;padding:20px;color:#aaa;font-size:14px;}
+
+/* MODAL POPUP */
+.modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;overflow:auto;background: rgba(0,0,0,0.85);}
+.modal-content{background:#121821;margin:5% auto;padding:20px;border-radius:10px;width:90%;max-width:900px;display:flex;flex-wrap:wrap;}
+.modal-main-img{width:60%;border-radius:10px;}
+.thumbs{display:flex;flex-wrap:wrap;margin-top:10px;}
+.thumbs img{width:60px;height:60px;border-radius:5px;object-fit:cover;margin-right:5px;margin-bottom:5px;cursor:pointer;border:2px solid #00ffcc;}
+.modal-info{width:35%;margin-left:5%;color:#00ffcc;font-size:16px;}
+.modal-info p{margin-bottom:8px;}
+.modal .close{position:absolute;top:15px;right:25px;color:#fff;font-size:35px;font-weight:bold;cursor:pointer;}
+.modal .btn{margin-top:15px;width:100%;text-align:center;}
+@media(max-width:768px){.modal-content{flex-direction:column;}.modal-main-img{width:100%;}.modal-info{width:100%;margin-left:0;margin-top:15px;}}
 </style>
 </head>
 <body>
@@ -120,10 +71,7 @@ footer { text-align:center; padding:20px; color:#aaa; font-size:14px; }
 
 <section>
 <h2><i class="fa-solid fa-fire"></i> Acc Free Fire Nổi Bật</h2>
-<div class="acc-list" id="accList">
-  <!-- Acc sẽ được render bằng JS -->
-</div>
-
+<div class="acc-list" id="accList"></div>
 <div class="pagination" id="pagination"></div>
 </section>
 
@@ -149,9 +97,7 @@ footer { text-align:center; padding:20px; color:#aaa; font-size:14px; }
 
 <section>
 <h2><i class="fa-solid fa-file-contract"></i> Điều Khoản Giao Dịch</h2>
-<p>
-Shop chỉ hỗ trợ mua bán <strong>thay thông tin tài khoản game</strong>. Khách hàng kiểm tra kỹ trước khi giao dịch. Sau khi thay xong, shop không chịu trách nhiệm với việc sử dụng về sau.
-</p>
+<p>Shop chỉ hỗ trợ mua bán <strong>thay thông tin tài khoản game</strong>. Khách hàng kiểm tra kỹ trước khi giao dịch. Sau khi thay xong, shop không chịu trách nhiệm với việc sử dụng về sau.</p>
 </section>
 
 <section id="contact">
@@ -162,48 +108,53 @@ Shop chỉ hỗ trợ mua bán <strong>thay thông tin tài khoản game</strong
 <p><i class="fa-solid fa-shield-halved"></i> Cam kết: Uy tín an toàn</p>
 </section>
 
-<!-- Nút nổi Zalo & Facebook -->
 <a href="https://zalo.me/0325988875" class="zalo-float" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 <a href="https://www.facebook.com/the.chii.2025" class="fb-float" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
 
 <footer>© 2026 Shop Thế Chíí – Free Fire | All Rights Reserved</footer>
 
 <script>
-// DANH SÁCH ACC (ví dụ 30 acc, bạn có thể thêm hoặc thay)
-const accs = [];
-for(let i=1;i<=30;i++){
-  accs.push({
-    img:'https://i.imgur.com/8QfQKQF.png',
-    name:`🔥 Acc FF #${i}`,
-    level: Math.floor(Math.random()*100)+1,
-    info:'💎 Skin + đồ hiếm',
-    status:'✔️ Còn hàng',
-    oldPrice:`${(Math.floor(Math.random()*10)+1)*100}.000đ`,
-    newPrice:`${(Math.floor(Math.random()*5)+1)*100}.000đ`
-  });
-}
+// ===== DANH SÁCH ACC
+const accs = [
+  {
+    mainImg: 'https://i.postimg.cc/hGFQz7hL/85ae2bd2-da86-4f04-8a03-72543aefac43.jpg',
+    thumbs: [
+      'https://i.postimg.cc/W46zdWBj/8c455720-5545-4e86-b698-0d2a2f81bec8.jpg',
+      'https://i.postimg.cc/ZKdT9sNc/4e128dd3-d574-4948-88c7-8e14129d665e.jpg',
+      'https://i.postimg.cc/mkFGHhPr/03c7769f-7b46-4de1-830b-cc92b494204d.jpg',
+      'https://i.postimg.cc/26gSJsvf/3b96ab71-3a56-403d-8bf9-b6a6b94dfb30.jpg',
+      'https://i.postimg.cc/GmbhZJBK/2d7a5bc1-234f-4ca0-a018-e383d44fc1bf.jpg'
+    ],
+    name: '🔥 Acc FF VIP',
+    oldPrice: '₫850,000',
+    newPrice: '₫750,000',
+    info: '💎 Skin + đồ hiếm',
+    status: '✔️ Còn hàng',
+    zalo: '0325988875',
+    teck: '2120076666888',
+    ten: 'mai the chi',
+    fanpage: 'https://www.facebook.com/the.chii.2025',
+    danhMuc: 'Free Fire',
+    luuY: 'Để ý thông tin chuyển khoản để tránh fake!'
+  },
+  // Thêm acc khác nếu muốn
+];
 
-const accPerPage = 6;
-let currentPage = 1;
-const accList = document.getElementById('accList');
-const pagination = document.getElementById('pagination');
+// ===== PAGINATION
+const accPerPage=6; let currentPage=1;
+const accList=document.getElementById('accList'); const pagination=document.getElementById('pagination');
 
 function renderAccs(page){
   accList.innerHTML='';
-  const start = (page-1)*accPerPage;
-  const end = start+accPerPage;
-  const pageAccs = accs.slice(start,end);
-  pageAccs.forEach(acc=>{
-    const div = document.createElement('div');
-    div.className='acc';
+  const start=(page-1)*accPerPage; const end=start+accPerPage;
+  const pageAccs=accs.slice(start,end);
+  pageAccs.forEach((acc,index)=>{
+    const div=document.createElement('div'); div.className='acc';
     div.innerHTML=`
-      <img src="${acc.img}" alt="${acc.name}">
+      <img src="${acc.mainImg}" alt="${acc.name}" onclick="openAccModal(${index})">
       <h3>${acc.name}</h3>
-      <p>⭐ Level: ${acc.level}</p>
-      <p>${acc.info}</p>
-      <span class="status">${acc.status}</span><br>
       <div class="price"><span class="old-price">${acc.oldPrice}</span> <span class="new-price">${acc.newPrice}</span></div>
-      <a class="btn" href="https://zalo.me/0325988875">Mua ngay</a>
+      <a class="btn" href="${acc.fanpage}" target="_blank">Mua Ngay ▶️</a>
     `;
     accList.appendChild(div);
   });
@@ -211,28 +162,22 @@ function renderAccs(page){
 
 function renderPagination(){
   pagination.innerHTML='';
-  const totalPages = Math.ceil(accs.length/accPerPage);
+  const totalPages=Math.ceil(accs.length/accPerPage);
   if(currentPage>1){
-    const prev = document.createElement('a');
-    prev.href='#'; prev.innerHTML='&laquo;';
+    const prev=document.createElement('a'); prev.href='#'; prev.innerHTML='&laquo;';
     prev.onclick=()=>{currentPage--; renderAccs(currentPage); renderPagination(); return false;};
     pagination.appendChild(prev);
   }
-
-  // Hiển thị số trang giống: 1 2 3 4 … 67 68 69
   for(let i=1;i<=totalPages;i++){
     if(i<=4 || i>totalPages-3 || (i>=currentPage-1 && i<=currentPage+1)){
-      const a=document.createElement('a');
-      a.href='#'; a.innerText=i;
+      const a=document.createElement('a'); a.href='#'; a.innerText=i;
       if(i===currentPage) a.style.background='#00ff66';
       a.onclick=(e)=>{e.preventDefault(); currentPage=i; renderAccs(currentPage); renderPagination();};
       pagination.appendChild(a);
-    }else if(i===5 || i===totalPages-3){
-      const span = document.createElement('span'); span.innerText='…';
-      pagination.appendChild(span);
+    } else if(i===5 || i===totalPages-3){
+      const span=document.createElement('span'); span.innerText='…'; pagination.appendChild(span);
     }
   }
-
   if(currentPage<totalPages){
     const next=document.createElement('a'); next.href='#'; next.innerHTML='&raquo;';
     next.onclick=()=>{currentPage++; renderAccs(currentPage); renderPagination(); return false;};
@@ -240,8 +185,56 @@ function renderPagination(){
   }
 }
 
-renderAccs(currentPage);
-renderPagination();
+// ===== POPUP
+let currentAccIndex=0;
+function openAccModal(index){
+  currentAccIndex=index;
+  const acc=accs[index];
+  if(!document.getElementById('accModal')){
+    const modal=document.createElement('div'); modal.id='accModal'; modal.className='modal';
+    modal.innerHTML=`
+      <div class="modal-content">
+        <span class="close" onclick="closeAccModal()">&times;</span>
+        <img id="accMainImg" class="modal-main-img">
+        <div class="thumbs" id="accThumbs"></div>
+        <div class="modal-info" id="accInfo"></div>
+        <a class="btn" id="accBuyBtn" target="_blank">Mua Ngay ▶️</a>
+      </div>
+    `;
+    document.body.appendChild(modal);
+  }
+  const modal=document.getElementById('accModal');
+  const mainImg=document.getElementById('accMainImg');
+  const thumbs=document.getElementById('accThumbs');
+  const info=document.getElementById('accInfo');
+  const buyBtn=document.getElementById('accBuyBtn');
+
+  mainImg.src=acc.mainImg;
+  thumbs.innerHTML='';
+  acc.thumbs.forEach(t=>{
+    const img=document.createElement('img'); img.src=t;
+    img.onclick=()=>{mainImg.src=t;};
+    thumbs.appendChild(img);
+  });
+
+  info.innerHTML=`
+    <p>Mua Ngay ▶️ <a href="${acc.fanpage}" target="_blank">Fanpage</a></p>
+    <p>Zalo: ${acc.zalo}</p>
+    <p>Lưu ý ❗: ${acc.luuY}</p>
+    <p>Teck: ${acc.teck}</p>
+    <p>Tên: ${acc.ten}</p>
+    <p>Danh mục: ${acc.danhMuc}</p>
+  `;
+
+  buyBtn.href=acc.fanpage;
+  modal.style.display='block';
+}
+
+function closeAccModal(){document.getElementById('accModal').style.display='none';}
+window.onclick=function(event){if(event.target==document.getElementById('accModal')) closeAccModal();}
+
+// ===== INIT
+renderAccs(currentPage); renderPagination();
 </script>
 </body>
 </html>
