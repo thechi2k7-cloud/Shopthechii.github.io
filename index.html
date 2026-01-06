@@ -6,7 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-body {margin:0;font-family:Arial, Helvetica, sans-serif; background:#0b0f14; color:#fff;}
+body {
+  margin:0; font-family:Arial, Helvetica, sans-serif; background:#0b0f14; color:#fff;
+}
 a{text-decoration:none;color:#00ffcc;}
 
 /* BANNER */
@@ -18,7 +20,7 @@ section {max-width:1100px;margin:30px auto;padding:20px;}
 h2{color:#00ffcc;margin-bottom:15px;}
 
 /* ACC LIST */
-.acc-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+.acc-list{display:grid;grid-template-columns:1fr;gap:20px;}
 .acc{background:#121821;border-radius:15px;padding:18px;box-shadow:0 0 15px rgba(0,255,204,0.25);transition:transform 0.2s, box-shadow 0.2s;}
 .acc:hover{transform:translateY(-5px);box-shadow:0 0 25px rgba(0,255,204,0.5);}
 .acc img{width:100%;border-radius:10px;margin-bottom:10px;}
@@ -27,7 +29,7 @@ h2{color:#00ffcc;margin-bottom:15px;}
 .old-price{text-decoration:line-through;color:#aaa;margin-right:8px;}
 .new-price{color:#00ff66;font-weight:bold;font-size:18px;}
 .status{display:inline-block;margin:8px 0;color:#00ff66;font-weight:bold;}
-.btn{display:inline-block;margin-top:10px;padding:10px 15px;background:#00ffcc;color:#000;border-radius:8px;font-weight:bold;}
+.btn{display:inline-block;margin-top:10px;padding:10px 15px;background:#00ffcc;color:#000;border-radius:8px;font-weight:bold;cursor:pointer;text-align:center;}
 
 /* Uy tín & Cam kết */
 .trust-list{list-style:none;padding-left:0;line-height:1.8;font-size:16px;}
@@ -49,7 +51,7 @@ h2{color:#00ffcc;margin-bottom:15px;}
 .pagination span{background:transparent;color:#888;cursor:default;}
 
 /* Footer */
-footer{text-align:center;padding:20px;color:#aaa;font-size:16px;}
+footer{text-align:center;padding:20px;color:#aaa;font-size:18px;}
 
 /* Popup Gallery */
 #popup{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:1000;justify-content:center;align-items:center;flex-direction:column;overflow:auto;padding:20px;box-sizing:border-box;}
@@ -128,155 +130,201 @@ Shop chỉ hỗ trợ mua bán <strong>thay thông tin tài khoản game</strong
 <script>
 // DANH SÁCH ACC
 const accs = [
-  {
-    name:'Acc 1 🔥',
-    mainImg:'https://i.postimg.cc/hGFQz7hL/85ae2bd2-da86-4f04-8a03-72543aefac43.jpg',
-    thumbs:[
-      'https://i.postimg.cc/W46zdWBj/8c455720-5545-4e86-b698-0d2a2f81bec8.jpg',
-      'https://i.postimg.cc/ZKdT9sNc/4e128dd3-d574-4948-88c7-8e14129d665e.jpg',
-      'https://i.postimg.cc/mkFGHhPr/03c7769f-7b46-4de1-830b-cc92b494204d.jpg',
-      'https://i.postimg.cc/26gSJsvf/3b96ab71-3a56-403d-8bf9-b6a6b94dfb30.jpg',
-      'https://i.postimg.cc/GmbhZJBK/2d7a5bc1-234f-4ca0-a018-e383d44fc1bf.jpg'
-    ],
-    oldPrice:'₫850,000',
-    newPrice:'₫750,000',
-    info:'Chuyên phòng tử chiến 💎',
-    status:'Còn✔️',
-    zalo:'0325988875',
-    teck:'2120076666888',
-    tenNoDau:'Mai The Chi',
-    fanpage:'https://www.facebook.com/the.chii.2025',
-    danhMuc:'Free Fire',
-    luuY:'⚠️ Shop chỉ hỗ trợ mua bán thay thông tin tài khoản game. Khách hàng kiểm tra kỹ trước khi giao dịch. Sau khi thay xong, shop không chịu trách nhiệm với việc sử dụng về sau.'
-  },
-  {
-    name:'Acc 2 🔥',
-    mainImg:'https://i.postimg.cc/wxyB7zgD/e2e646a3-1a01-4d84-93f8-e4dd554fa1d1.jpg',
-    thumbs:[
-      'https://i.postimg.cc/Ghjnpg8g/e8a2b0ec-78af-4576-b6a3-b303a7e1cfe7.jpg',
-      'https://i.postimg.cc/yxz210Vz/facb2195-007a-45ae-a084-e079b9bccce9.jpg',
-      'https://i.postimg.cc/DynRRQjC/fc2d05c4-9a89-4a47-b737-c4fff9da7468.jpg',
-      'https://i.postimg.cc/6Q2PCMqX/1d04f9f2-03b0-47d9-9964-6be3d2ba8d14.jpg',
-      'https://i.postimg.cc/ZKdT9sNc/4e128dd3-d574-4948-88c7-8e14129d665e.jpg'
-      // tiếp tục các ảnh bên trong nếu muốn
-    ],
-    oldPrice:'₫6,200,000',
-    newPrice:'₫5,200,000',
-    info:'Acc VIP8 – nhiều chế tác – 12 cây nâng cấp 💎',
-    status:'Còn✔️',
-    zalo:'0325988875',
-    teck:'2120076666888',
-    tenNoDau:'Mai The Chi',
-    fanpage:'https://www.facebook.com/the.chii.2025',
-    danhMuc:'Free Fire',
-    luuY:'⚠️ Shop chỉ hỗ trợ mua bán thay thông tin tài khoản game. Khách hàng kiểm tra kỹ trước khi giao dịch. Sau khi thay xong, shop không chịu trách nhiệm với việc sử dụng về sau.'
-  },
-  {
-    name:'Acc 3 🔥',
-    mainImg:'https://i.postimg.cc/NGpbsL16/70652ec2-08eb-4f46-92c3-0383688ba817.jpg',
-    thumbs:[
-      'https://i.postimg.cc/sDWBnNfk/0d42746f-c554-4e0a-b16e-c6f98efd66ce.jpg',
-      'https://i.postimg.cc/bYWLMrkZ/4c8558c1-f578-4e49-8880-d3d9628ef93d.jpg',
-      'https://i.postimg.cc/m2WCCH7w/8c72be07-6480-46a4-bd83-be2d6cafb3da.jpg'
-      // tiếp tục các ảnh bên trong
-    ],
-    oldPrice:'₫7,600,000',
-    newPrice:'₫6,600,000',
-    info:'Acc VIP8 – hành động 10k kim cương – 5 cây lv7 💎',
-    status:'Còn✔️',
-    zalo:'0325988875',
-    teck:'2120076666888',
-    tenNoDau:'Mai The Chi',
-    fanpage:'https://www.facebook.com/the.chii.2025',
-    danhMuc:'Free Fire',
-    luuY:'⚠️ Shop chỉ hỗ trợ mua bán thay thông tin tài khoản game. Khách hàng kiểm tra kỹ trước khi giao dịch. Sau khi thay xong, shop không chịu trách nhiệm với việc sử dụng về sau.'
-  },
-  {
-    name:'Acc 4 🔥',
-    mainImg:'https://i.postimg.cc/yNgJ31pv/e19d27f1-4f33-4570-8ff0-e8ae1aa9abe1.jpg',
-    thumbs:[
-      'https://i.postimg.cc/JhgvqL3k/8c9ac443-40b4-44e1-969b-dbc2217300c4.jpg',
-      'https://i.postimg.cc/8zp2kwP3/46e68092-327d-498a-a8cf-33ffdbeaa7b7.jpg'
-      // tiếp tục các ảnh bên trong
-    ],
-    oldPrice:'₫3,000,000',
-    newPrice:'₫2,600,000',
-    info:'Acc VIP7 – chuyên áo đá bóng – 1 cây lv7, 4 cây nâng cấp 💎',
-    status:'Còn✔️',
-    zalo:'0325988875',
-    teck:'2120076666888',
-    tenNoDau:'Mai The Chi',
-    fanpage:'https://www.facebook.com/the.chii.2025',
-    danhMuc:'Free Fire',
-    luuY:'⚠️ Shop chỉ hỗ trợ mua bán thay thông tin tài khoản game. Khách hàng kiểm tra kỹ trước khi giao dịch. Sau khi thay xong, shop không chịu trách nhiệm với việc sử dụng về sau.'
-  }
+{
+name:'Acc 1 🔥',
+mainImg:'https://i.postimg.cc/hGFQz7hL/85ae2bd2-da86-4f04-8a03-72543aefac43.jpg',
+thumbs:[
+'https://i.postimg.cc/W46zdWBj/8c455720-5545-4e86-b698-0d2a2f81bec8.jpg',
+'https://i.postimg.cc/ZKdT9sNc/4e128dd3-d574-4948-88c7-8e14129d665e.jpg',
+'https://i.postimg.cc/mkFGHhPr/03c7769f-7b46-4de1-830b-cc92b494204d.jpg',
+'https://i.postimg.cc/26gSJsvf/3b96ab71-3a56-403d-8bf9-b6a6b94dfb30.jpg',
+'https://i.postimg.cc/GmbhZJBK/2d7a5bc1-234f-4ca0-a018-e383d44fc1bf.jpg'
+],
+oldPrice:'₫850,000',
+newPrice:'₫750,000',
+info:'Chuyên phòng tử chiến 💎',
+status:'Còn✔️',
+zalo:'0325988875',
+teck:'2120076666888',
+tenNoDau:'Mai The Chi',
+fanpage:'https://www.facebook.com/the.chii.2025',
+danhMuc:'Free Fire',
+luuY:'⚠️ Shop chỉ hỗ trợ mua bán thay thông tin tài khoản game. Khách hàng kiểm tra kỹ trước khi giao dịch. Sau khi thay xong, shop không chịu trách nhiệm với việc sử dụng về sau.'
+},
+{
+name:'Acc 2 🔥',
+mainImg:'https://i.postimg.cc/wxyB7zgD/e2e646a3-1a01-4d84-93f8-e4dd554fa1d1.jpg',
+thumbs:[
+'https://i.postimg.cc/Ghjnpg8g/e8a2b0ec-78af-4576-b6a3-b303a7e1cfe7.jpg',
+'https://i.postimg.cc/yxz210Vz/facb2195-007a-45ae-a084-e079b9bccce9.jpg',
+'https://i.postimg.cc/DynRRQjC/fc2d05c4-9a89-4a47-b737-c4fff9da7468.jpg',
+'https://i.postimg.cc/6Q2PCMqX/1d04f9f2-03b0-47d9-9964-6be3d2ba8d14.jpg',
+'https://i.postimg.cc/ZKdT9sNc/4e128dd3-d574-4948-88c7-8e14129d665e.jpg',
+'https://i.postimg.cc/SQ7vL2SW/7ddc554a-9da5-4876-85d3-5456609b8d71.jpg',
+'https://i.postimg.cc/vTQX2hYg/14bcf374-65f0-4fa1-88db-6236b0684a1d.jpg',
+'https://i.postimg.cc/DfgxJ96J/65c022c3-ca83-4cfc-bac3-b81ff775c336.jpg',
+'https://i.postimg.cc/PrVKK1Bk/80ba05f0-7a79-4604-8224-be0d1feebbaf.jpg',
+'https://i.postimg.cc/fR6CQDzB/95d61c90-4b63-4f84-8aad-d2d878b70fe2.jpg',
+'https://i.postimg.cc/wTMQt77Y/168c0c35-7000-46f4-8fdf-8f08f18ef1e3.jpg',
+'https://i.postimg.cc/GmsPQVFT/5896a80c-1151-43f8-854d-7232ac8f7dc.jpg',
+'https://i.postimg.cc/X7r9jmzp/9570edc8-f28a-4f50-b31b-c6b5ad5341b8.jpg',
+'https://i.postimg.cc/XYFFFF3W/39780b1a-a83e-4370-8059-47eb3ec8d5ec.jpg',
+'https://i.postimg.cc/mDdFRy32/4533186c-3836-45c9-829f-30585a7d5ff4.jpg',
+'https://i.postimg.cc/qqSh6B5M/b453edc8-6387-4513-a9a9-6d49921dd06a.jpg',
+'https://i.postimg.cc/bwXSzJns/ba98b697-4a8d-483f-bbdd-0ebd0a301924.jpg',
+'https://i.postimg.cc/B6wtRQsh/bd7af32b-64ae-4df5-9da4-1b83d33f210c.jpg',
+'https://i.postimg.cc/v8kczB0B/bda748da-a2a3-4a8c-bae5-957f3be501d9.jpg',
+'https://i.postimg.cc/W16zT7Ts/c49cc626-0a10-45d4-a532-68db64bd93b8.jpg',
+'https://i.postimg.cc/VNKNbLJ2/cc2d7d09-5aee-42db-a9e6-ca235023d22d.jpg'
+],
+oldPrice:'₫6,200,000',
+newPrice:'₫5,200,000',
+info:'Acc VIP8 – nhiều chế tác – 12 cây nâng cấp 💎',
+status:'Còn✔️',
+zalo:'0325988875',
+teck:'2120076666888',
+tenNoDau:'Mai The Chi',
+fanpage:'https://www.facebook.com/the.chii.2025',
+danhMuc:'Free Fire',
+luuY:'⚠️ Shop chỉ hỗ trợ mua bán thay thông tin tài khoản game. Khách hàng kiểm tra kỹ trước khi giao dịch. Sau khi thay xong, shop không chịu trách nhiệm với việc sử dụng về sau.'
+},
+{
+name:'Acc 3 🔥',
+mainImg:'https://i.postimg.cc/NGpbsL16/70652ec2-08eb-4f46-92c3-0383688ba817.jpg',
+thumbs:[
+'https://i.postimg.cc/sDWBnNfk/0d42746f-c554-4e0a-b16e-c6f98efd66ce.jpg',
+'https://i.postimg.cc/bYWLMrkZ/4c8558c1-f578-4e49-8880-d3d9628ef93d.jpg',
+'https://i.postimg.cc/m2WCCH7w/8c72be07-6480-46a4-bd83-be2d6cafb3da.jpg',
+'https://i.postimg.cc/QCG9Q2Kt/30c9b62d-61c7-4a05-9d18-e886ce0e7352.jpg',
+'https://i.postimg.cc/4xLYL7hH/78e3d21b-b18e-4254-96f7-b10062fdb7b2.jpg',
+'https://i.postimg.cc/7P3fvQTQ/310d1522-fad3-4a9a-861f-9505073be937.jpg',
+'https://i.postimg.cc/k5S7QBQf/4190f707-7743-46db-bccd-e7503540579c.jpg',
+'https://i.postimg.cc/SNn32H7C/71231631-8892-43af-a623-d05b20bd515a.jpg',
+'https://i.postimg.cc/1517X4XS/a0fd20c5-ab2c-4f04-a1ab-bbf26439ccdd.jpg',
+'https://i.postimg.cc/XqbKjGLM/a1c0cb5c-8f07-4710-ad84-115c02ce0737.jpg',
+'https://i.postimg.cc/VkmYqYGN/a5c9c57b-b351-4970-a490-4e770eda2bc7.jpg',
+'https://i.postimg.cc/SKYtj96n/b2e14580-f5f2-4d93-8c8c-cb2bd40dd2c6.jpg',
+'https://i.postimg.cc/Px4bqfR1/b529e2bd-2ecc-4552-8263-8d62b9dc5838.jpg',
+'https://i.postimg.cc/Y0TvrJMS/db39c99b-e2e0-4bec-a57c-c271432299a7.jpg',
+'https://i.postimg.cc/LshhP95V/ec5e7158-50de-4345-9a67-68a1583fc999.jpg'
+],
+oldPrice:'₫7,600,000',
+newPrice:'₫6,600,000',
+info:'VIP8 – Hành động – 10k kim cương – 5 cây lv7 💎',
+status:'Còn✔️',
+zalo:'0325988875',
+teck:'2120076666888',
+tenNoDau:'Mai The Chi',
+fanpage:'https://www.facebook.com/the.chii.2025',
+danhMuc:'Free Fire',
+luuY:'⚠️ Shop chỉ hỗ trợ mua bán thay thông tin tài khoản game. Khách hàng kiểm tra kỹ trước khi giao dịch. Sau khi thay xong, shop không chịu trách nhiệm với việc sử dụng về sau.'
+},
+{
+name:'Acc 4 🔥',
+mainImg:'https://i.postimg.cc/yNgJ31pv/e19d27f1-4f33-4570-8ff0-e8ae1aa9abe1.jpg',
+thumbs:[
+'https://i.postimg.cc/JhgvqL3k/8c9ac443-40b4-44e1-969b-dbc2217300c4.jpg',
+'https://i.postimg.cc/8zp2kwP3/46e68092-327d-498a-a8cf-33ffdbeaa7b7.jpg',
+'https://i.postimg.cc/vHtRdCM9/69b3d2cb-9f7e-49c5-a09c-c2cc769e87ad.jpg',
+'https://i.postimg.cc/SQ8FgJvZ/359b9ea6-61b4-4864-95b8-91f655e1f16a.jpg',
+'https://i.postimg.cc/k4R334XG/857e495d-327e-45eb-a725-5b7c18167a13.jpg',
+'https://i.postimg.cc/zfBY77sH/904b267b-0ade-4a24-afcd-6863b03e37ac.jpg',
+'https://i.postimg.cc/8s8YVBXw/6930fb5c-e31e-48e1-b804-5b484dc031c6.jpg',
+'https://i.postimg.cc/xCChGdbq/27480060-aeba-4ffa-a302-c299b82448a2.jpg',
+'https://i.postimg.cc/fbM6LCzj/29269637-63de-417e-b58d-d06268d9c95b.jpg',
+'https://i.postimg.cc/28ZpX39t/a3e6c5bf-6ceb-469e-b25f-5b734884dd89.jpg',
+'https://i.postimg.cc/Vv2xkcvM/a9302282-74cf-41cf-8619-47f50d6882df.jpg',
+'https://i.postimg.cc/TwN8BbX5/aeaad0b6-c01f-47a9-bf93-3b731d8ddc7f.jpg',
+'https://i.postimg.cc/q70dK0L1/bebc910b-ac40-4961-a24f-7ba202f2b63a.jpg',
+'https://i.postimg.cc/m2zRfmkH/c7e9cecb-07e1-44b9-8d38-167b535a2e4c.jpg',
+'https://i.postimg.cc/FswXshcK/fc751fd2-392a-4a06-bb7a-53b10f78361e.jpg',
+'https://i.postimg.cc/1tyQhMFr/d2d5b35a-2b5d-45d6-8357-f3c9042e7727.jpg',
+'https://i.postimg.cc/3rnK7Mn8/cf3ba08a-6e87-4286-befb-d4e9ac012444.jpg'
+],
+oldPrice:'₫3,000,000',
+newPrice:'₫2,600,000',
+info:'VIP7 – Chuyên áo đá bóng – 1 cây 7, 4 cây nâng cấp 💎',
+status:'Còn✔️',
+zalo:'0325988875',
+teck:'2120076666888',
+tenNoDau:'Mai The Chi',
+fanpage:'https://www.facebook.com/the.chii.2025',
+danhMuc:'Free Fire',
+luuY:'⚠️ Shop chỉ hỗ trợ mua bán thay thông tin tài khoản game. Khách hàng kiểm tra kỹ trước khi giao dịch. Sau khi thay xong, shop không chịu trách nhiệm với việc sử dụng về sau.'
+}
 ];
 
-const accList=document.getElementById('accList');
-const pagination=document.getElementById('pagination');
-let currentPage=1;
-const perPage=1;
-const totalPages=Math.ceil(accs.length/perPage);
-
-function renderPage(page){
-  accList.innerHTML='';
-  const start=(page-1)*perPage;
-  const end=start+perPage;
-  accs.slice(start,end).forEach((acc,index)=>{
-    const div=document.createElement('div');
-    div.className='acc';
-    div.innerHTML=`
-      <img src="${acc.mainImg}" alt="${acc.name}">
-      <h3>${acc.name}</h3>
-      <p>${acc.info}</p>
-      <div class="price"><span class="old-price">${acc.oldPrice}</span> <span class="new-price">${acc.newPrice}</span></div>
-      <span class="status">Trạng thái: ${acc.status}</span>
-      <br><a class="btn" href="#" onclick="openPopup(${start+index});return false;">Xem chi tiết</a>
-    `;
-    accList.appendChild(div);
-  });
-
-  // render pagination
-  pagination.innerHTML='';
-  for(let i=1;i<=totalPages;i++){
-    if(i===page) pagination.innerHTML+=`<span>${i}</span>`;
-    else pagination.innerHTML+=`<a href="#" onclick="renderPage(${i});return false;">${i}</a>`;
-  }
+// PHÂN TRANG
+const accPerPage = 1;
+let currentPage = 1;
+function renderAccs(page){
+    const start = (page-1)*accPerPage;
+    const end = start+accPerPage;
+    const accList = document.getElementById('accList');
+    accList.innerHTML='';
+    accs.slice(start,end).forEach((acc,index)=>{
+        const div = document.createElement('div');
+        div.className='acc';
+        div.innerHTML = `
+        <img src="${acc.mainImg}" alt="${acc.name}" onclick="openPopup(${start+index})">
+        <h3>${acc.name}</h3>
+        <p class="price"><span class="old-price">${acc.oldPrice}</span><span class="new-price">${acc.newPrice}</span></p>
+        <p class="status">${acc.status}</p>
+        <p class="info">${acc.info}</p>
+        <div class="btn" onclick="openPopup(${start+index})">Xem chi tiết</div>
+        `;
+        accList.appendChild(div);
+    });
+    renderPagination(page);
 }
 
-// Popup
-const popup=document.getElementById('popup');
-const popupMain=document.getElementById('popup-main');
-const popupThumbs=document.getElementById('popup-thumbs');
-const popupInfo=document.getElementById('popupInfo');
-const popupClose=document.getElementById('popup-close');
-const buyBtn=document.getElementById('buyBtn');
+function renderPagination(page){
+    const pages = Math.ceil(accs.length/accPerPage);
+    const pag = document.getElementById('pagination');
+    pag.innerHTML='';
+    for(let i=1;i<=pages;i++){
+        if(i===page){
+            pag.innerHTML+=`<span>${i}</span>`;
+        }else{
+            pag.innerHTML+=`<a href="#" onclick="goPage(${i})">${i}</a>`;
+        }
+    }
+}
 
+function goPage(page){
+    currentPage=page;
+    renderAccs(page);
+}
+
+renderAccs(currentPage);
+
+// POPUP
+let currentAccIndex=0;
 function openPopup(index){
-  const acc=accs[index];
-  popup.style.display='flex';
-  popupMain.src=acc.mainImg;
-  popupThumbs.innerHTML='';
-  acc.thumbs.forEach((t,ti)=>{
-    const img=document.createElement('img');
-    img.src=t;
-    if(ti===0) img.classList.add('active');
-    img.onclick=()=>{popupMain.src=t; Array.from(popupThumbs.children).forEach(i=>i.classList.remove('active')); img.classList.add('active');};
-    popupThumbs.appendChild(img);
-  });
-  popupInfo.innerHTML=`
-    <h3>${acc.name}</h3>
-    <p>${acc.info}</p>
-    <p>💰 Giá gốc: ${acc.oldPrice} | Giá hiện tại: ${acc.newPrice}</p>
-    <p>✔️ Trạng thái: ${acc.status}</p>
+    currentAccIndex=index;
+    const acc=accs[index];
+    document.getElementById('popup-main').src=acc.mainImg;
+    const thumbs=document.getElementById('popup-thumbs');
+    thumbs.innerHTML='';
+    acc.thumbs.forEach((img,i)=>{
+        const t=document.createElement('img');
+        t.src=img;
+        t.className=i===0?'active':'';
+        t.onclick=()=>{document.getElementById('popup-main').src=img; document.querySelectorAll('#popup-thumbs img').forEach(im=>im.classList.remove('active')); t.classList.add('active');}
+        thumbs.appendChild(t);
+    });
+    document.getElementById('popupInfo').innerHTML=`
+    <p><strong>Giá gốc:</strong> ${acc.oldPrice} | <strong>Giá bán:</strong> ${acc.newPrice}</p>
+    <p><strong>Trạng thái:</strong> ${acc.status}</p>
+    <p><strong>Mô tả:</strong> ${acc.info}</p>
     <p>${acc.luuY}</p>
-  `;
-  buyBtn.href=acc.fanpage;
+    `;
+    const buyBtn=document.getElementById('buyBtn');
+    buyBtn.href=acc.fanpage;
+    document.getElementById('popup').style.display='flex';
 }
 
-popupClose.onclick=()=>{popup.style.display='none';};
-
-renderPage(currentPage);
+document.getElementById('popup-close').onclick=()=>{document.getElementById('popup').style.display='none';}
 </script>
 
 </body>
