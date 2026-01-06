@@ -6,152 +6,277 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-body{margin:0;font-family:Arial;background:#0b0f14;color:#fff}
-a{text-decoration:none;color:#00ffcc}
-.banner{height:300px;background:url('https://i.postimg.cc/bJr5hzsY/ff31cd69-f0cf-4c13-ad3a-dd6ae8bef797.jpg') center/cover}
-section{max-width:1100px;margin:30px auto;padding:20px}
-h2{color:#00ffcc}
-.acc-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.acc{background:#121821;border-radius:15px;padding:15px;box-shadow:0 0 15px rgba(0,255,204,.3)}
-.acc img{width:100%;border-radius:10px}
-.acc h3{color:#00ffcc}
-.price .old{text-decoration:line-through;color:#aaa}
-.price .new{color:#00ff66;font-weight:bold;font-size:18px}
-.btn{display:inline-block;margin-top:10px;padding:10px 15px;background:#00ffcc;color:#000;border-radius:8px;font-weight:bold}
-.pagination{text-align:center;margin-top:25px}
-.pagination a,.pagination span{margin:0 5px;padding:8px 12px;background:#121821;color:#00ffcc;border-radius:6px;font-weight:bold}
-.pagination a:hover{background:#00ff66;color:#000}
-footer{text-align:center;padding:20px;font-size:16px;color:#aaa}
+body {margin:0;font-family:Arial, Helvetica, sans-serif; background:#0b0f14; color:#fff;}
+a{text-decoration:none;color:#00ffcc;}
 
-/* Popup */
-#popup{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:999;overflow:auto}
-#popup-content{max-width:850px;margin:40px auto;background:#121821;padding:20px;border-radius:10px;position:relative}
-#popup-main{width:100%;border-radius:10px}
-#popup-thumbs{display:flex;gap:10px;margin-top:10px;overflow-x:auto}
-#popup-thumbs img{width:100px;border-radius:8px;cursor:pointer}
-#popup-close{position:absolute;top:10px;right:10px;background:red;color:#fff;width:35px;height:35px;text-align:center;line-height:35px;border-radius:50%;cursor:pointer}
-#buyBtn{display:block;margin:15px auto;padding:12px;background:#00ffcc;color:#000;text-align:center;font-weight:bold;border-radius:8px}
+/* BANNER */
+.banner {position:relative;height:300px;background:url('https://i.postimg.cc/bJr5hzsY/ff31cd69-f0cf-4c13-ad3a-dd6ae8bef797.jpg') center/cover no-repeat;}
+.banner-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.3);}
+
+/* SECTION */
+section {max-width:1100px;margin:30px auto;padding:20px;}
+h2{color:#00ffcc;margin-bottom:15px;}
+
+/* ACC LIST */
+.acc-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+.acc{background:#121821;border-radius:15px;padding:18px;box-shadow:0 0 15px rgba(0,255,204,0.25);transition:transform 0.2s, box-shadow 0.2s;}
+.acc:hover{transform:translateY(-5px);box-shadow:0 0 25px rgba(0,255,204,0.5);}
+.acc img{width:100%;border-radius:10px;margin-bottom:10px;}
+.acc h3{color:#00ffcc;margin:10px 0;}
+.price{margin:8px 0;}
+.old-price{text-decoration:line-through;color:#aaa;margin-right:8px;}
+.new-price{color:#00ff66;font-weight:bold;font-size:18px;}
+.status{display:inline-block;margin:8px 0;color:#00ff66;font-weight:bold;}
+.btn{display:inline-block;margin-top:10px;padding:10px 15px;background:#00ffcc;color:#000;border-radius:8px;font-weight:bold;}
+
+/* Uy tín & Cam kết */
+.trust-list{list-style:none;padding-left:0;line-height:1.8;font-size:16px;}
+.trust-list li{margin:8px 0;padding-left:20px;position:relative;color:#00ffcc;font-weight:bold;}
+.trust-list li::before{content:"✔️";position:absolute;left:0;color:#00ff66;}
+
+/* Contact */
+#contact i{color:#00ffcc;margin-right:8px;}
+#contact a{text-decoration:none;color:#00ffcc;}
+
+/* Nút nổi Zalo & Facebook */
+.zalo-float{position:fixed;bottom:50px;right:90px;background:#00ffcc;color:#000;width:55px;height:55px;border-radius:50%;text-align:center;line-height:55px;font-size:28px;box-shadow:0 0 15px rgba(0,255,204,0.8);z-index:999;}
+.fb-float{position:fixed;bottom:50px;right:20px;background:#1877f2;color:#fff;width:55px;height:55px;border-radius:50%;text-align:center;line-height:55px;font-size:28px;box-shadow:0 0 15px rgba(24,119,242,0.8);z-index:999;}
+
+/* Pagination */
+.pagination{text-align:center;margin-top:25px;}
+.pagination a,.pagination span{display:inline-block;margin:0 5px;padding:8px 12px;color:#00ffcc;background:#121821;border-radius:6px;font-weight:bold;}
+.pagination a:hover{background:#00ff66;color:#000;}
+.pagination span{background:transparent;color:#888;cursor:default;}
+
+/* Footer */
+footer{text-align:center;padding:20px;color:#aaa;font-size:16px;}
+
+/* Popup Gallery */
+#popup{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:1000;justify-content:center;align-items:center;flex-direction:column;overflow:auto;padding:20px;box-sizing:border-box;}
+#popup-content{position:relative;max-width:900px;width:100%;background:#121821;border-radius:10px;padding:20px;box-sizing:border-box;}
+#popup-main{width:100%;border-radius:10px;}
+#popup-thumbs{display:flex;justify-content:center;margin-top:10px;gap:10px;overflow-x:auto;}
+#popup-thumbs img{width:100px;cursor:pointer;border:2px solid transparent;border-radius:8px;}
+#popup-thumbs img.active{border-color:#00ff66;}
+#popupInfo{margin-top:15px;line-height:1.5;color:#fff;max-height:400px;overflow:auto;}
+#popup-close{position:absolute;top:10px;right:10px;background:#ff0000;color:#fff;font-size:20px;width:35px;height:35px;border-radius:50%;text-align:center;line-height:35px;cursor:pointer;z-index:10;}
+#buyBtn{display:block;margin:15px auto 0;padding:10px 15px;background:#00ffcc;color:#000;border-radius:8px;font-weight:bold;text-align:center;width:150px;}
 </style>
 </head>
 <body>
 
-<div class="banner"></div>
+<header class="banner"><div class="banner-overlay"></div></header>
 
 <section>
-<h2>🔥 Acc Free Fire</h2>
+<h2><i class="fa-solid fa-fire"></i> Acc Free Fire Nổi Bật</h2>
 <div class="acc-list" id="accList"></div>
 <div class="pagination" id="pagination"></div>
 </section>
 
-<footer>© 2026 Shop Thế Chíí – Free Fire | All Rights Reserved</footer>
+<section>
+<h2><i class="fa-solid fa-star"></i> Uy Tín & Cam Kết</h2>
+<ul class="trust-list">
+<li>Giao dịch rõ ràng</li>
+<li>Acc đúng mô tả – xem trước</li>
+<li>Hỗ trợ thay thông tin sau bán</li>
+<li>Làm việc uy tín – lâu dài</li>
+</ul>
+</section>
 
+<section>
+<h2><i class="fa-solid fa-list-check"></i> Quy Trình Mua Acc</h2>
+<ol>
+<li>Chọn acc phù hợp</li>
+<li>Nhắn Zalo, Facebook</li>
+<li>Thanh toán</li>
+<li>Nhận acc & đổi thông tin</li>
+</ol>
+</section>
+
+<section>
+<h2><i class="fa-solid fa-file-contract"></i> Điều Khoản Giao Dịch</h2>
+<p>
+Shop chỉ hỗ trợ mua bán <strong>thay thông tin tài khoản game</strong>. Khách hàng kiểm tra kỹ trước khi giao dịch. Sau khi thay xong, shop không chịu trách nhiệm với việc sử dụng về sau.
+</p>
+</section>
+
+<section id="contact">
+<h2><i class="fa-solid fa-headset"></i> Liên Hệ Shop</h2>
+<p><i class="fa-brands fa-whatsapp"></i> Zalo: <a href="https://zalo.me/0325988875" target="_blank">0325988875</a></p>
+<p><i class="fa-brands fa-facebook"></i> Facebook: <a href="https://www.facebook.com/the.chii.2025" target="_blank">the.chii.2025</a></p>
+<p><i class="fa-solid fa-clock"></i> Giờ hỗ trợ: (Hỗ trợ 24/7)</p>
+<p><i class="fa-solid fa-shield-halved"></i> Cam kết: Uy tín an toàn</p>
+</section>
+
+<!-- Popup -->
 <div id="popup">
   <div id="popup-content">
-    <div id="popup-close">×</div>
-    <img id="popup-main">
+    <div id="popup-close">&times;</div>
+    <img id="popup-main" src="" alt="acc">
     <div id="popup-thumbs"></div>
     <div id="popupInfo"></div>
-    <a id="buyBtn" target="_blank">MUA NGAY</a>
+    <a id="buyBtn" href="#" target="_blank">Mua Ngay</a>
   </div>
 </div>
 
+<!-- Nút nổi Zalo & Facebook -->
+<a href="https://zalo.me/0325988875" class="zalo-float" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+<a href="https://www.facebook.com/the.chii.2025" class="fb-float" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+
+<footer>© 2026 Shop Thế Chíí – Free Fire | All Rights Reserved</footer>
+
 <script>
+// DANH SÁCH ACC
 const accs = [
-{
-name:'Acc 1 🔥',
-mainImg:'https://i.postimg.cc/hGFQz7hL/85ae2bd2-da86-4f04-8a03-72543aefac43.jpg',
-thumbs:[
-'https://i.postimg.cc/W46zdWBj/8c455720-5545-4e86-b698-0d2a2f81bec8.jpg',
-'https://i.postimg.cc/ZKdT9sNc/4e128dd3-d574-4948-88c7-8e14129d665e.jpg'
-],
-oldPrice:'₫850,000',
-newPrice:'₫750,000',
-info:'Chuyên phòng tử chiến 💎'
-},
-{
-name:'Acc 2 🔥',
-mainImg:'https://i.postimg.cc/wxyB7zgD/e2e646a3-1a01-4d84-93f8-e4dd554fa1d1.jpg',
-thumbs:[
-'https://i.postimg.cc/Ghjnpg8g/e8a2b0ec-78af-4576-b6a3-b303a7e1cfe7.jpg'
-],
-oldPrice:'₫6,200,000',
-newPrice:'₫5,200,000',
-info:'Acc VIP8 – nhiều chế tác – 12 cây nâng cấp 💎'
-},
-{
-name:'Acc 3 🔥',
-mainImg:'https://i.postimg.cc/NGpbsL16/70652ec2-08eb-4f46-92c3-0383688ba817.jpg',
-thumbs:[
-'https://i.postimg.cc/sDWBnNfk/0d42746f-c554-4e0a-b16e-c6f98efd66ce.jpg'
-],
-oldPrice:'₫7,600,000',
-newPrice:'₫6,600,000',
-info:'VIP8 – Hành động – 10k kim cương – 5 cây lv7 💎'
-},
-{
-name:'Acc 4 🔥',
-mainImg:'https://i.postimg.cc/yNgJ31pv/e19d27f1-4f33-4570-8ff0-e8ae1aa9abe1.jpg',
-thumbs:[
-'https://i.postimg.cc/JhgvqL3k/8c9ac443-40b4-44e1-969b-dbc2217300c4.jpg'
-],
-oldPrice:'₫3,000,000',
-newPrice:'₫2,600,000',
-info:'VIP7 – Chuyên áo đá bóng – 1 cây lv7 – 4 cây nâng cấp 💎'
-}
+  {
+    name:'Acc 1 🔥',
+    mainImg:'https://i.postimg.cc/hGFQz7hL/85ae2bd2-da86-4f04-8a03-72543aefac43.jpg',
+    thumbs:[
+      'https://i.postimg.cc/W46zdWBj/8c455720-5545-4e86-b698-0d2a2f81bec8.jpg',
+      'https://i.postimg.cc/ZKdT9sNc/4e128dd3-d574-4948-88c7-8e14129d665e.jpg',
+      'https://i.postimg.cc/mkFGHhPr/03c7769f-7b46-4de1-830b-cc92b494204d.jpg',
+      'https://i.postimg.cc/26gSJsvf/3b96ab71-3a56-403d-8bf9-b6a6b94dfb30.jpg',
+      'https://i.postimg.cc/GmbhZJBK/2d7a5bc1-234f-4ca0-a018-e383d44fc1bf.jpg'
+    ],
+    oldPrice:'₫850,000',
+    newPrice:'₫750,000',
+    info:'Chuyên phòng tử chiến 💎',
+    status:'Còn✔️',
+    zalo:'0325988875',
+    teck:'2120076666888',
+    tenNoDau:'Mai The Chi',
+    fanpage:'https://www.facebook.com/the.chii.2025',
+    danhMuc:'Free Fire',
+    luuY:'⚠️ Shop chỉ hỗ trợ mua bán thay thông tin tài khoản game. Khách hàng kiểm tra kỹ trước khi giao dịch. Sau khi thay xong, shop không chịu trách nhiệm với việc sử dụng về sau.'
+  },
+  {
+    name:'Acc 2 🔥',
+    mainImg:'https://i.postimg.cc/wxyB7zgD/e2e646a3-1a01-4d84-93f8-e4dd554fa1d1.jpg',
+    thumbs:[
+      'https://i.postimg.cc/Ghjnpg8g/e8a2b0ec-78af-4576-b6a3-b303a7e1cfe7.jpg',
+      'https://i.postimg.cc/yxz210Vz/facb2195-007a-45ae-a084-e079b9bccce9.jpg',
+      'https://i.postimg.cc/DynRRQjC/fc2d05c4-9a89-4a47-b737-c4fff9da7468.jpg',
+      'https://i.postimg.cc/6Q2PCMqX/1d04f9f2-03b0-47d9-9964-6be3d2ba8d14.jpg',
+      'https://i.postimg.cc/ZKdT9sNc/4e128dd3-d574-4948-88c7-8e14129d665e.jpg'
+      // tiếp tục các ảnh bên trong nếu muốn
+    ],
+    oldPrice:'₫6,200,000',
+    newPrice:'₫5,200,000',
+    info:'Acc VIP8 – nhiều chế tác – 12 cây nâng cấp 💎',
+    status:'Còn✔️',
+    zalo:'0325988875',
+    teck:'2120076666888',
+    tenNoDau:'Mai The Chi',
+    fanpage:'https://www.facebook.com/the.chii.2025',
+    danhMuc:'Free Fire',
+    luuY:'⚠️ Shop chỉ hỗ trợ mua bán thay thông tin tài khoản game. Khách hàng kiểm tra kỹ trước khi giao dịch. Sau khi thay xong, shop không chịu trách nhiệm với việc sử dụng về sau.'
+  },
+  {
+    name:'Acc 3 🔥',
+    mainImg:'https://i.postimg.cc/NGpbsL16/70652ec2-08eb-4f46-92c3-0383688ba817.jpg',
+    thumbs:[
+      'https://i.postimg.cc/sDWBnNfk/0d42746f-c554-4e0a-b16e-c6f98efd66ce.jpg',
+      'https://i.postimg.cc/bYWLMrkZ/4c8558c1-f578-4e49-8880-d3d9628ef93d.jpg',
+      'https://i.postimg.cc/m2WCCH7w/8c72be07-6480-46a4-bd83-be2d6cafb3da.jpg'
+      // tiếp tục các ảnh bên trong
+    ],
+    oldPrice:'₫7,600,000',
+    newPrice:'₫6,600,000',
+    info:'Acc VIP8 – hành động 10k kim cương – 5 cây lv7 💎',
+    status:'Còn✔️',
+    zalo:'0325988875',
+    teck:'2120076666888',
+    tenNoDau:'Mai The Chi',
+    fanpage:'https://www.facebook.com/the.chii.2025',
+    danhMuc:'Free Fire',
+    luuY:'⚠️ Shop chỉ hỗ trợ mua bán thay thông tin tài khoản game. Khách hàng kiểm tra kỹ trước khi giao dịch. Sau khi thay xong, shop không chịu trách nhiệm với việc sử dụng về sau.'
+  },
+  {
+    name:'Acc 4 🔥',
+    mainImg:'https://i.postimg.cc/yNgJ31pv/e19d27f1-4f33-4570-8ff0-e8ae1aa9abe1.jpg',
+    thumbs:[
+      'https://i.postimg.cc/JhgvqL3k/8c9ac443-40b4-44e1-969b-dbc2217300c4.jpg',
+      'https://i.postimg.cc/8zp2kwP3/46e68092-327d-498a-a8cf-33ffdbeaa7b7.jpg'
+      // tiếp tục các ảnh bên trong
+    ],
+    oldPrice:'₫3,000,000',
+    newPrice:'₫2,600,000',
+    info:'Acc VIP7 – chuyên áo đá bóng – 1 cây lv7, 4 cây nâng cấp 💎',
+    status:'Còn✔️',
+    zalo:'0325988875',
+    teck:'2120076666888',
+    tenNoDau:'Mai The Chi',
+    fanpage:'https://www.facebook.com/the.chii.2025',
+    danhMuc:'Free Fire',
+    luuY:'⚠️ Shop chỉ hỗ trợ mua bán thay thông tin tài khoản game. Khách hàng kiểm tra kỹ trước khi giao dịch. Sau khi thay xong, shop không chịu trách nhiệm với việc sử dụng về sau.'
+  }
 ];
 
-const perPage=3;
-let page=1;
+const accList=document.getElementById('accList');
+const pagination=document.getElementById('pagination');
+let currentPage=1;
+const perPage=1;
+const totalPages=Math.ceil(accs.length/perPage);
 
-function render(){
-const list=document.getElementById('accList');
-const pag=document.getElementById('pagination');
-list.innerHTML='';
-pag.innerHTML='';
-const start=(page-1)*perPage;
-accs.slice(start,start+perPage).forEach((a,i)=>{
-list.innerHTML+=`
-<div class="acc">
-<img src="${a.mainImg}">
-<h3>${a.name}</h3>
-<p>${a.info}</p>
-<div class="price"><span class="old">${a.oldPrice}</span> <span class="new">${a.newPrice}</span></div>
-<p>Trạng thái: Còn✔️</p>
-<a class="btn" onclick="openPopup(${start+i})">Xem chi tiết</a>
-</div>`;
-});
-for(let i=1;i<=Math.ceil(accs.length/perPage);i++){
-pag.innerHTML+=`<a onclick="page=${i};render()">${i}</a>`;
-}
-}
+function renderPage(page){
+  accList.innerHTML='';
+  const start=(page-1)*perPage;
+  const end=start+perPage;
+  accs.slice(start,end).forEach((acc,index)=>{
+    const div=document.createElement('div');
+    div.className='acc';
+    div.innerHTML=`
+      <img src="${acc.mainImg}" alt="${acc.name}">
+      <h3>${acc.name}</h3>
+      <p>${acc.info}</p>
+      <div class="price"><span class="old-price">${acc.oldPrice}</span> <span class="new-price">${acc.newPrice}</span></div>
+      <span class="status">Trạng thái: ${acc.status}</span>
+      <br><a class="btn" href="#" onclick="openPopup(${start+index});return false;">Xem chi tiết</a>
+    `;
+    accList.appendChild(div);
+  });
 
-function openPopup(i){
-const a=accs[i];
-popup.style.display='block';
-popupMain.src=a.mainImg;
-popupThumbs.innerHTML='';
-a.thumbs.forEach(t=>{
-const im=document.createElement('img');
-im.src=t;
-im.onclick=()=>popupMain.src=t;
-popupThumbs.appendChild(im);
-});
-popupInfo.innerHTML=`
-<h3>${a.name}</h3>
-<p>${a.info}</p>
-<p>Giá: ${a.oldPrice} → <b>${a.newPrice}</b></p>
-<p>Trạng thái: Còn✔️</p>
-<p>Zalo: 0325988875</p>
-<p>Tech: 2120076666888</p>
-<p>Tên người nhận: mai the chi</p>
-<p><a href="https://www.facebook.com/the.chii.2025" target="_blank">Fanpage</a></p>
-<p>⚠️ Shop chỉ hỗ trợ mua bán thay thông tin tài khoản game.</p>`;
-buyBtn.href='https://www.facebook.com/the.chii.2025';
+  // render pagination
+  pagination.innerHTML='';
+  for(let i=1;i<=totalPages;i++){
+    if(i===page) pagination.innerHTML+=`<span>${i}</span>`;
+    else pagination.innerHTML+=`<a href="#" onclick="renderPage(${i});return false;">${i}</a>`;
+  }
 }
 
-popupClose.onclick=()=>popup.style.display='none';
-popup.onclick=e=>{if(e.target.id==='popup')popup.style.display='none'};
-render();
+// Popup
+const popup=document.getElementById('popup');
+const popupMain=document.getElementById('popup-main');
+const popupThumbs=document.getElementById('popup-thumbs');
+const popupInfo=document.getElementById('popupInfo');
+const popupClose=document.getElementById('popup-close');
+const buyBtn=document.getElementById('buyBtn');
+
+function openPopup(index){
+  const acc=accs[index];
+  popup.style.display='flex';
+  popupMain.src=acc.mainImg;
+  popupThumbs.innerHTML='';
+  acc.thumbs.forEach((t,ti)=>{
+    const img=document.createElement('img');
+    img.src=t;
+    if(ti===0) img.classList.add('active');
+    img.onclick=()=>{popupMain.src=t; Array.from(popupThumbs.children).forEach(i=>i.classList.remove('active')); img.classList.add('active');};
+    popupThumbs.appendChild(img);
+  });
+  popupInfo.innerHTML=`
+    <h3>${acc.name}</h3>
+    <p>${acc.info}</p>
+    <p>💰 Giá gốc: ${acc.oldPrice} | Giá hiện tại: ${acc.newPrice}</p>
+    <p>✔️ Trạng thái: ${acc.status}</p>
+    <p>${acc.luuY}</p>
+  `;
+  buyBtn.href=acc.fanpage;
+}
+
+popupClose.onclick=()=>{popup.style.display='none';};
+
+renderPage(currentPage);
 </script>
 
 </body>
