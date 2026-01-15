@@ -2,35 +2,134 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Shop Thế Chíí – Bán Acc Free Fire Uy Tín</title>
+<title>Shop Thế Chíí – Free Fire</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-body{margin:0;font-family:Arial;background:#0b0f14;color:#fff}
+*{box-sizing:border-box}
+html,body{
+  margin:0;
+  padding:0;
+  min-height:100%;
+  background:#0b0f14;
+  color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
+}
+body{padding-bottom:140px}
 a{text-decoration:none;color:#00ffcc}
-.banner{height:300px;background:url('https://i.postimg.cc/bJr5hzsY/ff31cd69-f0cf-4c13-ad3a-dd6ae8bef797.jpg') center/cover}
+
+/* Banner */
+.banner{
+  height:300px;
+  background:url('https://i.postimg.cc/bJr5hzsY/ff31cd69-f0cf-4c13-ad3a-dd6ae8bef797.jpg') center/cover no-repeat;
+}
+
+/* Section */
 section{max-width:1100px;margin:30px auto;padding:20px}
 h2{color:#00ffcc}
-.acc-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
-.acc{background:#121821;border-radius:15px;padding:15px;box-shadow:0 0 15px rgba(0,255,204,.35)}
+
+/* Acc list */
+.acc-list{display:grid;grid-template-columns:1fr;gap:20px}
+.acc{
+  background:#121821;
+  border-radius:15px;
+  padding:18px;
+  box-shadow:0 0 15px rgba(0,255,204,.3);
+}
 .acc img{width:100%;border-radius:10px;cursor:pointer}
-.old-price{text-decoration:line-through;color:#aaa}
-.new-price{color:#00ff66;font-size:18px;font-weight:bold}
-.status{color:#00ff66;font-weight:bold}
-.btn{background:#00ffcc;color:#000;padding:10px;border-radius:8px;margin-top:10px;cursor:pointer;text-align:center}
-.pagination{text-align:center;margin-top:20px}
-.pagination a,.pagination span{margin:5px;padding:8px 12px;background:#121821;color:#00ffcc;border-radius:6px}
-#popup{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);justify-content:center;align-items:center;z-index:999}
-#popup-content{background:#121821;padding:20px;border-radius:10px;max-width:900px;width:100%}
+.acc h3{margin:10px 0;font-size:22px}
+.price{margin:6px 0}
+.old-price{text-decoration:line-through;color:#aaa;margin-right:8px}
+.new-price{color:#00ff66;font-size:20px;font-weight:bold}
+.status{color:#00ff66;font-size:16px}
+.btn{
+  margin-top:10px;
+  display:inline-block;
+  padding:10px 16px;
+  background:#00ffcc;
+  color:#000;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* Pagination */
+.pagination{text-align:center;margin-top:25px}
+.pagination a,.pagination span{
+  display:inline-block;
+  margin:0 5px;
+  padding:8px 12px;
+  background:#121821;
+  border-radius:6px;
+  color:#00ffcc;
+}
+.pagination span{color:#888}
+
+/* Popup */
+#popup{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.95);
+  z-index:999;
+  overflow-y:auto;
+}
+#popup-content{
+  max-width:900px;
+  margin:40px auto;
+  background:#121821;
+  padding:20px;
+  border-radius:12px;
+}
 #popup-main{width:100%;border-radius:10px}
-#popup-thumbs{display:flex;gap:10px;margin-top:10px;overflow-x:auto}
-#popup-thumbs img{width:90px;border-radius:8px;cursor:pointer}
-#popup-close{position:absolute;top:10px;right:10px;background:red;color:#fff;width:35px;height:35px;border-radius:50%;text-align:center;line-height:35px;cursor:pointer}
-.zalo-float,.fb-float{position:fixed;bottom:40px;width:55px;height:55px;border-radius:50%;text-align:center;line-height:55px;font-size:26px}
-.zalo-float{right:90px;background:#00ffcc;color:#000}
-.fb-float{right:20px;background:#1877f2;color:#fff}
-footer{text-align:center;color:#aaa;padding:20px}
+#popup-thumbs{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  margin-top:12px;
+}
+#popup-thumbs img{
+  width:100px;
+  border-radius:8px;
+  cursor:pointer;
+}
+#popupInfo p{
+  font-size:16px;
+  line-height:1.7;
+}
+#buyBtn{
+  display:block;
+  margin:15px auto 0;
+  padding:12px;
+  width:180px;
+  text-align:center;
+  background:#00ffcc;
+  color:#000;
+  border-radius:8px;
+  font-weight:bold;
+}
+#popup-close{
+  position:fixed;
+  top:15px;
+  right:15px;
+  width:40px;
+  height:40px;
+  background:red;
+  border-radius:50%;
+  text-align:center;
+  line-height:40px;
+  font-size:22px;
+  cursor:pointer;
+}
+
+/* Mobile */
+@media(max-width:768px){
+  body{font-size:16px}
+  .acc h3{font-size:20px}
+}
 </style>
 </head>
 
@@ -39,25 +138,21 @@ footer{text-align:center;color:#aaa;padding:20px}
 <header class="banner"></header>
 
 <section>
-<h2>🔥 Acc Free Fire Nổi Bật</h2>
-<div id="accList" class="acc-list"></div>
-<div id="pagination" class="pagination"></div>
+<h2>🔥 Acc Free Fire</h2>
+<div class="acc-list" id="accList"></div>
+<div class="pagination" id="pagination"></div>
 </section>
 
+<!-- Popup -->
 <div id="popup">
+  <div id="popup-close" onclick="closePopup()">×</div>
   <div id="popup-content">
-    <div id="popup-close" onclick="closePopup()">×</div>
     <img id="popup-main">
     <div id="popup-thumbs"></div>
     <div id="popupInfo"></div>
-    <a id="buyBtn" class="btn" target="_blank">Mua Ngay</a>
+    <a id="buyBtn" target="_blank">Mua Ngay</a>
   </div>
 </div>
-
-<a class="zalo-float" href="https://zalo.me/0325988875" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-<a class="fb-float" href="https://www.facebook.com/thechi2k7dz" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-
-<footer>© 2026 Shop Thế Chíí – Free Fire</footer>
 
 <script>
 const accs = [
@@ -76,8 +171,7 @@ thumbs:[
 oldPrice:'₫850,000',
 newPrice:'₫750,000',
 info:'Chuyên phòng tử chiến 💎',
-status:'Còn✔️',
-fanpage:'https://www.facebook.com/thechi2k7dz'
+status:'Còn✔️'
 },
 
 /* ================= ACC 2 ================= */
@@ -111,8 +205,7 @@ thumbs:[
 oldPrice:'₫6,200,000',
 newPrice:'₫5,200,000',
 info:'Acc VIP8 – nhiều chế tác – 12 cây nâng cấp 💎',
-status:'Còn✔️',
-fanpage:'https://www.facebook.com/thechi2k7dz'
+status:'Còn✔️'
 },
 
 /* ================= ACC 3 ================= */
@@ -140,8 +233,7 @@ thumbs:[
 oldPrice:'₫7,600,000',
 newPrice:'₫6,600,000',
 info:'VIP8 – Hành động – 10k kim cương – 5 cây lv7 💎',
-status:'Còn✔️',
-fanpage:'https://www.facebook.com/thechi2k7dz'
+status:'Còn✔️'
 },
 
 /* ================= ACC 4 ================= */
@@ -171,56 +263,63 @@ thumbs:[
 oldPrice:'₫3,000,000',
 newPrice:'₫2,600,000',
 info:'VIP7 – Chuyên áo đá bóng – 1 cây 7, 4 cây nâng cấp 💎',
-status:'Còn✔️',
-fanpage:'https://www.facebook.com/thechi2k7dz'
+status:'Còn✔️'
 }
 ];
 
-const accPerPage = 3;
-let currentPage = 1;
+const perPage = 3;
+let page = 1;
 
 function render(){
-const start=(currentPage-1)*accPerPage;
-const end=start+accPerPage;
-const list=document.getElementById('accList');
-list.innerHTML='';
-accs.slice(start,end).forEach((a,i)=>{
-list.innerHTML+=`
-<div class="acc">
-<img src="${a.mainImg}" onclick="openPopup(${start+i})">
-<h3>${a.name}</h3>
-<p><span class="old-price">${a.oldPrice}</span> <span class="new-price">${a.newPrice}</span></p>
-<p class="status">${a.status}</p>
-<p>${a.info}</p>
-<div class="btn" onclick="openPopup(${start+i})">Xem chi tiết</div>
-</div>`;
-});
-renderPagination();
+  const list=document.getElementById('accList');
+  list.innerHTML='';
+  accs.slice((page-1)*perPage,page*perPage).forEach((a,i)=>{
+    list.innerHTML+=`
+    <div class="acc">
+      <img src="${a.mainImg}" onclick="openPopup(${(page-1)*perPage+i})">
+      <h3>${a.name}</h3>
+      <div class="price">
+        <span class="old-price">${a.oldPrice}</span>
+        <span class="new-price">${a.newPrice}</span>
+      </div>
+      <div class="status">${a.status}</div>
+      <p>${a.info}</p>
+      <div class="btn" onclick="openPopup(${(page-1)*perPage+i})">Xem chi tiết</div>
+    </div>`;
+  });
+  renderPagination();
 }
 
 function renderPagination(){
-const pages=Math.ceil(accs.length/accPerPage);
-const pag=document.getElementById('pagination');
-pag.innerHTML='';
-for(let i=1;i<=pages;i++){
-pag.innerHTML+=i===currentPage?`<span>${i}</span>`:`<a href="#" onclick="goPage(${i})">${i}</a>`;
+  const pag=document.getElementById('pagination');
+  pag.innerHTML='';
+  const total=Math.ceil(accs.length/perPage);
+  for(let i=1;i<=total;i++){
+    pag.innerHTML+= i===page ? `<span>${i}</span>` :
+    `<a href="#" onclick="page=${i};render()">${i}</a>`;
+  }
 }
-}
-
-function goPage(p){currentPage=p;render()}
 
 function openPopup(i){
-const a=accs[i];
-document.getElementById('popup').style.display='flex';
-document.getElementById('popup-main').src=a.mainImg;
-document.getElementById('popupInfo').innerHTML=`<p><b>${a.name}</b></p><p>${a.info}</p>`;
-document.getElementById('buyBtn').href=a.fanpage;
-const thumbs=document.getElementById('popup-thumbs');
-thumbs.innerHTML='';
-a.thumbs.forEach(t=>thumbs.innerHTML+=`<img src="${t}" onclick="document.getElementById('popup-main').src='${t}'">`);
+  const a=accs[i];
+  document.getElementById('popup').style.display='block';
+  document.getElementById('popup-main').src=a.mainImg;
+  document.getElementById('popupInfo').innerHTML=
+    `<p><b>Giá gốc:</b> ${a.oldPrice}</p>
+     <p><b>Giá bán:</b> ${a.newPrice}</p>
+     <p>${a.info}</p>`;
+  const thumbs=document.getElementById('popup-thumbs');
+  thumbs.innerHTML='';
+  a.thumbs.forEach(img=>{
+    thumbs.innerHTML+=
+    `<img src="${img}" onclick="document.getElementById('popup-main').src='${img}'">`;
+  });
+  document.getElementById('buyBtn').href='https://www.facebook.com/thechi2k7dz';
 }
 
-function closePopup(){document.getElementById('popup').style.display='none'}
+function closePopup(){
+  document.getElementById('popup').style.display='none';
+}
 
 render();
 </script>
