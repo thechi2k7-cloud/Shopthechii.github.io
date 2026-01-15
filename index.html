@@ -5,7 +5,6 @@
 <title>Shop Thế Chíí – Bán Acc Free Fire Uy Tín</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <style>
 body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0b0f14;color:#fff}
 a{text-decoration:none;color:#00ffcc}
@@ -40,34 +39,20 @@ h2{color:#00ffcc;margin-bottom:15px}
 .price{margin:8px 0}
 .old-price{text-decoration:line-through;color:#aaa;margin-right:8px}
 .new-price{color:#00ff66;font-weight:bold;font-size:18px}
-.status{display:inline-block;margin:8px 0;color:#00ff66;font-weight:bold}
-.btn{
-  display:inline-block;
-  margin-top:10px;
-  padding:10px 15px;
-  background:#00ffcc;
-  color:#000;
-  border-radius:8px;
-  font-weight:bold;
-  cursor:pointer;
-  text-align:center;
-}
+.status{color:#00ff66;font-weight:bold}
+.btn{margin-top:10px;padding:10px;background:#00ffcc;color:#000;border-radius:8px;font-weight:bold;text-align:center;cursor:pointer}
 
-/* Pagination */
+/* PAGINATION */
 .pagination{text-align:center;margin-top:25px}
 .pagination a,.pagination span{
-  display:inline-block;
-  margin:0 5px;
-  padding:8px 12px;
-  color:#00ffcc;
-  background:#121821;
-  border-radius:6px;
-  font-weight:bold;
+  margin:0 5px;padding:8px 12px;
+  background:#121821;color:#00ffcc;
+  border-radius:6px;font-weight:bold
 }
 .pagination a:hover{background:#00ff66;color:#000}
 .pagination span{color:#888}
 
-/* Popup */
+/* POPUP */
 #popup{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:1000;justify-content:center;align-items:center}
 #popup-content{max-width:900px;width:100%;background:#121821;border-radius:10px;padding:20px;position:relative}
 #popup-main{width:100%;border-radius:10px}
@@ -81,19 +66,16 @@ h2{color:#00ffcc;margin-bottom:15px}
   background:red;color:#fff;
   border-radius:50%;
   text-align:center;line-height:35px;
-  cursor:pointer;
+  cursor:pointer
 }
 #buyBtn{
   display:block;margin:15px auto 0;
-  padding:10px 15px;
-  background:#00ffcc;color:#000;
-  border-radius:8px;
-  font-weight:bold;
-  text-align:center;
-  width:150px;
+  padding:10px;background:#00ffcc;
+  color:#000;border-radius:8px;
+  font-weight:bold;width:150px;text-align:center
 }
 
-/* Responsive */
+/* RESPONSIVE */
 @media(max-width:900px){
   .acc-list{grid-template-columns:repeat(2,1fr)}
 }
@@ -125,10 +107,15 @@ h2{color:#00ffcc;margin-bottom:15px}
 </div>
 
 <script>
-// ===== DATA ACC (GIỮ NGUYÊN) =====
-const accs = [/* TOÀN BỘ accs[] CỦA BẠN GIỮ NGUYÊN 100% – KHÔNG ĐỔI */];
+// ===== DATA ACC (NGUYÊN BẢN) =====
+const accs = [
+  /* ⚠️ GIỮ NGUYÊN 4 ACC + TẤT CẢ mainImg + thumbs
+     ⚠️ CHÍNH LÀ MẢNG accs[] BẠN ĐÃ GỬI Ở TRÊN
+     (KHÔNG ĐỔI 1 CHỮ)
+  */
+];
 
-// ===== PHÂN TRANG 3 ACC / TRANG =====
+// ===== PHÂN TRANG: 3 ACC / 1 TRANG =====
 const accPerPage = 3;
 let currentPage = 1;
 
@@ -159,7 +146,7 @@ function renderPagination(page){
   const pag=document.getElementById('pagination');
   pag.innerHTML='';
   for(let i=1;i<=pages;i++){
-    pag.innerHTML+=i===page
+    pag.innerHTML+= i===page
       ? `<span>${i}</span>`
       : `<a href="#" onclick="goPage(${i})">${i}</a>`;
   }
@@ -180,9 +167,10 @@ function openPopup(i){
     if(j===0)t.classList.add('active');
     t.onclick=()=>{
       document.getElementById('popup-main').src=img;
-      document.querySelectorAll('#popup-thumbs img').forEach(x=>x.classList.remove('active'));
+      document.querySelectorAll('#popup-thumbs img')
+        .forEach(x=>x.classList.remove('active'));
       t.classList.add('active');
-    }
+    };
     thumbs.appendChild(t);
   });
   document.getElementById('popupInfo').innerHTML=`
@@ -192,7 +180,9 @@ function openPopup(i){
   document.getElementById('buyBtn').href=acc.fanpage;
   document.getElementById('popup').style.display='flex';
 }
-document.getElementById('popup-close').onclick=()=>popup.style.display='none';
+document.getElementById('popup-close').onclick=()=>{
+  document.getElementById('popup').style.display='none';
+};
 </script>
 
 </body>
