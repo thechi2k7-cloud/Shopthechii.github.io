@@ -5,18 +5,16 @@
 <title>Shop Thế Chíí – Acc Free Fire Uy Tín</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0b0f14;color:#fff}
+body{margin:0;font-family:Arial;background:#0b0f14;color:#fff}
 a{text-decoration:none;color:inherit}
-.page{min-height:100vh;padding-bottom:200px}
+.page{min-height:100vh;padding-bottom:260px}
 
 /* banner */
 .banner{
  height:260px;
- background:url('https://i.postimg.cc/bJr5hzsY/ff31cd69-f0cf-4c13-ad3a-dd6ae8bef797.jpg')
- center/cover no-repeat
+ background:url('https://i.postimg.cc/bJr5hzsY/ff31cd69-f0cf-4c13-ad3a-dd6ae8bef797.jpg') center/cover no-repeat
 }
 
 /* section */
@@ -33,14 +31,14 @@ h2{color:#00ffcc}
  background:#121821;
  border-radius:15px;
  padding:15px;
- box-shadow:0 0 15px rgba(0,255,204,.35);
+ box-shadow:0 0 15px rgba(0,255,204,.3);
  display:flex;
  flex-direction:column
 }
-
-/* ảnh + hot */
 .acc-img{position:relative}
 .acc-img img{width:100%;border-radius:10px;cursor:pointer}
+
+/* HOT */
 .badge-hot{
  position:absolute;
  top:10px;left:10px;
@@ -50,8 +48,7 @@ h2{color:#00ffcc}
  font-size:12px;
  font-weight:bold;
  border-radius:6px;
- animation:hotJump 1.1s infinite;
- z-index:5
+ animation:hotJump 1.2s infinite;
 }
 @keyframes hotJump{
  0%{transform:scale(1)}
@@ -60,46 +57,42 @@ h2{color:#00ffcc}
 }
 
 .acc h3{color:#00ffcc;margin:10px 0}
-.old-price{text-decoration:line-through;color:#aaa;margin-right:6px}
+.old-price{text-decoration:line-through;color:#aaa}
 .new-price{color:#00ff66;font-weight:bold;font-size:18px}
 .status{color:#00ff66;font-weight:bold;margin:6px 0}
 
-/* nút xem chi tiết */
+/* nút */
 .btn{
  margin-top:auto;
- height:48px;
+ height:46px;
  background:linear-gradient(45deg,#00ffcc,#00ff66);
  color:#000;
- border-radius:10px;
+ border-radius:8px;
  display:flex;
  align-items:center;
  justify-content:center;
- font-weight:900;
+ font-weight:bold;
  cursor:pointer;
- position:relative;
- overflow:hidden;
- animation:pulseBtn 1.8s infinite;
- transition:.25s
+ animation:pulse 1.8s infinite;
 }
-.btn::before{
- content:'';
- position:absolute;
- top:0;left:-100%;
- width:60%;height:100%;
- background:linear-gradient(120deg,transparent,rgba(255,255,255,.6),transparent);
- animation:shine 2.5s infinite
-}
-.btn:hover{transform:scale(1.1)}
-@keyframes pulseBtn{
+@keyframes pulse{
  0%{box-shadow:0 0 0 0 rgba(0,255,204,.7)}
- 70%{box-shadow:0 0 0 18px rgba(0,255,204,0)}
+ 70%{box-shadow:0 0 0 16px rgba(0,255,204,0)}
  100%{box-shadow:0 0 0 0 rgba(0,255,204,0)}
 }
-@keyframes shine{
- 0%{left:-100%}
- 60%{left:120%}
- 100%{left:120%}
+
+/* pagination */
+.pagination{text-align:center;margin-top:25px}
+.pagination a,.pagination span{
+ display:inline-block;
+ margin:0 5px;
+ padding:8px 12px;
+ background:#121821;
+ color:#00ffcc;
+ border-radius:6px;
+ font-weight:bold
 }
+.pagination span{color:#888}
 
 /* popup */
 #popup{
@@ -119,18 +112,8 @@ h2{color:#00ffcc}
  position:relative
 }
 #popup-main{width:100%;border-radius:10px}
-#popup-thumbs{
- display:flex;
- gap:10px;
- overflow-x:auto;
- margin-top:10px
-}
-#popup-thumbs img{
- width:90px;
- border-radius:8px;
- cursor:pointer;
- border:2px solid transparent
-}
+#popup-thumbs{display:flex;gap:10px;overflow-x:auto;margin-top:10px}
+#popup-thumbs img{width:90px;border-radius:8px;cursor:pointer;border:2px solid transparent}
 #popup-thumbs img.active{border-color:#00ff66}
 #popupInfo{margin-top:12px;line-height:1.6}
 #buyBtn{
@@ -157,13 +140,33 @@ h2{color:#00ffcc}
 }
 
 /* footer */
-footer{
- background:#000;
- text-align:center;
- padding:20px;
- color:#aaa;
- font-size:14px
+.footer-content{background:#0f1520;padding:40px 15px}
+.footer-box{
+ max-width:1200px;
+ margin:auto;
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+ gap:20px
 }
+.footer-item{background:#121821;padding:20px;border-radius:12px}
+.footer-item h3{color:#00ffcc}
+.footer-item p{color:#ccc;line-height:1.6}
+footer{background:#000;text-align:center;padding:20px;color:#aaa}
+
+/* nút nổi */
+.zalo-float,.fb-float{
+ position:fixed;
+ bottom:25px;
+ width:55px;height:55px;
+ border-radius:50%;
+ text-align:center;
+ line-height:55px;
+ font-size:26px;
+ z-index:1000;
+ animation:pulse 1.8s infinite
+}
+.zalo-float{right:90px;background:#00ffcc;color:#000}
+.fb-float{right:20px;background:#1877f2;color:#fff}
 </style>
 </head>
 
@@ -174,24 +177,36 @@ footer{
 <section>
 <h2>🔥 Acc Free Fire</h2>
 <div class="acc-list" id="accList"></div>
+<div class="pagination" id="pagination"></div>
 </section>
+
+<div class="footer-content">
+<div class="footer-box">
+<div class="footer-item"><h3>📌 Giới thiệu</h3><p>Shop Thế Chíí chuyên acc Free Fire uy tín</p></div>
+<div class="footer-item"><h3>🛡 Cam kết</h3><p>Acc đúng mô tả – hỗ trợ sau bán</p></div>
+<div class="footer-item"><h3>💳 Thanh toán</h3><p>Chuyển khoản – ví điện tử</p></div>
+<div class="footer-item"><h3>📞 Liên hệ</h3><p>Zalo: 0325988875<br>Facebook: thechi2k7dz</p></div>
+</div>
+</div>
 </div>
 
 <footer>© 2026 Shop Thế Chíí – Free Fire</footer>
 
-<!-- POPUP -->
+<a class="zalo-float" href="https://zalo.me/0325988875" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+<a class="fb-float" href="https://www.facebook.com/thechi2k7dz" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+
 <div id="popup">
- <div id="popup-content">
-  <div id="popup-close">&times;</div>
-  <img id="popup-main">
-  <div id="popup-thumbs"></div>
-  <div id="popupInfo"></div>
-  <a id="buyBtn" target="_blank">Mua Ngay</a>
- </div>
+<div id="popup-content">
+<div id="popup-close">&times;</div>
+<img id="popup-main">
+<div id="popup-thumbs"></div>
+<div id="popupInfo"></div>
+<a id="buyBtn" target="_blank">Mua Ngay</a>
+</div>
 </div>
 
 <script>
-/* ===== FULL 5 ACC – ĐỦ ẢNH – NGUYÊN SI ===== */
+/* ===== FULL 5 ACC – FULL ẢNH KHÔNG THIẾU ===== */
 const accs = [
 /* ===== ACC 1 ===== */
 {
@@ -208,10 +223,11 @@ thumbs:[
 oldPrice:'₫850,000',
 newPrice:'₫750,000',
 info:'Chuyên phòng tử chiến 💎',
+status:'Còn ✔️',
 fanpage:'https://www.facebook.com/thechi2k7dz'
 },
 
-/* ===== ACC 2 ===== */
+/* ===== ACC 2 (FULL 22 ẢNH) ===== */
 {
 name:'Acc 2 🔥',
 mainImg:'https://i.postimg.cc/wxyB7zgD/e2e646a3-1a01-4d84-93f8-e4dd554fa1d1.jpg',
@@ -242,10 +258,11 @@ thumbs:[
 oldPrice:'₫6,200,000',
 newPrice:'₫5,200,000',
 info:'Acc VIP8 – 12 súng nâng cấp 💎',
+status:'Còn ✔️',
 fanpage:'https://www.facebook.com/thechi2k7dz'
 },
 
-/* ===== ACC 3 ===== */
+/* ===== ACC 3 (FULL) ===== */
 {
 name:'Acc 3 🔥',
 mainImg:'https://i.postimg.cc/NGpbsL16/70652ec2-08eb-4f46-92c3-0383688ba817.jpg',
@@ -269,11 +286,12 @@ thumbs:[
 ],
 oldPrice:'₫7,600,000',
 newPrice:'₫6,600,000',
-info:'VIP8 – 10.000 kim cương 💎',
+info:'VIP8 – 10k kim cương 💎',
+status:'Còn ✔️',
 fanpage:'https://www.facebook.com/thechi2k7dz'
 },
 
-/* ===== ACC 4 ===== */
+/* ===== ACC 4 (FULL) ===== */
 {
 name:'Acc 4 🔥',
 mainImg:'https://i.postimg.cc/yNgJ31pv/e19d27f1-4f33-4570-8ff0-e8ae1aa9abe1.jpg',
@@ -299,11 +317,12 @@ thumbs:[
 ],
 oldPrice:'₫3,000,000',
 newPrice:'₫2,600,000',
-info:'VIP7 – Áo bóng đá 💎',
+info:'VIP7 – áo hiếm 💎',
+status:'Còn ✔️',
 fanpage:'https://www.facebook.com/thechi2k7dz'
 },
 
-/* ===== ACC 5 ===== */
+/* ===== ACC 5 (FULL) ===== */
 {
 name:'Acc 5 🔥',
 mainImg:'https://i.postimg.cc/hvK2WHnS/fe08f046-b55d-4240-9292-e3bf6939cd15.jpg',
@@ -334,29 +353,43 @@ thumbs:[
 ],
 oldPrice:'₫3,500,000',
 newPrice:'₫2,500,000',
-info:'FULL nâng cấp – 300 súng – 300 áo 💎',
+info:'FULL nâng cấp – cực nhiều đồ 💎',
+status:'Còn ✔️',
 fanpage:'https://www.facebook.com/thechi2k7dz'
 }
 ];
 
-/* ===== RENDER ===== */
-const list=document.getElementById('accList');
-accs.forEach((acc,i)=>{
- const d=document.createElement('div');
- d.className='acc';
- d.innerHTML=`
-  <div class="acc-img">
-   <span class="badge-hot">HOT</span>
-   <img src="${acc.mainImg}" onclick="openPopup(${i})">
-  </div>
-  <h3>${acc.name}</h3>
-  <p><span class="old-price">${acc.oldPrice}</span>
-  <span class="new-price">${acc.newPrice}</span></p>
-  <p>${acc.info}</p>
-  <div class="btn" onclick="openPopup(${i})">XEM CHI TIẾT</div>
- `;
- list.appendChild(d);
-});
+const perPage=3;
+let currentPage=1;
+
+function render(page){
+ const start=(page-1)*perPage;
+ accList.innerHTML='';
+ accs.slice(start,start+perPage).forEach((acc,i)=>{
+  accList.innerHTML+=`
+  <div class="acc">
+   <div class="acc-img">
+    <span class="badge-hot">HOT</span>
+    <img src="${acc.mainImg}" onclick="openPopup(${start+i})">
+   </div>
+   <h3>${acc.name}</h3>
+   <p><span class="old-price">${acc.oldPrice}</span> <span class="new-price">${acc.newPrice}</span></p>
+   <p class="status">${acc.status}</p>
+   <p>${acc.info}</p>
+   <div class="btn" onclick="openPopup(${start+i})">XEM CHI TIẾT</div>
+  </div>`;
+ });
+ renderPag();
+}
+function renderPag(){
+ pagination.innerHTML='';
+ const pages=Math.ceil(accs.length/perPage);
+ for(let i=1;i<=pages;i++){
+  pagination.innerHTML+=i===currentPage?`<span>${i}</span>`:`<a href="#" onclick="go(${i})">${i}</a>`;
+ }
+}
+function go(i){currentPage=i;render(i)}
+render(1);
 
 function openPopup(i){
  const acc=accs[i];
@@ -371,7 +404,7 @@ function openPopup(i){
    popupMain.src=img;
    document.querySelectorAll('#popup-thumbs img').forEach(x=>x.classList.remove('active'));
    im.classList.add('active');
-  }
+  };
   popupThumbs.appendChild(im);
  });
  popupInfo.innerHTML=`<b>${acc.name}</b><br>${acc.info}<br>${acc.oldPrice} → ${acc.newPrice}`;
