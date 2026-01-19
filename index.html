@@ -12,11 +12,13 @@
 body{margin:0;font-family:Arial;background:#0b0f14;color:#fff}
 a{text-decoration:none;color:inherit}
 
+/* ===== BANNER ===== */
 .banner{
  height:260px;
  background:url('https://i.postimg.cc/bJr5hzsY/ff31cd69-f0cf-4c13-ad3a-dd6ae8bef797.jpg') center/cover no-repeat
 }
 
+/* ===== FILTER ===== */
 .filter-box{max-width:1200px;margin:20px auto;padding:0 15px}
 .filter-box select{
  padding:10px;
@@ -27,6 +29,7 @@ a{text-decoration:none;color:inherit}
  font-weight:bold
 }
 
+/* ===== ACC LIST ===== */
 .acc-list{
  max-width:1200px;
  margin:auto;
@@ -46,6 +49,7 @@ a{text-decoration:none;color:inherit}
 .acc-img{position:relative}
 .acc-img img{width:100%;border-radius:10px;cursor:pointer}
 
+/* ===== HOT ===== */
 .badge-hot{
  position:absolute;top:10px;left:10px;
  background:linear-gradient(45deg,#ff0000,#ff9900);
@@ -59,45 +63,129 @@ a{text-decoration:none;color:inherit}
  100%{transform:scale(1)}
 }
 
+/* ===== PRICE ===== */
 .old-price{text-decoration:line-through;color:#aaa}
 .new-price{color:#00ff66;font-weight:bold}
-.status.con{color:#00ff66;font-weight:bold}
-.status.ban{color:#ff4444;font-weight:bold}
 
-.btn{
- margin-top:auto;height:44px;
- background:linear-gradient(45deg,#00ffcc,#00ff66);
- color:#000;border-radius:8px;
- display:flex;align-items:center;justify-content:center;
- font-weight:bold;cursor:pointer
+/* ===== STATUS BLINK ===== */
+.status{
+ font-weight:bold;
+ animation:blink 1.2s infinite;
+}
+.status.con{color:#00ff66}
+.status.ban{color:#ff4444}
+
+@keyframes blink{
+ 0%,100%{opacity:1}
+ 50%{opacity:.5}
 }
 
+/* ===== BUTTON ===== */
+.btn{
+ margin-top:auto;
+ height:44px;
+ background:linear-gradient(45deg,#00ffcc,#00ff66);
+ color:#000;
+ border-radius:8px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-weight:bold;
+ cursor:pointer;
+ animation:glow 1.5s infinite;
+}
+@keyframes glow{
+ 0%{box-shadow:0 0 5px #00ffcc}
+ 50%{box-shadow:0 0 20px #00ff66}
+ 100%{box-shadow:0 0 5px #00ffcc}
+}
+
+/* ===== PAGINATION ===== */
 .pagination{text-align:center;margin:25px 0}
 .pagination a,.pagination span{
  display:inline-block;margin:0 6px;
- padding:8px 14px;background:#121821;
- color:#00ffcc;border-radius:6px;font-weight:bold
+ padding:8px 14px;
+ background:#121821;
+ color:#00ffcc;
+ border-radius:6px;
+ font-weight:bold
 }
 .pagination span{background:#00ffcc;color:#000}
 
-footer{background:#000;text-align:center;padding:15px;color:#aaa}
+/* ===== FOOTER ===== */
+footer{
+ background:#000;
+ text-align:center;
+ padding:15px;
+ color:#aaa
+}
 
-/* POPUP */
+/* ===== FLOAT CONTACT ===== */
+.float-contact{
+ position:fixed;
+ right:18px;
+ bottom:20px;
+ display:flex;
+ flex-direction:column;
+ gap:14px;
+ z-index:99999
+}
+.float-btn{
+ width:56px;height:56px;
+ border-radius:50%;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ color:#fff;
+ font-size:26px;
+ animation:pulse 1.5s infinite;
+}
+.float-btn.zalo{background:#00c853}
+.float-btn.fb{background:#1877f2}
+
+@keyframes pulse{
+ 0%{transform:scale(1);opacity:.7}
+ 50%{transform:scale(1.15);opacity:1}
+ 100%{transform:scale(1);opacity:.7}
+}
+
+/* ===== POPUP ===== */
 #popup{
- display:none;position:fixed;inset:0;
- background:rgba(0,0,0,.9);z-index:9999
+ display:none;
+ position:fixed;
+ inset:0;
+ background:rgba(0,0,0,.9);
+ z-index:999999;
+ overflow:auto
 }
 #popup-content{
- max-width:900px;margin:40px auto;
- background:#121821;padding:20px;
- border-radius:12px;position:relative
+ max-width:900px;
+ margin:40px auto;
+ background:#121821;
+ padding:20px;
+ border-radius:12px;
+ position:relative
 }
 #popupMain{width:100%;border-radius:10px}
-#popupThumbs{display:flex;gap:10px;overflow-x:auto;margin-top:10px}
-#popupThumbs img{width:90px;border-radius:8px;cursor:pointer}
+#popupThumbs{
+ display:flex;
+ gap:10px;
+ overflow-x:auto;
+ margin-top:10px
+}
+#popupThumbs img{
+ width:90px;
+ border-radius:8px;
+ cursor:pointer;
+ opacity:.6
+}
+#popupThumbs img:hover{opacity:1}
 #popup-close{
- position:absolute;top:8px;right:14px;
- font-size:30px;color:#ff4444;cursor:pointer
+ position:absolute;
+ top:8px;right:14px;
+ font-size:30px;
+ color:#ff4444;
+ cursor:pointer
 }
 </style>
 </head>
@@ -124,7 +212,25 @@ footer{background:#000;text-align:center;padding:15px;color:#aaa}
 
 <footer>© 2026 Shop Thế Chíí</footer>
 
-<!-- ===== SCRIPT ===== -->
+<!-- ===== FLOAT BUTTON ===== -->
+<div class="float-contact">
+ <a href="https://zalo.me/0325988875" target="_blank" class="float-btn zalo">
+  <i class="fa-solid fa-comment"></i>
+ </a>
+ <a href="https://www.facebook.com/thechi2k7dz" target="_blank" class="float-btn fb">
+  <i class="fa-brands fa-facebook-f"></i>
+ </a>
+</div>
+
+<!-- ===== POPUP ===== -->
+<div id="popup">
+ <div id="popup-content">
+  <div id="popup-close" onclick="closePopup()">×</div>
+  <img id="popupMain">
+  <div id="popupThumbs"></div>
+ </div>
+</div>
+
 <script>
 const accs = [
 
@@ -282,27 +388,17 @@ const accs = [
 /* ===== BIẾN PHÂN TRANG ===== */
 
 let filtered=[...accs];
-const perPage=3;
 let currentPage=1;
-
+const perPage=3;
 const box=document.getElementById('accList');
 const pagi=document.getElementById('pagination');
 
 function filterPrice(val){
- filtered = val==='all'
-  ? [...accs]
-  : accs.filter(a=>{
-    const p=a.newPrice;
-    return(
-     (val==='100-500'&&p>=100&&p<=500)||
-     (val==='500-1000'&&p>=500&&p<=1000)||
-     (val==='1000-5000'&&p>=1000&&p<=5000)||
-     (val==='5000-10000'&&p>=5000&&p<=10000)||
-     (val==='10000+'&&p>10000)
-    );
-  });
- currentPage=1;
- render();
+ filtered = val==='all' ? [...accs] : accs.filter(a=>{
+  const p=a.newPrice;
+  return (val==='5000-10000' && p>=5000 && p<=10000);
+ });
+ currentPage=1;render();
 }
 
 function render(){
@@ -313,13 +409,12 @@ function render(){
   <div class="acc">
    <div class="acc-img">
     <span class="badge-hot">HOT</span>
-    <img src="${a.mainImg}" onclick="openPopup('${a.mainImg}')">
+    <img src="${a.mainImg}" onclick="openPopup(${accs.indexOf(a)})">
    </div>
    <h3>${a.name}</h3>
-   <p><span class="old-price">${a.oldPrice}k</span> →
-   <span class="new-price">${a.newPrice}k</span></p>
+   <p><span class="old-price">${a.oldPrice}k</span> → <span class="new-price">${a.newPrice}k</span></p>
    <p class="status ${a.status.includes('Còn')?'con':'ban'}">${a.status}</p>
-   <div class="btn" onclick="openPopup('${a.mainImg}')">XEM CHI TIẾT</div>
+   <div class="btn" onclick="openPopup(${accs.indexOf(a)})">XEM CHI TIẾT</div>
   </div>`;
  });
  renderPage();
@@ -329,33 +424,25 @@ function renderPage(){
  pagi.innerHTML='';
  const pages=Math.ceil(filtered.length/perPage);
  for(let i=1;i<=pages;i++){
-  pagi.innerHTML+=
-   i===currentPage
-   ? `<span>${i}</span>`
-   : `<a href="#" onclick="go(${i})">${i}</a>`;
+  pagi.innerHTML+= i===currentPage ? `<span>${i}</span>` : `<a href="#" onclick="go(${i})">${i}</a>`;
  }
 }
-
 function go(i){currentPage=i;render();}
 
-function openPopup(img){
+function openPopup(i){
+ const acc=accs[i];
  document.getElementById('popup').style.display='block';
- document.getElementById('popupMain').src=img;
+ document.getElementById('popupMain').src=acc.mainImg;
+ const thumbs=document.getElementById('popupThumbs');
+ thumbs.innerHTML='';
+ acc.thumbs.forEach(img=>{
+  thumbs.innerHTML+=`<img src="${img}" onclick="document.getElementById('popupMain').src='${img}'">`;
+ });
 }
-function closePopup(){
- document.getElementById('popup').style.display='none';
-}
+function closePopup(){document.getElementById('popup').style.display='none';}
 
 render();
 </script>
 
-<div id="popup">
- <div id="popup-content">
-  <div id="popup-close" onclick="closePopup()">×</div>
-  <img id="popupMain">
- </div>
-</div>
-
 </body>
 </html>
-
