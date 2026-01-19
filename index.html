@@ -23,11 +23,11 @@ h2{color:#00ffcc}
 /* filter */
 .filter-box{margin-bottom:20px}
 .filter-box select{
- padding:10px 14px;
- border-radius:8px;
+ padding:10px;
  background:#121821;
  color:#00ffcc;
  border:1px solid #00ffcc;
+ border-radius:8px;
  font-weight:bold
 }
 
@@ -73,7 +73,6 @@ h2{color:#00ffcc}
 /* status blink */
 .status{
  font-weight:bold;
- margin:6px 0;
  animation:blink 1.2s infinite
 }
 .status.con{color:#00ff66}
@@ -83,7 +82,6 @@ h2{color:#00ffcc}
  50%{opacity:.3}
 }
 
-/* button */
 .btn{
  margin-top:auto;
  height:46px;
@@ -95,13 +93,20 @@ h2{color:#00ffcc}
  justify-content:center;
  font-weight:bold;
  cursor:pointer;
- animation:pulse 1.8s infinite;
 }
-@keyframes pulse{
- 0%{box-shadow:0 0 0 0 rgba(0,255,204,.7)}
- 70%{box-shadow:0 0 0 16px rgba(0,255,204,0)}
- 100%{box-shadow:0 0 0 0 rgba(0,255,204,0)}
+
+/* pagination */
+.pagination{text-align:center;margin-top:25px}
+.pagination a,.pagination span{
+ display:inline-block;
+ margin:0 5px;
+ padding:8px 12px;
+ background:#121821;
+ color:#00ffcc;
+ border-radius:6px;
+ font-weight:bold
 }
+.pagination span{color:#888}
 
 /* popup */
 #popup{
@@ -122,10 +127,7 @@ h2{color:#00ffcc}
 }
 #popup-main{width:100%;border-radius:10px}
 #popup-thumbs{display:flex;gap:10px;overflow-x:auto;margin-top:10px}
-#popup-thumbs img{
- width:90px;border-radius:8px;cursor:pointer;
- border:2px solid transparent
-}
+#popup-thumbs img{width:90px;border-radius:8px;cursor:pointer;border:2px solid transparent}
 #popup-thumbs img.active{border-color:#00ff66}
 #popupInfo{margin-top:12px;line-height:1.6}
 #buyBtn{
@@ -150,6 +152,20 @@ h2{color:#00ffcc}
  font-size:20px;
  cursor:pointer
 }
+
+/* footer */
+.footer-content{background:#0f1520;padding:40px 15px}
+.footer-box{
+ max-width:1200px;
+ margin:auto;
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+ gap:20px
+}
+.footer-item{background:#121821;padding:20px;border-radius:12px}
+.footer-item h3{color:#00ffcc}
+.footer-item p{color:#ccc;line-height:1.6}
+footer{background:#000;text-align:center;padding:20px;color:#aaa}
 </style>
 </head>
 
@@ -172,8 +188,39 @@ h2{color:#00ffcc}
 </div>
 
 <div class="acc-list" id="accList"></div>
+<div class="pagination" id="pagination"></div>
 </section>
 
+<!-- FOOTER -->
+<div class="footer-content">
+<div class="footer-box">
+<div class="footer-item">
+<h3>📌 Giới thiệu</h3>
+<p>Shop Thế Chíí chuyên mua bán acc Free Fire uy tín<br>
+✔ Xem acc trước khi mua<br>
+✔ Bảo kê – hỗ trợ đổi thông tin</p>
+</div>
+<div class="footer-item">
+<h3>🛡 Cam kết</h3>
+<p>✔ Acc đúng mô tả<br>
+✔ Góp log 7–14 ngày<br>
+✔ Có trách nhiệm</p>
+</div>
+<div class="footer-item">
+<h3>💳 Thanh toán</h3>
+<p>Techcombank<br>STK: 21200766668888<br>Mai Thế Chí</p>
+</div>
+<div class="footer-item">
+<h3>📞 Liên hệ</h3>
+<p>Zalo: 0325 988 875<br>Facebook: thechi2k7dz</p>
+</div>
+</div>
+</div>
+</div>
+
+<footer>© 2026 Shop Thế Chíí</footer>
+
+<!-- POPUP -->
 <div id="popup">
 <div id="popup-content">
 <div id="popup-close">&times;</div>
@@ -185,216 +232,258 @@ h2{color:#00ffcc}
 </div>
 
 <script>
+/* ===== FULL 5 ACC – FULL ẢNH (GIỮ NGUYÊN) ===== */
 const accs = [
+
+/* ===== ACC 1 ===== */
 {
-name:'Acc 1 🔥',
-mainImg:'https://i.postimg.cc/hGFQz7hL/85ae2bd2-da86-4f04-8a03-72543aefac43.jpg',
-thumbs:[
-'https://i.postimg.cc/hGFQz7hL/85ae2bd2-da86-4f04-8a03-72543aefac43.jpg',
-'https://i.postimg.cc/W46zdWBj/8c455720-5545-4e86-b698-0d2a2f81bec8.jpg',
-'https://i.postimg.cc/ZKdT9sNc/4e128dd3-d574-4948-88c7-8e14129d665e.jpg',
-'https://i.postimg.cc/mkFGHhPr/03c7769f-7b46-4de1-830b-cc92b494204d.jpg',
-'https://i.postimg.cc/26gSJsvf/3b96ab71-3a56-403d-8bf9-b6a6b94dfb30.jpg',
-'https://i.postimg.cc/GmbhZJBK/2d7a5bc1-234f-4ca0-a018-e383d44fc1bf.jpg'
-],
-oldPrice:'₫850,000',
-newPrice:'₫750,000',
-info:'Chuyên phòng tử chiến 💎',
-status:'Đã bán ✔️',
-fanpage:'https://www.facebook.com/thechi2k7dz'
+ name:'Acc 1 🔥',
+ mainImg:'https://i.postimg.cc/hGFQz7hL/85ae2bd2-da86-4f04-8a03-72543aefac43.jpg',
+ thumbs:[
+  'https://i.postimg.cc/hGFQz7hL/85ae2bd2-da86-4f04-8a03-72543aefac43.jpg',
+  'https://i.postimg.cc/W46zdWBj/8c455720-5545-4e86-b698-0d2a2f81bec8.jpg',
+  'https://i.postimg.cc/ZKdT9sNc/4e128dd3-d574-4948-88c7-8e14129d665e.jpg',
+  'https://i.postimg.cc/mkFGHhPr/03c7769f-7b46-4de1-830b-cc92b494204d.jpg',
+  'https://i.postimg.cc/26gSJsvf/3b96ab71-3a56-403d-8bf9-b6a6b94dfb30.jpg',
+  'https://i.postimg.cc/GmbhZJBK/2d7a5bc1-234f-4ca0-a018-e383d44fc1bf.jpg'
+ ],
+ oldPrice:'₫850,000',
+ newPrice:'₫750,000',
+ info:'Chuyên phòng tử chiến 💎',
+ status:'Đã bán ❌',
+ fanpage:'https://www.facebook.com/thechi2k7dz'
 },
+
+/* ===== ACC 2 ===== */
 {
-name:'Acc 2 🔥',
-mainImg:'https://i.postimg.cc/wxyB7zgD/e2e646a3-1a01-4d84-93f8-e4dd554fa1d1.jpg',
-thumbs:[
-'https://i.postimg.cc/wxyB7zgD/e2e646a3-1a01-4d84-93f8-e4dd554fa1d1.jpg',
-'https://i.postimg.cc/Ghjnpg8g/e8a2b0ec-78af-4576-b6a3-b303a7e1cfe7.jpg',
-'https://i.postimg.cc/yxz210Vz/facb2195-007a-45ae-a084-e079b9bccce9.jpg',
-'https://i.postimg.cc/DynRRQjC/fc2d05c4-9a89-4a47-b737-c4fff9da7468.jpg',
-'https://i.postimg.cc/6Q2PCMqX/1d04f9f2-03b0-47d9-9964-6be3d2ba8d14.jpg',
-'https://i.postimg.cc/ZKdT9sNc/4e128dd3-d574-4948-88c7-8e14129d665e.jpg',
-'https://i.postimg.cc/SQ7vL2SW/7ddc554a-9da5-4876-85d3-5456609b8d71.jpg',
-'https://i.postimg.cc/vTQX2hYg/14bcf374-65f0-4fa1-88db-6236b0684a1d.jpg',
-'https://i.postimg.cc/DfgxJ96J/65c022c3-ca83-4cfc-bac3-b81ff775c336.jpg',
-'https://i.postimg.cc/PrVKK1Bk/80ba05f0-7a79-4604-8224-be0d1feebbaf.jpg',
-'https://i.postimg.cc/fR6CQDzB/95d61c90-4b63-4f84-8aad-d2d878b70fe2.jpg',
-'https://i.postimg.cc/wTMQt77Y/168c0c35-7000-46f4-8fdf-8f08f18ef1e3.jpg',
-'https://i.postimg.cc/GmsPQVFT/5896a80c-1151-43f8-854d-7232ac8f7dc.jpg',
-'https://i.postimg.cc/X7r9jmzp/9570edc8-f28a-4f50-b31b-c6b5ad5341b8.jpg',
-'https://i.postimg.cc/XYFFFF3W/39780b1a-a83e-4370-8059-47eb3ec8d5ec.jpg',
-'https://i.postimg.cc/mDdFRy32/4533186c-3836-45c9-829f-30585a7d5ff4.jpg',
-'https://i.postimg.cc/qqSh6B5M/b453edc8-6387-4513-a9a9-6d49921dd06a.jpg',
-'https://i.postimg.cc/bwXSzJns/ba98b697-4a8d-483f-bbdd-0ebd0a301924.jpg',
-'https://i.postimg.cc/B6wtRQsh/bd7af32b-64ae-4df5-9da4-1b83d33f210c.jpg',
-'https://i.postimg.cc/v8kczB0B/bda748da-a2a3-4a8c-bae5-957f3be501d9.jpg',
-'https://i.postimg.cc/W16zT7Ts/c49cc626-0a10-45d4-a532-68db64bd93b8.jpg',
-'https://i.postimg.cc/VNKNbLJ2/cc2d7d09-5aee-42db-a9e6-ca235023d22d.jpg'
-],
-oldPrice:'₫6,200,000',
-newPrice:'₫5,200,000',
-info:'Acc VIP8 – 12 súng nâng cấp 💎',
-status:'Còn ✔️',
-fanpage:'https://www.facebook.com/thechi2k7dz'
+ name:'Acc 2 🔥',
+ mainImg:'https://i.postimg.cc/wxyB7zgD/e2e646a3-1a01-4d84-93f8-e4dd554fa1d1.jpg',
+ thumbs:[
+  'https://i.postimg.cc/wxyB7zgD/e2e646a3-1a01-4d84-93f8-e4dd554fa1d1.jpg',
+  'https://i.postimg.cc/Ghjnpg8g/e8a2b0ec-78af-4576-b6a3-b303a7e1cfe7.jpg',
+  'https://i.postimg.cc/yxz210Vz/facb2195-007a-45ae-a084-e079b9bccce9.jpg',
+  'https://i.postimg.cc/DynRRQjC/fc2d05c4-9a89-4a47-b737-c4fff9da7468.jpg',
+  'https://i.postimg.cc/6Q2PCMqX/1d04f9f2-03b0-47d9-9964-6be3d2ba8d14.jpg',
+  'https://i.postimg.cc/ZKdT9sNc/4e128dd3-d574-4948-88c7-8e14129d665e.jpg',
+  'https://i.postimg.cc/SQ7vL2SW/7ddc554a-9da5-4876-85d3-5456609b8d71.jpg',
+  'https://i.postimg.cc/vTQX2hYg/14bcf374-65f0-4fa1-88db-6236b0684a1d.jpg',
+  'https://i.postimg.cc/DfgxJ96J/65c022c3-ca83-4cfc-bac3-b81ff775c336.jpg',
+  'https://i.postimg.cc/PrVKK1Bk/80ba05f0-7a79-4604-8224-be0d1feebbaf.jpg',
+  'https://i.postimg.cc/fR6CQDzB/95d61c90-4b63-4f84-8aad-d2d878b70fe2.jpg',
+  'https://i.postimg.cc/wTMQt77Y/168c0c35-7000-46f4-8fdf-8f08f18ef1e3.jpg',
+  'https://i.postimg.cc/GmsPQVFT/5896a80c-1151-43f8-854d-7232ac8f7dc.jpg',
+  'https://i.postimg.cc/X7r9jmzp/9570edc8-f28a-4f50-b31b-c6b5ad5341b8.jpg',
+  'https://i.postimg.cc/XYFFFF3W/39780b1a-a83e-4370-8059-47eb3ec8d5ec.jpg',
+  'https://i.postimg.cc/mDdFRy32/4533186c-3836-45c9-829f-30585a7d5ff4.jpg',
+  'https://i.postimg.cc/qqSh6B5M/b453edc8-6387-4513-a9a9-6d49921dd06a.jpg',
+  'https://i.postimg.cc/bwXSzJns/ba98b697-4a8d-483f-bbdd-0ebd0a301924.jpg',
+  'https://i.postimg.cc/B6wtRQsh/bd7af32b-64ae-4df5-9da4-1b83d33f210c.jpg',
+  'https://i.postimg.cc/v8kczB0B/bda748da-a2a3-4a8c-bae5-957f3be501d9.jpg',
+  'https://i.postimg.cc/W16zT7Ts/c49cc626-0a10-45d4-a532-68db64bd93b8.jpg',
+  'https://i.postimg.cc/VNKNbLJ2/cc2d7d09-5aee-42db-a9e6-ca235023d22d.jpg'
+ ],
+ oldPrice:'₫6,200,000',
+ newPrice:'₫5,200,000',
+ info:'Acc VIP8 – 12 súng nâng cấp 💎',
+ status:'Còn ✅',
+ fanpage:'https://www.facebook.com/thechi2k7dz'
 },
+
+/* ===== ACC 3 ===== */
 {
-name:'Acc 3 🔥',
-mainImg:'https://i.postimg.cc/NGpbsL16/70652ec2-08eb-4f46-92c3-0383688ba817.jpg',
-thumbs:[
-'https://i.postimg.cc/NGpbsL16/70652ec2-08eb-4f46-92c3-0383688ba817.jpg',
-'https://i.postimg.cc/sDWBnNfk/0d42746f-c554-4e0a-b16e-c6f98efd66ce.jpg',
-'https://i.postimg.cc/bYWLMrkZ/4c8558c1-f578-4e49-8880-d3d9628ef93d.jpg',
-'https://i.postimg.cc/m2WCCH7w/8c72be07-6480-46a4-bd83-be2d6cafb3da.jpg',
-'https://i.postimg.cc/QCG9Q2Kt/30c9b62d-61c7-4a05-9d18-e886ce0e7352.jpg',
-'https://i.postimg.cc/4xLYL7hH/78e3d21b-b18e-4254-96f7-b10062fdb7b2.jpg',
-'https://i.postimg.cc/7P3fvQTQ/310d1522-fad3-4a9a-861f-9505073be937.jpg',
-'https://i.postimg.cc/k5S7QBQf/4190f707-7743-46db-bccd-e7503540579c.jpg',
-'https://i.postimg.cc/SNn32H7C/71231631-8892-43af-a623-d05b20bd515a.jpg',
-'https://i.postimg.cc/1517X4XS/a0fd20c5-ab2c-4f04-a1ab-bbf26439ccdd.jpg',
-'https://i.postimg.cc/XqbKjGLM/a1c0cb5c-8f07-4710-ad84-115c02ce0737.jpg',
-'https://i.postimg.cc/VkmYqYGN/a5c9c57b-b351-4970-a490-4e770eda2bc7.jpg',
-'https://i.postimg.cc/SKYtj96n/b2e14580-f5f2-4d93-8c8c-cb2bd40dd2c6.jpg',
-'https://i.postimg.cc/Px4bqfR1/b529e2bd-2ecc-4552-8263-8d62b9dc5838.jpg',
-'https://i.postimg.cc/Y0TvrJMS/db39c99b-e2e0-4bec-a57c-c271432299a7.jpg',
-'https://i.postimg.cc/LshhP95V/ec5e7158-50de-4345-9a67-68a1583fc999.jpg'
-],
-oldPrice:'₫7,600,000',
-newPrice:'₫6,600,000',
-info:'VIP8 – 10k kim cương 💎',
-status:'Còn ✔️',
-fanpage:'https://www.facebook.com/thechi2k7dz'
+ name:'Acc 3 🔥',
+ mainImg:'https://i.postimg.cc/NGpbsL16/70652ec2-08eb-4f46-92c3-0383688ba817.jpg',
+ thumbs:[
+  'https://i.postimg.cc/NGpbsL16/70652ec2-08eb-4f46-92c3-0383688ba817.jpg',
+  'https://i.postimg.cc/sDWBnNfk/0d42746f-c554-4e0a-b16e-c6f98efd66ce.jpg',
+  'https://i.postimg.cc/bYWLMrkZ/4c8558c1-f578-4e49-8880-d3d9628ef93d.jpg',
+  'https://i.postimg.cc/m2WCCH7w/8c72be07-6480-46a4-bd83-be2d6cafb3da.jpg',
+  'https://i.postimg.cc/QCG9Q2Kt/30c9b62d-61c7-4a05-9d18-e886ce0e7352.jpg',
+  'https://i.postimg.cc/4xLYL7hH/78e3d21b-b18e-4254-96f7-b10062fdb7b2.jpg',
+  'https://i.postimg.cc/7P3fvQTQ/310d1522-fad3-4a9a-861f-9505073be937.jpg',
+  'https://i.postimg.cc/k5S7QBQf/4190f707-7743-46db-bccd-e7503540579c.jpg',
+  'https://i.postimg.cc/SNn32H7C/71231631-8892-43af-a623-d05b20bd515a.jpg',
+  'https://i.postimg.cc/1517X4XS/a0fd20c5-ab2c-4f04-a1ab-bbf26439ccdd.jpg',
+  'https://i.postimg.cc/XqbKjGLM/a1c0cb5c-8f07-4710-ad84-115c02ce0737.jpg',
+  'https://i.postimg.cc/VkmYqYGN/a5c9c57b-b351-4970-a490-4e770eda2bc7.jpg',
+  'https://i.postimg.cc/SKYtj96n/b2e14580-f5f2-4d93-8c8c-cb2bd40dd2c6.jpg',
+  'https://i.postimg.cc/Px4bqfR1/b529e2bd-2ecc-4552-8263-8d62b9dc5838.jpg',
+  'https://i.postimg.cc/Y0TvrJMS/db39c99b-e2e0-4bec-a57c-c271432299a7.jpg',
+  'https://i.postimg.cc/LshhP95V/ec5e7158-50de-4345-9a67-68a1583fc999.jpg'
+ ],
+ oldPrice:'₫7,600,000',
+ newPrice:'₫6,600,000',
+ info:'VIP8 – 10k kim cương 💎',
+ status:'Còn ✅',
+ fanpage:'https://www.facebook.com/thechi2k7dz'
 },
+
+/* ===== ACC 4 ===== */
 {
-name:'Acc 4 🔥',
-mainImg:'https://i.postimg.cc/yNgJ31pv/e19d27f1-4f33-4570-8ff0-e8ae1aa9abe1.jpg',
-thumbs:[
-'https://i.postimg.cc/yNgJ31pv/e19d27f1-4f33-4570-8ff0-e8ae1aa9abe1.jpg',
-'https://i.postimg.cc/JhgvqL3k/8c9ac443-40b4-44e1-969b-dbc2217300c4.jpg',
-'https://i.postimg.cc/8zp2kwP3/46e68092-327d-498a-a8cf-33ffdbeaa7b7.jpg',
-'https://i.postimg.cc/vHtRdCM9/69b3d2cb-9f7e-49c5-a09c-c2cc769e87ad.jpg',
-'https://i.postimg.cc/SQ8FgJvZ/359b9ea6-61b4-4864-95b8-91f655e1f16a.jpg',
-'https://i.postimg.cc/k4R334XG/857e495d-327e-45eb-a725-5b7c18167a13.jpg',
-'https://i.postimg.cc/zfBY77sH/904b267b-0ade-4a24-afcd-6863b03e37ac.jpg',
-'https://i.postimg.cc/8s8YVBXw/6930fb5c-e31e-48e1-b804-5b484dc031c6.jpg',
-'https://i.postimg.cc/xCChGdbq/27480060-aeba-4ffa-a302-c299b82448a2.jpg',
-'https://i.postimg.cc/fbM6LCzj/29269637-63de-417e-b58d-d06268d9c95b.jpg',
-'https://i.postimg.cc/28ZpX39t/a3e6c5bf-6ceb-469e-b25f-5b734884dd89.jpg',
-'https://i.postimg.cc/Vv2xkcvM/a9302282-74cf-41cf-8619-47f50d6882df.jpg',
-'https://i.postimg.cc/TwN8BbX5/aeaad0b6-c01f-47a9-bf93-3b731d8ddc7f.jpg',
-'https://i.postimg.cc/q70dK0L1/bebc910b-ac40-4961-a24f-7ba202f2b63a.jpg',
-'https://i.postimg.cc/m2zRfmkH/c7e9cecb-07e1-44b9-8d38-167b535a2e4c.jpg',
-'https://i.postimg.cc/FswXshcK/fc751fd2-392a-4a06-bb7a-53b10f78361e.jpg',
-'https://i.postimg.cc/1tyQhMFr/d2d5b35a-2b5d-45d6-8357-f3c9042e7727.jpg',
-'https://i.postimg.cc/3rnK7Mn8/cf3ba08a-6e87-4286-befb-d4e9ac012444.jpg'
-],
-oldPrice:'₫3,000,000',
-newPrice:'₫2,600,000',
-info:'VIP7 – áo hiếm 💎',
-status:'Còn ✔️',
-fanpage:'https://www.facebook.com/thechi2k7dz'
+ name:'Acc 4 🔥',
+ mainImg:'https://i.postimg.cc/yNgJ31pv/e19d27f1-4f33-4570-8ff0-e8ae1aa9abe1.jpg',
+ thumbs:[
+  'https://i.postimg.cc/yNgJ31pv/e19d27f1-4f33-4570-8ff0-e8ae1aa9abe1.jpg',
+  'https://i.postimg.cc/JhgvqL3k/8c9ac443-40b4-44e1-969b-dbc2217300c4.jpg',
+  'https://i.postimg.cc/8zp2kwP3/46e68092-327d-498a-a8cf-33ffdbeaa7b7.jpg',
+  'https://i.postimg.cc/vHtRdCM9/69b3d2cb-9f7e-49c5-a09c-c2cc769e87ad.jpg',
+  'https://i.postimg.cc/SQ8FgJvZ/359b9ea6-61b4-4864-95b8-91f655e1f16a.jpg',
+  'https://i.postimg.cc/k4R334XG/857e495d-327e-45eb-a725-5b7c18167a13.jpg',
+  'https://i.postimg.cc/zfBY77sH/904b267b-0ade-4a24-afcd-6863b03e37ac.jpg',
+  'https://i.postimg.cc/8s8YVBXw/6930fb5c-e31e-48e1-b804-5b484dc031c6.jpg',
+  'https://i.postimg.cc/xCChGdbq/27480060-aeba-4ffa-a302-c299b82448a2.jpg',
+  'https://i.postimg.cc/fbM6LCzj/29269637-63de-417e-b58d-d06268d9c95b.jpg',
+  'https://i.postimg.cc/28ZpX39t/a3e6c5bf-6ceb-469e-b25f-5b734884dd89.jpg',
+  'https://i.postimg.cc/Vv2xkcvM/a9302282-74cf-41cf-8619-47f50d6882df.jpg',
+  'https://i.postimg.cc/TwN8BbX5/aeaad0b6-c01f-47a9-bf93-3b731d8ddc7f.jpg',
+  'https://i.postimg.cc/q70dK0L1/bebc910b-ac40-4961-a24f-7ba202f2b63a.jpg',
+  'https://i.postimg.cc/m2zRfmkH/c7e9cecb-07e1-44b9-8d38-167b535a2e4c.jpg',
+  'https://i.postimg.cc/FswXshcK/fc751fd2-392a-4a06-bb7a-53b10f78361e.jpg',
+  'https://i.postimg.cc/1tyQhMFr/d2d5b35a-2b5d-45d6-8357-f3c9042e7727.jpg',
+  'https://i.postimg.cc/3rnK7Mn8/cf3ba08a-6e87-4286-befb-d4e9ac012444.jpg'
+ ],
+ oldPrice:'₫3,000,000',
+ newPrice:'₫2,600,000',
+ info:'VIP7 – áo hiếm 💎',
+ status:'Còn ✅',
+ fanpage:'https://www.facebook.com/thechi2k7dz'
 },
+
+/* ===== ACC 5 ===== */
 {
-name:'Acc 5 🔥',
-mainImg:'https://i.postimg.cc/hvK2WHnS/fe08f046-b55d-4240-9292-e3bf6939cd15.jpg',
-thumbs:[
-'https://i.postimg.cc/hvK2WHnS/fe08f046-b55d-4240-9292-e3bf6939cd15.jpg',
-'https://i.postimg.cc/ZqVRxNq9/2ba0f740-ff51-4a4d-b7fa-d312a839c181.jpg',
-'https://i.postimg.cc/44rz9Dqh/5bcb4422-42bb-49bc-819b-def39582a028.jpg',
-'https://i.postimg.cc/jjgfdmyb/8f53f579-ba10-411d-bd09-8f9118850f5e.jpg',
-'https://i.postimg.cc/7ZqJ1wNX/9dc8c32b-e403-4d81-ba54-803d5319543b.jpg',
-'https://i.postimg.cc/Jh2yWJWW/544e9307-a743-4800-a0f6-b0d358a21173.jpg',
-'https://i.postimg.cc/HsgrHdFc/838a70a8-83cd-444f-a2eb-cb9a22c36840.jpg',
-'https://i.postimg.cc/6QgQPXdq/991c795d-2d3f-452d-bc1a-bc3bc1b4026b.jpg',
-'https://i.postimg.cc/wTgjZFsW/4455c21b-fd4b-4a15-9f0b-f0d9e34af72a.jpg',
-'https://i.postimg.cc/NF4BQqrj/41838f71-294d-4078-bc6e-bf7c7205edfd.jpg',
-'https://i.postimg.cc/dVDwcfQh/19534798-f975-40d3-8305-b69f0f187886.jpg',
-'https://i.postimg.cc/6qYJDrDV/70055425-889f-4de6-8415-398accd60e93.jpg',
-'https://i.postimg.cc/43VCJkDk/a2efbc27-e840-4904-aa81-95b54c772816.jpg',
-'https://i.postimg.cc/Vv7p7YC9/ab622c4b-0586-4af5-9e65-94d9cdad6482.jpg',
-'https://i.postimg.cc/QtmytX0r/b5717a98-a385-48b9-9125-57f0ec8248a8.jpg',
-'https://i.postimg.cc/QxHy8Z5t/c2617d8a-e202-4c1c-a97d-f14073c68a4f.jpg',
-'https://i.postimg.cc/qRJ1WP0S/cda33de8-21ee-47ff-968f-6d3de833460e.jpg',
-'https://i.postimg.cc/FFnTnC68/de7824d8-e0a4-4784-aca1-1751561caa56.jpg',
-'https://i.postimg.cc/tg55dBP5/eb315aa6-ff78-4340-87d9-3fb522ffd49b.jpg',
-'https://i.postimg.cc/DfDccJWg/ec5f8356-2a4b-48a7-87a6-53659acac162.jpg',
-'https://i.postimg.cc/CKmGnzTC/ef045535-5728-45d9-bd6d-1c7805cfd5e2.jpg',
-'https://i.postimg.cc/gk8BXqMq/f38a9ece-f2b2-4858-9d19-ee6cd15018e3.jpg',
-'https://i.postimg.cc/YSqXPctT/f750c8f8-dc1b-4b11-9c70-1dfb204f32e3.jpg'
-],
-oldPrice:'₫3,500,000',
-newPrice:'₫2,500,000',
-info:'FULL nâng cấp – cực nhiều đồ 💎',
-status:'Còn ✔️',
-fanpage:'https://www.facebook.com/thechi2k7dz'
+ name:'Acc 5 🔥',
+ mainImg:'https://i.postimg.cc/hvK2WHnS/fe08f046-b55d-4240-9292-e3bf6939cd15.jpg',
+ thumbs:[
+  'https://i.postimg.cc/hvK2WHnS/fe08f046-b55d-4240-9292-e3bf6939cd15.jpg',
+  'https://i.postimg.cc/ZqVRxNq9/2ba0f740-ff51-4a4d-b7fa-d312a839c181.jpg',
+  'https://i.postimg.cc/44rz9Dqh/5bcb4422-42bb-49bc-819b-def39582a028.jpg',
+  'https://i.postimg.cc/jjgfdmyb/8f53f579-ba10-411d-bd09-8f9118850f5e.jpg',
+  'https://i.postimg.cc/7ZqJ1wNX/9dc8c32b-e403-4d81-ba54-803d5319543b.jpg',
+  'https://i.postimg.cc/Jh2yWJWW/544e9307-a743-4800-a0f6-b0d358a21173.jpg',
+  'https://i.postimg.cc/HsgrHdFc/838a70a8-83cd-444f-a2eb-cb9a22c36840.jpg',
+  'https://i.postimg.cc/6QgQPXdq/991c795d-2d3f-452d-bc1a-bc3bc1b4026b.jpg',
+  'https://i.postimg.cc/wTgjZFsW/4455c21b-fd4b-4a15-9f0b-f0d9e34af72a.jpg',
+  'https://i.postimg.cc/NF4BQqrj/41838f71-294d-4078-bc6e-bf7c7205edfd.jpg',
+  'https://i.postimg.cc/dVDwcfQh/19534798-f975-40d3-8305-b69f0f187886.jpg',
+  'https://i.postimg.cc/6qYJDrDV/70055425-889f-4de6-8415-398accd60e93.jpg',
+  'https://i.postimg.cc/43VCJkDk/a2efbc27-e840-4904-aa81-95b54c772816.jpg',
+  'https://i.postimg.cc/Vv7p7YC9/ab622c4b-0586-4af5-9e65-94d9cdad6482.jpg',
+  'https://i.postimg.cc/QtmytX0r/b5717a98-a385-48b9-9125-57f0ec8248a8.jpg',
+  'https://i.postimg.cc/QxHy8Z5t/c2617d8a-e202-4c1c-a97d-f14073c68a4f.jpg',
+  'https://i.postimg.cc/qRJ1WP0S/cda33de8-21ee-47ff-968f-6d3de833460e.jpg',
+  'https://i.postimg.cc/FFnTnC68/de7824d8-e0a4-4784-aca1-1751561caa56.jpg',
+  'https://i.postimg.cc/tg55dBP5/eb315aa6-ff78-4340-87d9-3fb522ffd49b.jpg',
+  'https://i.postimg.cc/DfDccJWg/ec5f8356-2a4b-48a7-87a6-53659acac162.jpg',
+  'https://i.postimg.cc/CKmGnzTC/ef045535-5728-45d9-bd6d-1c7805cfd5e2.jpg',
+  'https://i.postimg.cc/gk8BXqMq/f38a9ece-f2b2-4858-9d19-ee6cd15018e3.jpg',
+  'https://i.postimg.cc/YSqXPctT/f750c8f8-dc1b-4b11-9c70-1dfb204f32e3.jpg'
+ ],
+ oldPrice:'₫3,500,000',
+ newPrice:'₫2,500,000',
+ info:'FULL nâng cấp – cực nhiều đồ 💎',
+ status:'Còn ✅',
+ fanpage:'https://www.facebook.com/thechi2k7dz'
 }
+
 ];
 
-const accList=document.getElementById('accList');
-const popup=document.getElementById('popup');
-const popupMain=document.getElementById('popup-main');
-const popupThumbs=document.getElementById('popup-thumbs');
-const popupInfo=document.getElementById('popupInfo');
-const buyBtn=document.getElementById('buyBtn');
 
-function priceToNumber(p){
- return parseInt(p.replace(/[^\d]/g,''));
-}
+/* ===== LOGIC 3 ACC / 1 TRANG ===== */
+const perPage = 3;
+let currentPage = 1;
+let filtered = accs;
+
+const accList = document.getElementById('accList');
+const pagination = document.getElementById('pagination');
+
+function priceNum(p){return parseInt(p.replace(/[^\d]/g,''));}
 
 function filterPrice(v){
- let list=accs;
- if(v!=='all'){
-  list=accs.filter(a=>{
-   const price=priceToNumber(a.newPrice);
-   if(v==='100-500') return price>=100000 && price<=500000;
-   if(v==='500-1000') return price>500000 && price<=1000000;
-   if(v==='1000-5000') return price>1000000 && price<=5000000;
-   if(v==='5000-10000') return price>5000000 && price<=10000000;
-   if(v==='10000+') return price>10000000;
+ if(v==='all'){filtered=accs}
+ else{
+  filtered=accs.filter(a=>{
+   const p=priceNum(a.newPrice);
+   if(v==='100-500') return p>=100000&&p<=500000;
+   if(v==='500-1000') return p>500000&&p<=1000000;
+   if(v==='1000-5000') return p>1000000&&p<=5000000;
+   if(v==='5000-10000') return p>5000000&&p<=10000000;
+   if(v==='10000+') return p>10000000;
   });
  }
- render(list);
+ currentPage=1;
+ render();
 }
 
-function render(list){
+function render(){
+ const start=(currentPage-1)*perPage;
  accList.innerHTML='';
- list.forEach((acc,i)=>{
+ filtered.slice(start,start+perPage).forEach((acc,i)=>{
+  const idx=accs.indexOf(acc);
   accList.innerHTML+=`
   <div class="acc">
    <div class="acc-img">
     <span class="badge-hot">HOT</span>
-    <img src="${acc.mainImg}" onclick="openPopup(${accs.indexOf(acc)})">
+    <img src="${acc.mainImg}" onclick="openPopup(${idx})">
    </div>
    <h3>${acc.name}</h3>
    <p><span class="old-price">${acc.oldPrice}</span>
    <span class="new-price">${acc.newPrice}</span></p>
    <p class="status ${acc.status.includes('Còn')?'con':'ban'}">${acc.status}</p>
    <p>${acc.info}</p>
-   <div class="btn" onclick="openPopup(${accs.indexOf(acc)})">XEM CHI TIẾT</div>
+   <div class="btn" onclick="openPopup(${idx})">XEM CHI TIẾT</div>
   </div>`;
  });
+ renderPag();
 }
 
+function renderPag(){
+ pagination.innerHTML='';
+ const pages=Math.ceil(filtered.length/perPage);
+ for(let i=1;i<=pages;i++){
+  pagination.innerHTML+=i===currentPage?`<span>${i}</span>`:`<a href="#" onclick="go(${i})">${i}</a>`;
+ }
+}
+function go(i){currentPage=i;render()}
+render();
+
+/* ===== POPUP LOGIC – DÁN NGAY DƯỚI render() ===== */
 function openPopup(i){
- const acc=accs[i];
- popup.style.display='block';
- popupMain.src=acc.mainImg;
- popupThumbs.innerHTML='';
- acc.thumbs.forEach((img,j)=>{
-  const im=document.createElement('img');
-  im.src=img;
-  if(j===0) im.classList.add('active');
-  im.onclick=()=>{
-   popupMain.src=img;
-   document.querySelectorAll('#popup-thumbs img').forEach(x=>x.classList.remove('active'));
+ const acc = accs[i];
+ const popup = document.getElementById('popup');
+ const main = document.getElementById('popup-main');
+ const thumbs = document.getElementById('popup-thumbs');
+ const info = document.getElementById('popupInfo');
+ const buy = document.getElementById('buyBtn');
+
+ main.src = acc.mainImg;
+ thumbs.innerHTML = '';
+
+ acc.thumbs.forEach((img,idx)=>{
+  const im = document.createElement('img');
+  im.src = img;
+  if(idx===0) im.classList.add('active');
+  im.onclick = ()=>{
+   main.src = img;
+   document.querySelectorAll('#popup-thumbs img')
+    .forEach(x=>x.classList.remove('active'));
    im.classList.add('active');
   };
-  popupThumbs.appendChild(im);
+  thumbs.appendChild(im);
  });
- popupInfo.innerHTML=`<b>${acc.name}</b><br>${acc.info}<br>${acc.oldPrice} → <b>${acc.newPrice}</b>`;
- buyBtn.href=acc.fanpage;
+
+ info.innerHTML = `
+  <b>${acc.name}</b><br>
+  ${acc.info}<br>
+  <span class="old-price">${acc.oldPrice}</span>
+  → <span class="new-price">${acc.newPrice}</span>
+ `;
+ buy.href = acc.fanpage;
+ popup.style.display='block';
 }
 
-document.getElementById('popup-close').onclick=()=>popup.style.display='none';
-render(accs);
+document.getElementById('popup-close').onclick = ()=>{
+ document.getElementById('popup').style.display='none';
+};
 </script>
 </body>
 </html>
