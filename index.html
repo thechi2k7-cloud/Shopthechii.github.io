@@ -387,35 +387,36 @@ const accs = [
 ];
 
 
-<script>
-/* PHÂN TRANG */
+
+/* ===== BIẾN PHÂN TRANG ===== */
 let filtered = [...accs];
 const perPage = 3;
 let currentPage = 1;
 
+const box = document.getElementById('accList');
+const pagi = document.getElementById('pagination');
+
+/* ===== LỌC GIÁ ===== */
 function filterPrice(val){
  filtered = val === 'all'
   ? [...accs]
   : accs.filter(a=>{
-      const p = a.newPrice;
-      return (
-        (val==='100-500' && p>=100 && p<=500) ||
-        (val==='500-1000' && p>=500 && p<=1000) ||
-        (val==='1000-5000' && p>=1000 && p<=5000) ||
-        (val==='5000-10000' && p>=5000 && p<=10000) ||
-        (val==='10000+' && p>10000)
-      );
+     const p = a.newPrice;
+     return (
+      (val==='100-500' && p>=100 && p<=500) ||
+      (val==='500-1000' && p>=500 && p<=1000) ||
+      (val==='1000-5000' && p>=1000 && p<=5000) ||
+      (val==='5000-10000' && p>=5000 && p<=10000) ||
+      (val==='10000+' && p>10000)
+     );
   });
  currentPage = 1;
  render();
 }
 
-const box = document.getElementById('accList');
-const pagi = document.getElementById('pagination');
-
-/* RENDER ACC */
+/* ===== RENDER ACC ===== */
 function render(){
- box.innerHTML = '';
+ box.innerHTML='';
  const start = (currentPage - 1) * perPage;
 
  filtered.slice(start, start + perPage).forEach((a)=>{
@@ -429,8 +430,8 @@ function render(){
     </div>
     <h3>${a.name}</h3>
     <p>
-      <span class="old-price">${a.oldPrice}</span> →
-      <span class="new-price">${a.newPrice}</span>
+      <span class="old-price">${a.oldPrice}k</span> →
+      <span class="new-price">${a.newPrice}k</span>
     </p>
     <p class="status ${a.status.includes('Còn') ? 'con' : 'ban'}">${a.status}</p>
     <div class="btn" onclick="openPopup(${realIndex})">XEM CHI TIẾT</div>
@@ -441,13 +442,13 @@ function render(){
  renderPage();
 }
 
-/* PHÂN TRANG */
+/* ===== PHÂN TRANG ===== */
 function renderPage(){
- pagi.innerHTML = '';
+ pagi.innerHTML='';
  const pages = Math.ceil(filtered.length / perPage);
  for(let i=1;i<=pages;i++){
   pagi.innerHTML +=
-   i === currentPage
+   i===currentPage
     ? `<span>${i}</span>`
     : `<a href="#" onclick="go(${i})">${i}</a>`;
  }
@@ -458,31 +459,32 @@ function go(i){
  render();
 }
 
-/* POPUP */
+/* ===== POPUP ===== */
 function openPopup(i){
  const acc = accs[i];
- document.getElementById('popup').style.display = 'block';
- document.getElementById('popupMain').src = acc.mainImg;
- const thumbs = document.getElementById('popupThumbs');
- thumbs.innerHTML = '';
+ document.getElementById('popup').style.display='block';
+ document.getElementById('popupMain').src=acc.mainImg;
+ const thumbs=document.getElementById('popupThumbs');
+ thumbs.innerHTML='';
  acc.thumbs.forEach(img=>{
-  thumbs.innerHTML += `
+  thumbs.innerHTML+=`
    <img src="${img}" onclick="document.getElementById('popupMain').src='${img}'">
   `;
  });
 }
 
 function closePopup(){
- document.getElementById('popup').style.display = 'none';
+ document.getElementById('popup').style.display='none';
 }
 
 /* LOAD LẦN ĐẦU */
 render();
 </script>
 
-<div id="popup">
+<!-- ===== POPUP ===== -->
+<div id="popup" style="display:none">
   <div id="popup-content">
-    <div id="popup-close" onclick="closePopup()">&times;</div>
+    <div id="popup-close" onclick="closePopup()">×</div>
     <img id="popupMain">
     <div id="popupThumbs"></div>
   </div>
