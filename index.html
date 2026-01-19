@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <title>Shop Thế Chíí – Acc Free Fire Uy Tín</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ICON -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial;background:#0b0f14;color:#fff}
@@ -20,18 +23,7 @@ a{text-decoration:none;color:inherit}
 section{max-width:1200px;margin:30px auto;padding:0 15px}
 h2{color:#00ffcc}
 
-/* filter */
-.filter-box{margin-bottom:20px}
-.filter-box select{
- padding:10px;
- background:#121821;
- color:#00ffcc;
- border:1px solid #00ffcc;
- border-radius:8px;
- font-weight:bold
-}
-
-/* acc list */
+/* list */
 .acc-list{
  display:grid;
  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -46,45 +38,36 @@ h2{color:#00ffcc}
  flex-direction:column
 }
 .acc-img{position:relative}
-.acc-img img{width:100%;border-radius:10px;cursor:pointer}
+.acc-img img{width:100%;border-radius:10px}
 
 /* HOT */
 .badge-hot{
  position:absolute;
  top:10px;left:10px;
  background:linear-gradient(45deg,#ff0000,#ff9900);
- color:#fff;
  padding:6px 12px;
+ border-radius:6px;
  font-size:12px;
  font-weight:bold;
- border-radius:6px;
  animation:hotJump 1.2s infinite;
 }
 @keyframes hotJump{
  0%{transform:scale(1)}
- 50%{transform:scale(1.25)}
+ 50%{transform:scale(1.2)}
  100%{transform:scale(1)}
 }
 
-.acc h3{color:#00ffcc;margin:10px 0}
+.acc h3{color:#00ffcc}
 .old-price{text-decoration:line-through;color:#aaa}
-.new-price{color:#00ff66;font-weight:bold;font-size:18px}
+.new-price{color:#00ff66;font-size:18px;font-weight:bold}
 
-/* status blink */
-.status{
- font-weight:bold;
- animation:blink 1.2s infinite
-}
+.status{font-weight:bold}
 .status.con{color:#00ff66}
 .status.ban{color:#ff4444}
-@keyframes blink{
- 0%,100%{opacity:1}
- 50%{opacity:.3}
-}
 
 .btn{
  margin-top:auto;
- height:46px;
+ height:44px;
  background:linear-gradient(45deg,#00ffcc,#00ff66);
  color:#000;
  border-radius:8px;
@@ -92,80 +75,49 @@ h2{color:#00ffcc}
  align-items:center;
  justify-content:center;
  font-weight:bold;
- cursor:pointer;
-}
-
-/* pagination */
-.pagination{text-align:center;margin-top:25px}
-.pagination a,.pagination span{
- display:inline-block;
- margin:0 5px;
- padding:8px 12px;
- background:#121821;
- color:#00ffcc;
- border-radius:6px;
- font-weight:bold
-}
-.pagination span{color:#888}
-
-/* popup */
-#popup{
- display:none;
- position:fixed;
- inset:0;
- background:rgba(0,0,0,.95);
- z-index:9999;
- overflow-y:auto
-}
-#popup-content{
- max-width:900px;
- margin:40px auto;
- background:#121821;
- padding:15px;
- border-radius:12px;
- position:relative
-}
-#popup-main{width:100%;border-radius:10px}
-#popup-thumbs{display:flex;gap:10px;overflow-x:auto;margin-top:10px}
-#popup-thumbs img{width:90px;border-radius:8px;cursor:pointer;border:2px solid transparent}
-#popup-thumbs img.active{border-color:#00ff66}
-#popupInfo{margin-top:12px;line-height:1.6}
-#buyBtn{
- display:block;
- margin:15px auto 0;
- background:#00ffcc;
- color:#000;
- padding:12px;
- width:220px;
- border-radius:8px;
- font-weight:bold;
- text-align:center
-}
-#popup-close{
- position:absolute;
- right:15px;top:10px;
- background:red;
- width:36px;height:36px;
- border-radius:50%;
- text-align:center;
- line-height:36px;
- font-size:20px;
  cursor:pointer
 }
 
-/* footer */
-.footer-content{background:#0f1520;padding:40px 15px}
-.footer-box{
- max-width:1200px;
- margin:auto;
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
- gap:20px
+/* ===== NÚT LIÊN HỆ NỔI ===== */
+.float-contact{
+ position:fixed;
+ right:18px;
+ bottom:20px;
+ display:flex;
+ flex-direction:column;
+ gap:14px;
+ z-index:999999;
 }
-.footer-item{background:#121821;padding:20px;border-radius:12px}
-.footer-item h3{color:#00ffcc}
-.footer-item p{color:#ccc;line-height:1.6}
-footer{background:#000;text-align:center;padding:20px;color:#aaa}
+.float-btn{
+ width:56px;height:56px;
+ border-radius:50%;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ color:#fff;
+ font-size:26px;
+ box-shadow:0 0 20px rgba(0,0,0,.7);
+ animation:pulse 1.5s infinite;
+}
+.float-btn.zalo{
+ background:linear-gradient(45deg,#00ffcc,#00ccff);
+}
+.float-btn.fb{
+ background:linear-gradient(45deg,#1877f2,#0a58ca);
+}
+@keyframes pulse{
+ 0%{transform:scale(1)}
+ 50%{transform:scale(1.15)}
+ 100%{transform:scale(1)}
+}
+
+/* footer */
+footer{
+ background:#000;
+ text-align:center;
+ padding:20px;
+ color:#aaa
+}
 </style>
 </head>
 
@@ -176,80 +128,22 @@ footer{background:#000;text-align:center;padding:20px;color:#aaa}
 <section>
 <h2>🔥 Acc Free Fire</h2>
 
-<div class="filter-box">
-<select onchange="filterPrice(this.value)">
-<option value="all">💰 Tất cả giá</option>
-<option value="100-500">100k – 500k</option>
-<option value="500-1000">500k – 1tr</option>
-<option value="1000-5000">1tr – 5tr</option>
-<option value="5000-10000">5tr – 10tr</option>
-<option value="10000+">Trên 10tr</option>
-</select>
-</div>
-
 <div class="acc-list" id="accList"></div>
-<div class="pagination" id="pagination"></div>
+<div id="pagination" class="pagination"></div>
+
 </section>
 
-<!-- FOOTER -->
-<div class="footer-content">
-  <div class="footer-box">
-
-    <div class="footer-item">
-      <h3>📌 Giới thiệu</h3>
-      <p>
-        Shop Thế Chíí chuyên mua bán acc Free Fire uy tín<br>
-        ✔ Xem acc trước khi mua<br>
-        ✔ Bảo kê – hỗ trợ đổi thông tin
-      </p>
-    </div>
-
-    <div class="footer-item">
-      <h3>🛡 Cam kết</h3>
-      <p>
-        ✔ Acc đúng mô tả<br>
-        ✔ Góp log 7–14 ngày<br>
-        ✔ Có vấn đề hoàn tiền hoặc qua acc khác
-      </p>
-    </div>
-
-    <div class="footer-item">
-      <h3>💳 Thanh toán</h3>
-      <p>
-        Techcombank<br>
-        STK: 21200766668888<br>
-        Mai Thế Chí
-      </p>
-    </div>
-
-    <div class="footer-item">
-      <h3>📞 Liên hệ</h3>
-      <p>
-        Zalo: 0325 988 875<br>
-        Facebook: thechi2k7dz
-      </p>
-
-      <a href="https://zalo.me/0325988875" class="contact-btn" target="_blank">
-        💬 LIÊN HỆ NGAY
-      </a>
-    </div>
-
-  </div>
-</div>
-
-
-
 <footer>© 2026 Shop Thế Chíí</footer>
-
-<!-- POPUP -->
-<div id="popup">
-<div id="popup-content">
-<div id="popup-close">&times;</div>
-<img id="popup-main">
-<div id="popup-thumbs"></div>
-<div id="popupInfo"></div>
-<a id="buyBtn" target="_blank">Mua Ngay</a>
 </div>
+
+<!-- NÚT LIÊN HỆ NỔI -->
+<div class="float-contact">
+  <a href="https://zalo.me/0325988875" target="_blank" class="float-btn zalo">
+    <i class="fa-solid fa-comment"></i>
+  </a>
+  <a href="https://www.facebook.com/thechi2k7dz" target="_blank" class="float-btn fb">
+    <i class="fa-brands fa-facebook-f"></i>
+  </a>
 </div>
 
 <script>
@@ -409,102 +303,52 @@ const accs = [
 ];
 
 
-/* ===== LOGIC 3 ACC / 1 TRANG ===== */
+/* ===== PHÂN TRANG ===== */
 const perPage = 3;
 let currentPage = 1;
-let filtered = accs;
 
-const accList = document.getElementById('accList');
-const pagination = document.getElementById('pagination');
-
-function priceNum(p){return parseInt(p.replace(/[^\d]/g,''));}
-
-function filterPrice(v){
- if(v==='all'){filtered=accs}
- else{
-  filtered=accs.filter(a=>{
-   const p=priceNum(a.newPrice);
-   if(v==='100-500') return p>=100000&&p<=500000;
-   if(v==='500-1000') return p>500000&&p<=1000000;
-   if(v==='1000-5000') return p>1000000&&p<=5000000;
-   if(v==='5000-10000') return p>5000000&&p<=10000000;
-   if(v==='10000+') return p>10000000;
-  });
- }
- currentPage=1;
- render();
-}
+const box = document.getElementById('accList');
+const pagi = document.getElementById('pagination');
 
 function render(){
- const start=(currentPage-1)*perPage;
- accList.innerHTML='';
- filtered.slice(start,start+perPage).forEach((acc,i)=>{
-  const idx=accs.indexOf(acc);
-  accList.innerHTML+=`
+ box.innerHTML='';
+ const start = (currentPage-1)*perPage;
+ accs.slice(start,start+perPage).forEach(a=>{
+  box.innerHTML+=`
   <div class="acc">
    <div class="acc-img">
     <span class="badge-hot">HOT</span>
-    <img src="${acc.mainImg}" onclick="openPopup(${idx})">
+    <img src="${a.mainImg}">
    </div>
-   <h3>${acc.name}</h3>
-   <p><span class="old-price">${acc.oldPrice}</span>
-   <span class="new-price">${acc.newPrice}</span></p>
-   <p class="status ${acc.status.includes('Còn')?'con':'ban'}">${acc.status}</p>
-   <p>${acc.info}</p>
-   <div class="btn" onclick="openPopup(${idx})">XEM CHI TIẾT</div>
+   <h3>${a.name}</h3>
+   <p>
+     <span class="old-price">${a.oldPrice}</span>
+     →
+     <span class="new-price">${a.newPrice}</span>
+   </p>
+   <p class="status ${a.status.includes('Còn')?'con':'ban'}">${a.status}</p>
+   <div class="btn">XEM CHI TIẾT</div>
   </div>`;
- });
- renderPag();
+});
+
+ renderPage();
 }
 
-function renderPag(){
- pagination.innerHTML='';
- const pages=Math.ceil(filtered.length/perPage);
+function renderPage(){
+ pagi.innerHTML='';
+ const pages = Math.ceil(accs.length/perPage);
  for(let i=1;i<=pages;i++){
-  pagination.innerHTML+=i===currentPage?`<span>${i}</span>`:`<a href="#" onclick="go(${i})">${i}</a>`;
+  pagi.innerHTML+=
+   i===currentPage
+   ? `<span>${i}</span>`
+   : `<a href="#" onclick="go(${i})">${i}</a>`;
  }
 }
-function go(i){currentPage=i;render()}
-render();
 
-/* ===== POPUP LOGIC – DÁN NGAY DƯỚI render() ===== */
-function openPopup(i){
- const acc = accs[i];
- const popup = document.getElementById('popup');
- const main = document.getElementById('popup-main');
- const thumbs = document.getElementById('popup-thumbs');
- const info = document.getElementById('popupInfo');
- const buy = document.getElementById('buyBtn');
-
- main.src = acc.mainImg;
- thumbs.innerHTML = '';
-
- acc.thumbs.forEach((img,idx)=>{
-  const im = document.createElement('img');
-  im.src = img;
-  if(idx===0) im.classList.add('active');
-  im.onclick = ()=>{
-   main.src = img;
-   document.querySelectorAll('#popup-thumbs img')
-    .forEach(x=>x.classList.remove('active'));
-   im.classList.add('active');
-  };
-  thumbs.appendChild(im);
- });
-
- info.innerHTML = `
-  <b>${acc.name}</b><br>
-  ${acc.info}<br>
-  <span class="old-price">${acc.oldPrice}</span>
-  → <span class="new-price">${acc.newPrice}</span>
- `;
- buy.href = acc.fanpage;
- popup.style.display='block';
+function go(i){
+ currentPage=i;
+ render();
 }
 
-document.getElementById('popup-close').onclick = ()=>{
- document.getElementById('popup').style.display='none';
-};
+render();
 </script>
-</body>
-</html>
