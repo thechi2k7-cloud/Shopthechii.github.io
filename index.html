@@ -186,6 +186,10 @@ footer{background:#000;text-align:center;padding:15px;color:#aaa}
 </div>
 
 <script>
+/* ===== FORMAT GIÁ ===== */
+function formatPrice(k){
+ return (k * 1000).toLocaleString('vi-VN') + 'đ';
+}
 const accs = [
 
 /* ===== ACC 1 ===== */
