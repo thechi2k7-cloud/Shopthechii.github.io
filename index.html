@@ -128,18 +128,70 @@ footer{
  animation:pulse 1.5s infinite
 }
 .float-btn.zalo{background:#00c853}
-.float-btn.fb{background:#1877f2}
-@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.15)}100%{transform:scale(1)}}
+.float-btn.fb{background:#1877f2}@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.7; }
+}
 
 /* POPUP */
-#popup{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:999999;overflow:auto}
-#popup-content{max-width:900px;margin:40px auto;background:#121821;padding:15px;border-radius:12px;position:relative}
-#popupMain{width:100%;border-radius:10px}
-#popupThumbs{display:flex;gap:10px;overflow-x:auto;margin-top:10px}
-#popupThumbs img{width:90px;border-radius:8px;cursor:pointer;opacity:.7}
-#popupThumbs img:hover{opacity:1}
-#popup-close{position:absolute;top:8px;right:14px;font-size:30px;color:#ff4444;cursor:pointer}
-</style>
+#popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 999999;
+  overflow: auto;
+}
+
+#popup-content {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #121821;
+  padding: 20px;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.5); /* Thêm bóng đổ nhẹ cho đẹp mắt */
+}
+
+#popupMain {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+#popupThumbs {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  margin-top: 10px;
+}
+
+#popupThumbs img {
+  width: 90px;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+#popupThumbs img:hover {
+  opacity: 1;
+}
+
+#popup-close {
+  position: absolute;
+  top: 8px;
+  right: 14px;
+  font-size: 30px;
+  color: #ff4444;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+#popup-close:hover {
+  color: #fff; /* Khi hover vào nút close sẽ đổi màu thành trắng */
+}
 </head>
 
 <body>
@@ -166,10 +218,10 @@ footer{
 <div class="footer-content">
  <div class="footer-box">
   <div class="footer-item"><h3>📌 Giới thiệu</h3><p>Shop Thế Chíí chuyên mua bán acc Free Fire uy tín<br>✔ Xem acc trước khi mua<br>✔ Bảo kê – hỗ trợ đổi thông tin</p></div>
-  <div class="footer-item"><h3>🛡 Cam kết</h3><p>✔ Acc đúng mô tả<br>✔ Góp log 7–14 ngày<br>✔ Hoàn tiền nếu lỗi</p></div>
+  <div class="footer-item"><h3>🛡 Cam kết</h3><p>✔ Acc đúng mô tả<br>✔ Góp log 7–14 ngày<br>✔ Hoàn tiền nếu lỗi hoặc đổi sang acc khác bằng giá trị</p></div>
   <div class="footer-item"><h3>💳 Thanh toán</h3><p>Techcombank<br>STK: 21200766668888<br>Mai The Chi</p></div>
   <div class="footer-item"><h3>📞 Liên hệ</h3><p>Zalo: 0325 988 875<br>Facebook: thechi2k7dz</p></div>
- </div>
+ </div> 
 </div>
 <footer>© 2026 Shop Thế Chíí</footer>
 
@@ -360,16 +412,16 @@ function render(){
  const start=(currentPage-1)*perPage;
  filtered.slice(start,start+perPage).forEach((a,i)=>{
   box.innerHTML+=`
-  <div class="acc">
-   <div class="acc-img">
-    <span class="badge-hot">HOT</span>
-    <img src="${a.mainImg}" onclick="openPopup(${start+i})">
-   </div>
-   <h3>${a.name}</h3>
-   <p><span class="old-price">${a.oldPrice}k</span> → <span class="new-price">${a.newPrice}k</span></p>
-   <p class="status ${a.status.includes('Còn')?'con':'ban'}">${a.status}</p>
-   <div class="btn" onclick="openPopup(${start+i})">XEM CHI TIẾT</div>
-  </div>`;
+<div class="acc">
+  <div class="acc-img">
+    <span class="badge-hot">HOT</span> <!-- Nhấp nháy cho HOT -->
+    <img src="${a.mainImg}">
+  </div>
+  <h3>${a.name}</h3>
+  <p><span class="old-price">${a.oldPrice}</span> → <span class="new-price">${a.newPrice}</span></p>
+  <p class="status ${a.status.includes('Còn') ? 'con' : 'ban'}">${a.status}</p> <!-- Nhấp nháy cho Còn và Đã bán -->
+  <div class="btn">XEM CHI TIẾT</div> <!-- Nhấp nháy cho nút Xem chi tiết -->
+</div>`;
  });
  renderPage();
 }
