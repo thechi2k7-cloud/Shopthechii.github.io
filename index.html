@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <title>Shop Thế Chíí – Acc Free Fire Uy Tín</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial;background:#0b0f14;color:#fff}
@@ -47,24 +49,26 @@ a{text-decoration:none;color:inherit}
 .acc-img{position:relative}
 .acc-img img{width:100%;border-radius:10px;cursor:pointer}
 
-/* HOT + SOLD */
+/* ===== BADGE ===== */
 .badge-hot{
  position:absolute;top:10px;left:10px;
  background:linear-gradient(45deg,#ff0000,#ff9900);
  padding:6px 12px;border-radius:6px;
  font-size:12px;font-weight:bold;
- animation:hot 1.2s infinite;
+ animation:blink 1.2s infinite;
 }
 .badge-sold{
  position:absolute;top:10px;right:10px;
  background:#ff4444;
  padding:6px 12px;border-radius:6px;
  font-size:12px;font-weight:bold;
+ animation:blink 1.2s infinite;
 }
-@keyframes hot{
- 0%{transform:scale(1)}
- 50%{transform:scale(1.2)}
- 100%{transform:scale(1)}
+
+@keyframes blink{
+ 0%{transform:scale(1);opacity:1}
+ 50%{transform:scale(1.15);opacity:.7}
+ 100%{transform:scale(1);opacity:1}
 }
 
 /* PRICE */
@@ -72,18 +76,12 @@ a{text-decoration:none;color:inherit}
 .new-price{color:#00ff66;font-weight:bold}
 
 /* STATUS */
-.status.con{color:#00ff66;font-weight:bold; animation:glow 1.5s infinite;}
-.status.ban{color:#ff4444;font-weight:bold; animation:glowSold 1.5s infinite;}
-
-@keyframes glow {
- 0% { text-shadow: 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 30px #00ff66; }
- 100% { text-shadow: 0 0 10px #00ff66; }
+.status{
+ font-weight:bold;
+ animation:blink 1.3s infinite;
 }
-
-@keyframes glowSold {
- 0% { text-shadow: 0 0 10px #ff4444, 0 0 20px #ff4444, 0 0 30px #ff4444; }
- 100% { text-shadow: 0 0 10px #ff4444; }
-}
+.status.con{color:#00ff66}
+.status.ban{color:#ff4444}
 
 /* BUTTON */
 .btn{
@@ -92,12 +90,7 @@ a{text-decoration:none;color:inherit}
  color:#000;border-radius:8px;
  display:flex;align-items:center;justify-content:center;
  font-weight:bold;cursor:pointer;
- animation:shine 1.5s infinite;
-}
-@keyframes shine{
- 0%{box-shadow:0 0 5px #00ffcc}
- 50%{box-shadow:0 0 20px #00ff66}
- 100%{box-shadow:0 0 5px #00ffcc}
+ animation:blink 1.4s infinite;
 }
 
 /* PAGINATION */
@@ -109,13 +102,14 @@ a{text-decoration:none;color:inherit}
 }
 .pagination span{background:#00ffcc;color:#000}
 
-/* FOOTER */
+/* ===== FOOTER ===== */
 footer{
  background:#000;
- padding:25px;
+ padding:30px;
  text-align:center;
  color:#aaa;
 }
+footer b{color:#00ffcc}
 
 /* ===== POPUP ===== */
 #popup{
@@ -141,9 +135,10 @@ footer{
  display:flex;flex-direction:column;gap:12px;z-index:999
 }
 .float-btns a{
- width:50px;height:50px;border-radius:50%;
+ width:52px;height:52px;border-radius:50%;
  display:flex;align-items:center;justify-content:center;
- font-size:24px;color:#fff
+ font-size:24px;color:#fff;
+ animation:blink 1.4s infinite;
 }
 .zalo{background:#0068ff}
 .fb{background:#1877f2}
@@ -171,14 +166,25 @@ footer{
 </section>
 
 <footer>
- <p>© 2026 Shop Thế Chíí</p>
- <p>Uy tín – Nhanh gọn – Hỗ trợ 24/7</p>
+ <p><b>Shop Thế Chíí</b> – Acc Free Fire Uy Tín</p>
+ <p>✅ Giao dịch nhanh – Không trung gian</p>
+ <p>📞 Zalo: <b>0325988875</b></p>
+ <p>© 2026 – All rights reserved</p>
 </footer>
 
-<!-- ===== FLOAT CONTACT ===== -->
+<!-- FLOAT CONTACT -->
 <div class="float-btns">
  <a class="zalo" href="https://zalo.me/0325988875" target="_blank"><i class="fa-solid fa-comment"></i></a>
  <a class="fb" href="https://www.facebook.com/thechi2k7dz" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+</div>
+
+<!-- POPUP -->
+<div id="popup">
+ <div id="popup-content">
+  <div id="popup-close" onclick="closePopup()">×</div>
+  <img id="popupMain">
+  <div id="popupThumbs"></div>
+ </div>
 </div>
 
 <script>
@@ -347,7 +353,13 @@ const pagi=document.getElementById('pagination');
 function filterPrice(val){
  filtered = val==='all' ? [...accs] : accs.filter(a=>{
   const p=a.newPrice;
-  return (val==='5000-10000' && p>=5000 && p<=10000);
+  return (
+   (val==='100-500' && p>=100 && p<=500) ||
+   (val==='500-1000' && p>=500 && p<=1000) ||
+   (val==='1000-5000' && p>=1000 && p<=5000) ||
+   (val==='5000-10000' && p>=5000 && p<=10000) ||
+   (val==='10000+' && p>10000)
+  );
  });
  currentPage=1;render();
 }
@@ -355,16 +367,22 @@ function filterPrice(val){
 function render(){
  box.innerHTML='';
  const start=(currentPage-1)*perPage;
+
  filtered.slice(start,start+perPage).forEach(a=>{
+  const sold = a.status.includes('Đã');
   box.innerHTML+=`
   <div class="acc">
    <div class="acc-img">
     <span class="badge-hot">HOT</span>
+    ${sold?'<span class="badge-sold">ĐÃ BÁN</span>':''}
     <img src="${a.mainImg}" onclick="openPopup(${accs.indexOf(a)})">
    </div>
    <h3>${a.name}</h3>
-   <p><span class="old-price">${a.oldPrice}k</span> → <span class="new-price">${a.newPrice}k</span></p>
-   <p class="status ${a.status.includes('Còn')?'con':'ban'}">${a.status}</p>
+   <p>
+    <span class="old-price">${formatPrice(a.oldPrice)}</span> →
+    <span class="new-price">${formatPrice(a.newPrice)}</span>
+   </p>
+   <p class="status ${sold?'ban':'con'}">${a.status}</p>
    <div class="btn" onclick="openPopup(${accs.indexOf(a)})">XEM CHI TIẾT</div>
   </div>`;
  });
@@ -375,10 +393,11 @@ function renderPage(){
  pagi.innerHTML='';
  const pages=Math.ceil(filtered.length/perPage);
  for(let i=1;i<=pages;i++){
-  pagi.innerHTML+= i===currentPage ? `<span>${i}</span>` : `<a href="#" onclick="go(${i})">${i}</a>`;
+  pagi.innerHTML+= i===currentPage
+   ? `<span>${i}</span>`
+   : `<a href="#" onclick="go(${i})">${i}</a>`;
  }
 }
-
 function go(i){currentPage=i;render();}
 
 function openPopup(i){
