@@ -5,14 +5,12 @@
 <title>Shop Thế Chíí – Acc Free Fire Uy Tín</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- ICON -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial;background:#0b0f14;color:#fff}
 a{text-decoration:none;color:inherit}
-.page{min-height:100vh;padding-bottom:260px}
 
 /* banner */
 .banner{
@@ -23,7 +21,7 @@ a{text-decoration:none;color:inherit}
 section{max-width:1200px;margin:30px auto;padding:0 15px}
 h2{color:#00ffcc}
 
-/* list */
+/* ACC LIST */
 .acc-list{
  display:grid;
  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -57,13 +55,10 @@ h2{color:#00ffcc}
  100%{transform:scale(1)}
 }
 
-.acc h3{color:#00ffcc}
 .old-price{text-decoration:line-through;color:#aaa}
-.new-price{color:#00ff66;font-size:18px;font-weight:bold}
-
-.status{font-weight:bold}
-.status.con{color:#00ff66}
-.status.ban{color:#ff4444}
+.new-price{color:#00ff66;font-weight:bold}
+.status.con{color:#00ff66;font-weight:bold}
+.status.ban{color:#ff4444;font-weight:bold}
 
 .btn{
  margin-top:auto;
@@ -78,7 +73,53 @@ h2{color:#00ffcc}
  cursor:pointer
 }
 
-/* ===== NÚT LIÊN HỆ NỔI ===== */
+/* PAGINATION */
+.pagination{
+ text-align:center;
+ margin:30px 0
+}
+.pagination a,.pagination span{
+ display:inline-block;
+ margin:0 6px;
+ padding:8px 14px;
+ background:#121821;
+ color:#00ffcc;
+ border-radius:6px;
+ font-weight:bold
+}
+.pagination span{
+ background:#00ffcc;
+ color:#000
+}
+
+/* FOOTER */
+.footer-content{
+ background:#0f1520;
+ padding:40px 15px
+}
+.footer-box{
+ max-width:1200px;
+ margin:auto;
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+ gap:20px
+}
+.footer-item{
+ background:#121821;
+ padding:20px;
+ border-radius:12px
+}
+.footer-item h3{color:#00ffcc}
+.footer-item p{color:#ccc;line-height:1.6}
+
+footer{
+ background:#000;
+ text-align:center;
+ padding:15px;
+ color:#aaa
+}
+
+/* FLOAT CONTACT */
 .float-contact{
  position:fixed;
  right:18px;
@@ -86,7 +127,7 @@ h2{color:#00ffcc}
  display:flex;
  flex-direction:column;
  gap:14px;
- z-index:999999;
+ z-index:99999
 }
 .float-btn{
  width:56px;height:56px;
@@ -97,53 +138,80 @@ h2{color:#00ffcc}
  color:#fff;
  font-size:26px;
  box-shadow:0 0 20px rgba(0,0,0,.7);
- animation:pulse 1.5s infinite;
+ animation:pulse 1.5s infinite
 }
-.float-btn.zalo{
- background:linear-gradient(45deg,#00ffcc,#00ccff);
-}
-.float-btn.fb{
- background:linear-gradient(45deg,#1877f2,#0a58ca);
-}
+.float-btn.zalo{background:#00c853}
+.float-btn.fb{background:#1877f2}
 @keyframes pulse{
  0%{transform:scale(1)}
  50%{transform:scale(1.15)}
  100%{transform:scale(1)}
 }
-
-/* footer */
-footer{
- background:#000;
- text-align:center;
- padding:20px;
- color:#aaa
-}
 </style>
 </head>
 
 <body>
-<div class="page">
+
 <header class="banner"></header>
 
 <section>
 <h2>🔥 Acc Free Fire</h2>
-
 <div class="acc-list" id="accList"></div>
-<div id="pagination" class="pagination"></div>
-
+<div class="pagination" id="pagination"></div>
 </section>
 
-<footer>© 2026 Shop Thế Chíí</footer>
+<!-- FOOTER -->
+<div class="footer-content">
+ <div class="footer-box">
+
+  <div class="footer-item">
+   <h3>📌 Giới thiệu</h3>
+   <p>
+    Shop Thế Chíí chuyên mua bán acc Free Fire uy tín<br>
+    ✔ Xem acc trước khi mua<br>
+    ✔ Bảo kê – hỗ trợ đổi thông tin
+   </p>
+  </div>
+
+  <div class="footer-item">
+   <h3>🛡 Cam kết</h3>
+   <p>
+    ✔ Acc đúng mô tả<br>
+    ✔ Góp log 7–14 ngày<br>
+    ✔ Có vấn đề hoàn tiền
+   </p>
+  </div>
+
+  <div class="footer-item">
+   <h3>💳 Thanh toán</h3>
+   <p>
+    Techcombank<br>
+    STK: 21200766668888<br>
+    Mai Thế Chí
+   </p>
+  </div>
+
+  <div class="footer-item">
+   <h3>📞 Liên hệ</h3>
+   <p>
+    Zalo: 0325 988 875<br>
+    Facebook: thechi2k7dz
+   </p>
+  </div>
+
+ </div>
 </div>
 
-<!-- NÚT LIÊN HỆ NỔI -->
+<footer>© 2026 Shop Thế Chíí</footer>
+
+<!-- FLOAT CONTACT -->
 <div class="float-contact">
-  <a href="https://zalo.me/0325988875" target="_blank" class="float-btn zalo">
-    <i class="fa-solid fa-comment"></i>
-  </a>
-  <a href="https://www.facebook.com/thechi2k7dz" target="_blank" class="float-btn fb">
-    <i class="fa-brands fa-facebook-f"></i>
-  </a>
+ <a href="https://zalo.me/0325988875" target="_blank" class="float-btn zalo">
+  <i class="fa-solid fa-comment"></i>
+ </a>
+ <a href="https://www.facebook.com/thechi2k7dz" target="_blank" class="float-btn fb">
+  <i class="fa-brands fa-facebook-f"></i>
+ </a>
 </div>
 
 <script>
@@ -303,16 +371,16 @@ const accs = [
 ];
 
 
-/* ===== PHÂN TRANG ===== */
+
+/* PHÂN TRANG */
 const perPage = 3;
 let currentPage = 1;
-
 const box = document.getElementById('accList');
 const pagi = document.getElementById('pagination');
 
 function render(){
  box.innerHTML='';
- const start = (currentPage-1)*perPage;
+ const start=(currentPage-1)*perPage;
  accs.slice(start,start+perPage).forEach(a=>{
   box.innerHTML+=`
   <div class="acc">
@@ -321,34 +389,26 @@ function render(){
     <img src="${a.mainImg}">
    </div>
    <h3>${a.name}</h3>
-   <p>
-     <span class="old-price">${a.oldPrice}</span>
-     →
-     <span class="new-price">${a.newPrice}</span>
-   </p>
+   <p><span class="old-price">${a.oldPrice}</span> → <span class="new-price">${a.newPrice}</span></p>
    <p class="status ${a.status.includes('Còn')?'con':'ban'}">${a.status}</p>
    <div class="btn">XEM CHI TIẾT</div>
   </div>`;
-});
-
+ });
  renderPage();
 }
 
 function renderPage(){
  pagi.innerHTML='';
- const pages = Math.ceil(accs.length/perPage);
+ const pages=Math.ceil(accs.length/perPage);
  for(let i=1;i<=pages;i++){
-  pagi.innerHTML+=
-   i===currentPage
+  pagi.innerHTML+=i===currentPage
    ? `<span>${i}</span>`
    : `<a href="#" onclick="go(${i})">${i}</a>`;
  }
 }
-
-function go(i){
- currentPage=i;
- render();
-}
-
+function go(i){currentPage=i;render()}
 render();
 </script>
+
+</body>
+</html>
