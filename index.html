@@ -4,231 +4,196 @@
 <meta charset="UTF-8">
 <title>Shop Thế Chíí – Acc Free Fire Uy Tín</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-* {box-sizing: border-box}
-body {
-  margin: 0;
-  font-family: Arial;
-  background: #0b0f14;
-  color: #fff;
-}
-a {
-  text-decoration: none;
-  color: inherit;
-}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#0b0f14;color:#fff}
+a{text-decoration:none;color:inherit}
 
 /* ===== BANNER ===== */
-.banner {
-  height: 260px;
-  background: url('https://i.postimg.cc/bJr5hzsY/ff31cd69-f0cf-4c13-ad3a-dd6ae8bef797.jpg') center/cover no-repeat;
+.banner{
+ height:260px;
+ background:url('https://i.postimg.cc/bJr5hzsY/ff31cd69-f0cf-4c13-ad3a-dd6ae8bef797.jpg') center/cover no-repeat
 }
 
 /* ===== FILTER ===== */
-.filter-box {
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 0 15px;
-}
-.filter-box select {
-  padding: 10px;
-  background: #121821;
-  color: #00ffcc;
-  border: 1px solid #00ffcc;
-  border-radius: 8px;
-  font-weight: bold;
+.filter-box{max-width:1200px;margin:20px auto;padding:0 15px}
+.filter-box select{
+ padding:10px;
+ background:#121821;
+ color:#00ffcc;
+ border:1px solid #00ffcc;
+ border-radius:8px;
+ font-weight:bold
 }
 
 /* ===== ACC LIST ===== */
-.acc-list {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 15px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+.acc-list{
+ max-width:1200px;
+ margin:auto;
+ padding:0 15px;
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+ gap:20px
 }
-.acc {
-  background: #121821;
-  border-radius: 15px;
-  padding: 15px;
-  box-shadow: 0 0 15px rgba(0,255,204,.25);
-  display: flex;
-  flex-direction: column;
+.acc{
+ background:#121821;
+ border-radius:15px;
+ padding:15px;
+ box-shadow:0 0 15px rgba(0,255,204,.25);
+ display:flex;
+ flex-direction:column
 }
-.acc-img {
-  position: relative;
+.acc-img{position:relative}
+.acc-img img{width:100%;border-radius:10px;cursor:pointer}
+
+/* ===== HOT ===== */
+.badge-hot{
+ position:absolute;top:10px;left:10px;
+ background:linear-gradient(45deg,#ff0000,#ff9900);
+ padding:6px 12px;border-radius:6px;
+ font-size:12px;font-weight:bold;
+ animation:hot 1.3s infinite
 }
-.acc-img img {
-  width: 100%;
-  border-radius: 10px;
-  cursor: pointer;
+@keyframes hot{
+ 0%{transform:scale(1)}
+ 50%{transform:scale(1.15)}
+ 100%{transform:scale(1)}
 }
 
-/* HOT + SOLD */
-.badge-hot {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: linear-gradient(45deg, #ff0000, #ff9900);
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: bold;
-  animation: hot 1.2s infinite;
+/* ===== PRICE ===== */
+.old-price{text-decoration:line-through;color:#aaa}
+.new-price{color:#00ff66;font-weight:bold}
+
+/* ===== STATUS LẤP LÁNH NHẸ ===== */
+.status{
+ font-weight:bold;
+ display:inline-block;
+ padding:4px 8px;
+ border-radius:6px;
+ margin-bottom:6px
 }
-.badge-sold {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #ff4444;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: bold;
+.status.con{
+ color:#00ff66;
+ animation:glowGreen 2.2s infinite
 }
-@keyframes hot {
-  0% {transform: scale(1)}
-  50% {transform: scale(1.2)}
-  100% {transform: scale(1)}
+.status.ban{
+ color:#ff4444;
+ animation:glowRed 2.2s infinite
+}
+@keyframes glowGreen{
+ 0%{text-shadow:0 0 2px #00ff66}
+ 50%{text-shadow:0 0 8px #00ff66}
+ 100%{text-shadow:0 0 2px #00ff66}
+}
+@keyframes glowRed{
+ 0%{text-shadow:0 0 2px #ff4444}
+ 50%{text-shadow:0 0 8px #ff4444}
+ 100%{text-shadow:0 0 2px #ff4444}
 }
 
-/* PRICE */
-.old-price {
-  text-decoration: line-through;
-  color: #aaa;
+/* ===== BUTTON ===== */
+.btn{
+ margin-top:auto;
+ height:44px;
+ background:linear-gradient(45deg,#00ffcc,#00ff66);
+ color:#000;
+ border-radius:8px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-weight:bold;
+ cursor:pointer;
+ animation:btnGlow 2.5s infinite
 }
-.new-price {
-  color: #00ff66;
-  font-weight: bold;
-}
-
-/* STATUS */
-.status.con {
-  color: #00ff66;
-  font-weight: bold;
-  animation: shine 1.5s infinite;
-}
-.status.ban {
-  color: #ff4444;
-  font-weight: bold;
-}
-
-@keyframes shine {
-  0% {box-shadow: 0 0 5px #00ffcc}
-  50% {box-shadow: 0 0 20px #00ff66}
-  100% {box-shadow: 0 0 5px #00ffcc}
+@keyframes btnGlow{
+ 0%{box-shadow:0 0 4px #00ffcc}
+ 50%{box-shadow:0 0 12px #00ff66}
+ 100%{box-shadow:0 0 4px #00ffcc}
 }
 
-/* BUTTON */
-.btn {
-  margin-top: auto;
-  height: 44px;
-  background: linear-gradient(45deg, #00ffcc, #00ff66);
-  color: #000;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  cursor: pointer;
-  animation: shine 1.5s infinite;
+/* ===== PAGINATION ===== */
+.pagination{text-align:center;margin:25px 0}
+.pagination a,.pagination span{
+ display:inline-block;
+ margin:0 6px;
+ padding:8px 14px;
+ background:#121821;
+ color:#00ffcc;
+ border-radius:6px;
+ font-weight:bold
 }
+.pagination span{background:#00ffcc;color:#000}
 
-/* PAGINATION */
-.pagination {
-  text-align: center;
-  margin: 25px 0;
-}
-.pagination a, .pagination span {
-  display: inline-block;
-  margin: 0 6px;
-  padding: 8px 14px;
-  background: #121821;
-  color: #00ffcc;
-  border-radius: 6px;
-  font-weight: bold;
-}
-.pagination span {
-  background: #00ffcc;
-  color: #000;
-}
-
-/* FOOTER */
-footer {
-  background: #000;
-  padding: 25px;
-  text-align: center;
-  color: #aaa;
+/* ===== FOOTER ===== */
+footer{
+ background:#000;
+ padding:25px;
+ text-align:center;
+ color:#aaa
 }
 
 /* ===== POPUP ===== */
-#popup {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.9);
-  z-index: 9999;
+#popup{
+ display:none;
+ position:fixed;
+ inset:0;
+ background:rgba(0,0,0,.9);
+ z-index:9999
 }
-#popup-content {
-  max-width: 900px;
-  margin: 40px auto;
-  background: #121821;
-  padding: 20px;
-  border-radius: 12px;
-  position: relative;
+#popup-content{
+ max-width:900px;
+ margin:40px auto;
+ background:#121821;
+ padding:20px;
+ border-radius:12px;
+ position:relative
 }
-#popupMain {
-  width: 100%;
-  border-radius: 10px;
+#popupMain{width:100%;border-radius:10px}
+#popupThumbs{
+ display:flex;
+ gap:10px;
+ overflow-x:auto;
+ margin-top:10px
 }
-#popupThumbs {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  margin-top: 10px;
+#popupThumbs img{
+ width:90px;
+ border-radius:8px;
+ cursor:pointer
 }
-#popupThumbs img {
-  width: 90px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-#popup-close {
-  position: absolute;
-  top: 8px;
-  right: 14px;
-  font-size: 30px;
-  color: #ff4444;
-  cursor: pointer;
+#popup-close{
+ position:absolute;
+ top:8px;
+ right:14px;
+ font-size:30px;
+ color:#ff4444;
+ cursor:pointer
 }
 
 /* ===== FLOAT BTN ===== */
-.float-btns {
-  position: fixed;
-  right: 15px;
-  bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  z-index: 999;
+.float-btns{
+ position:fixed;
+ right:15px;
+ bottom:20px;
+ display:flex;
+ flex-direction:column;
+ gap:12px;
+ z-index:999
 }
-.float-btns a {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  color: #fff;
+.float-btns a{
+ width:50px;
+ height:50px;
+ border-radius:50%;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:24px;
+ color:#fff
 }
-.zalo {
-  background: #0068ff;
-}
-.fb {
-  background: #1877f2;
-}
+.zalo{background:#0068ff}
+.fb{background:#1877f2}
 </style>
 </head>
 
@@ -237,35 +202,40 @@ footer {
 <header class="banner"></header>
 
 <div class="filter-box">
-  <select onchange="filterPrice(this.value)">
-    <option value="all">💰 Tất cả giá</option>
-    <option value="100-500">100k – 500k</option>
-    <option value="500-1000">500k – 1tr</option>
-    <option value="1000-5000">1tr – 5tr</option>
-    <option value="5000-10000">5tr – 10tr</option>
-    <option value="10000+">Trên 10tr</option>
-  </select>
+ <select onchange="filterPrice(this.value)">
+  <option value="all">💰 Tất cả giá</option>
+  <option value="100-500">100k – 500k</option>
+  <option value="500-1000">500k – 1tr</option>
+  <option value="1000-5000">1tr – 5tr</option>
+  <option value="5000-10000">5tr – 10tr</option>
+  <option value="10000+">Trên 10tr</option>
+ </select>
 </div>
 
 <section>
-  <div class="acc-list" id="accList"></div>
-  <div class="pagination" id="pagination"></div>
+ <div class="acc-list" id="accList"></div>
+ <div class="pagination" id="pagination"></div>
 </section>
 
 <footer>
-  <p>© 2026 Shop Thế Chíí</p>
-  <p>Uy tín – Nhanh gọn – Hỗ trợ 24/7</p>
+ <p><b>SHOP THẾ CHÍÍ – ACC FREE FIRE UY TÍN</b></p>
+ <p>✔ Giao dịch nhanh – ✔ Hỗ trợ 24/7 – ✔ Hoàn tiền nếu lỗi</p>
+ <p>📞 Zalo: 0325988875 | 📘 Facebook: thechi2k7dz</p>
 </footer>
 
 <!-- ===== FLOAT CONTACT ===== -->
 <div class="float-btns">
-  <a class="zalo" href="https://zalo.me/yourzalo" target="_blank"><i class="fa-solid fa-comment"></i></a>
-  <a class="fb" href="https://www.facebook.com/thechi2k7dz" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+ <a class="zalo" href="https://zalo.me/0325988875" target="_blank">
+  <i class="fa-solid fa-comment"></i>
+ </a>
+ <a class="fb" href="https://www.facebook.com/thechi2k7dz" target="_blank">
+  <i class="fa-brands fa-facebook-f"></i>
+ </a>
 </div>
 
 <script>
 function formatPrice(k){
-  return (k * 1000).toLocaleString('vi-VN') + 'đ';
+ return (k*1000).toLocaleString('vi-VN')+'đ';
 }
 const accs = [
 
@@ -420,100 +390,80 @@ const accs = [
 }
 ];
 
-let filtered = [...accs];
-const perPage = 3;
-let currentPage = 1;
+let filtered=[...accs];
+let currentPage=1;
+const perPage=3;
+const box=document.getElementById('accList');
+const pagi=document.getElementById('pagination');
 
-const box = document.getElementById('accList');
-const pagi = document.getElementById('pagination');
+function filterPrice(val){
+ filtered = val==='all' ? [...accs] : accs.filter(a=>{
+  const p=a.newPrice;
+  return (
+   (val==='100-500'&&p>=100&&p<=500)||
+   (val==='500-1000'&&p>=500&&p<=1000)||
+   (val==='1000-5000'&&p>=1000&&p<=5000)||
+   (val==='5000-10000'&&p>=5000&&p<=10000)||
+   (val==='10000+'&&p>10000)
+  );
+ });
+ currentPage=1;
+ render();
+}
 
-// Render tài khoản
 function render(){
  box.innerHTML='';
- const start = (currentPage - 1) * perPage;
-
- filtered.slice(start, start + perPage).forEach((a, index)=>{
-  box.innerHTML += `
-   <div class="acc">
-    <div class="acc-img">
-     <span class="badge-hot">HOT</span>
-     <img src="${a.mainImg}" onclick="openPopup(${index})">
-    </div>
-    <h3>${a.name}</h3>
-    <p>
-     <span class="old-price">${formatPrice(a.oldPrice)}</span> →
-     <span class="new-price">${formatPrice(a.newPrice)}</span>
-    </p>
-    <p class="status ${a.status.includes('Còn') ? 'con' : 'ban'}">${a.status}</p>
-    <div class="btn" onclick="openPopup(${index})">XEM CHI TIẾT</div>
+ const start=(currentPage-1)*perPage;
+ filtered.slice(start,start+perPage).forEach(a=>{
+  const i=accs.indexOf(a);
+  box.innerHTML+=`
+  <div class="acc">
+   <div class="acc-img">
+    <span class="badge-hot">HOT</span>
+    <img src="${a.mainImg}" onclick="openPopup(${i})">
    </div>
-  `;
+   <h3>${a.name}</h3>
+   <p>
+    <span class="old-price">${formatPrice(a.oldPrice)}</span> →
+    <span class="new-price">${formatPrice(a.newPrice)}</span>
+   </p>
+   <p class="status ${a.status.includes('Còn')?'con':'ban'}">${a.status}</p>
+   <div class="btn" onclick="openPopup(${i})">XEM CHI TIẾT</div>
+  </div>`;
  });
-
  renderPage();
 }
 
-// Render phân trang
 function renderPage(){
  pagi.innerHTML='';
- const pages = Math.ceil(filtered.length / perPage);
+ const pages=Math.ceil(filtered.length/perPage);
  for(let i=1;i<=pages;i++){
-  pagi.innerHTML +=
-   i === currentPage
-    ? `<span>${i}</span>`
-    : `<a href="#" onclick="go(${i})">${i}</a>`;
+  pagi.innerHTML+= i===currentPage
+   ? `<span>${i}</span>`
+   : `<a href="#" onclick="go(${i})">${i}</a>`;
  }
 }
+function go(i){currentPage=i;render();}
 
-// Chuyển trang
-function go(i){
- currentPage = i;
- render();
-}
-
-// Mở Popup xem ảnh
+/* ===== POPUP ===== */
 function openPopup(i){
- const acc = accs[i];
- document.getElementById('popup').style.display = 'block';
- document.getElementById('popupMain').src = acc.mainImg;
- const thumbs = document.getElementById('popupThumbs');
- thumbs.innerHTML = '';
- acc.thumbs.forEach(img => {
-  thumbs.innerHTML += `
-   <img src="${img}" onclick="document.getElementById('popupMain').src='${img}'">
-  `;
+ const acc=accs[i];
+ document.getElementById('popup').style.display='block';
+ document.getElementById('popupMain').src=acc.mainImg;
+ const thumbs=document.getElementById('popupThumbs');
+ thumbs.innerHTML='';
+ acc.thumbs.forEach(img=>{
+  thumbs.innerHTML+=`<img src="${img}" onclick="popupMain.src='${img}'">`;
  });
 }
-
-// Đóng Popup
 function closePopup(){
- document.getElementById('popup').style.display = 'none';
+ document.getElementById('popup').style.display='none';
 }
 
-// Lọc theo giá
-function filterPrice(val){
- filtered = val === 'all'
-  ? [...accs]
-  : accs.filter(a => {
-      const p = a.newPrice;
-      return (
-        (val === '100-500' && p >= 100 && p <= 500) ||
-        (val === '500-1000' && p >= 500 && p <= 1000) ||
-        (val === '1000-5000' && p >= 1000 && p <= 5000) ||
-        (val === '5000-10000' && p >= 5000 && p <= 10000) ||
-        (val === '10000+' && p > 10000)
-      );
-  });
- currentPage = 1;
- render();
-}
-
-// Thực thi lần đầu
 render();
 </script>
 
-<!-- ===== POPUP ===== -->
-<div id="popup" style="display:none">
+<div id="popup">
  <div id="popup-content">
   <div id="popup-close" onclick="closePopup()">×</div>
   <img id="popupMain">
