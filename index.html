@@ -231,6 +231,8 @@ footer{
 </div>
 
 <script>
+document.addEventListener('DOMContentLoaded', function () {
+
 /* ===== FULL 5 ACC – FULL ẢNH (GIỮ NGUYÊN) ===== */
 const accs = [
 
@@ -388,6 +390,7 @@ const accs = [
 
 
 
+
 /* ===== BIẾN PHÂN TRANG ===== */
 let filtered = [...accs];
 const perPage = 3;
@@ -397,7 +400,7 @@ const box = document.getElementById('accList');
 const pagi = document.getElementById('pagination');
 
 /* ===== LỌC GIÁ ===== */
-function filterPrice(val){
+window.filterPrice = function(val){
  filtered = val === 'all'
   ? [...accs]
   : accs.filter(a=>{
@@ -414,7 +417,7 @@ function filterPrice(val){
  render();
 }
 
-/* ===== RENDER ACC ===== */
+/* ===== RENDER ===== */
 function render(){
  box.innerHTML='';
  const start = (currentPage - 1) * perPage;
@@ -435,8 +438,7 @@ function render(){
     </p>
     <p class="status ${a.status.includes('Còn') ? 'con' : 'ban'}">${a.status}</p>
     <div class="btn" onclick="openPopup(${realIndex})">XEM CHI TIẾT</div>
-  </div>
-  `;
+  </div>`;
  });
 
  renderPage();
@@ -454,33 +456,32 @@ function renderPage(){
  }
 }
 
-function go(i){
+window.go = function(i){
  currentPage = i;
  render();
 }
 
 /* ===== POPUP ===== */
-function openPopup(i){
+window.openPopup = function(i){
  const acc = accs[i];
  document.getElementById('popup').style.display='block';
  document.getElementById('popupMain').src=acc.mainImg;
  const thumbs=document.getElementById('popupThumbs');
  thumbs.innerHTML='';
  acc.thumbs.forEach(img=>{
-  thumbs.innerHTML+=`
-   <img src="${img}" onclick="document.getElementById('popupMain').src='${img}'">
-  `;
+  thumbs.innerHTML+=`<img src="${img}" onclick="document.getElementById('popupMain').src='${img}'">`;
  });
 }
 
-function closePopup(){
+window.closePopup = function(){
  document.getElementById('popup').style.display='none';
 }
 
 /* LOAD LẦN ĐẦU */
 render();
-</script>
 
+});
+</script>
 <!-- ===== POPUP ===== -->
 <div id="popup" style="display:none">
   <div id="popup-content">
