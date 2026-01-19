@@ -21,35 +21,25 @@ a{text-decoration:none;color:inherit}
 /* ===== FILTER ===== */
 .filter-box{max-width:1200px;margin:20px auto;padding:0 15px}
 .filter-box select{
- padding:10px;
- background:#121821;
- color:#00ffcc;
- border:1px solid #00ffcc;
- border-radius:8px;
- font-weight:bold
+ padding:10px;border-radius:8px;
+ background:#121821;color:#00ffcc;
+ border:1px solid #00ffcc;font-weight:bold
 }
 
-/* ===== ACC LIST ===== */
+/* ===== ACC ===== */
 .acc-list{
- max-width:1200px;
- margin:auto;
- padding:0 15px;
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+ max-width:1200px;margin:auto;padding:0 15px;
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
  gap:20px
 }
 .acc{
- background:#121821;
- border-radius:15px;
- padding:15px;
- box-shadow:0 0 15px rgba(0,255,204,.3);
- display:flex;
- flex-direction:column
+ background:#121821;border-radius:15px;padding:15px;
+ box-shadow:0 0 15px rgba(0,255,204,.25);
+ display:flex;flex-direction:column
 }
 .acc-img{position:relative}
 .acc-img img{width:100%;border-radius:10px;cursor:pointer}
 
-/* ===== HOT ===== */
 .badge-hot{
  position:absolute;top:10px;left:10px;
  background:linear-gradient(45deg,#ff0000,#ff9900);
@@ -63,130 +53,63 @@ a{text-decoration:none;color:inherit}
  100%{transform:scale(1)}
 }
 
-/* ===== PRICE ===== */
 .old-price{text-decoration:line-through;color:#aaa}
 .new-price{color:#00ff66;font-weight:bold}
 
-/* ===== STATUS BLINK ===== */
-.status{
- font-weight:bold;
- animation:blink 1.2s infinite;
-}
-.status.con{color:#00ff66}
-.status.ban{color:#ff4444}
+.status.con{color:#00ff66;font-weight:bold;animation:blink 1s infinite}
+.status.ban{color:#ff4444;font-weight:bold}
+@keyframes blink{50%{opacity:.5}}
 
-@keyframes blink{
- 0%,100%{opacity:1}
- 50%{opacity:.5}
-}
-
-/* ===== BUTTON ===== */
 .btn{
- margin-top:auto;
- height:44px;
+ margin-top:auto;height:44px;
  background:linear-gradient(45deg,#00ffcc,#00ff66);
- color:#000;
- border-radius:8px;
- display:flex;
- align-items:center;
- justify-content:center;
- font-weight:bold;
- cursor:pointer;
- animation:glow 1.5s infinite;
+ color:#000;border-radius:8px;
+ display:flex;align-items:center;justify-content:center;
+ font-weight:bold;cursor:pointer
 }
-@keyframes glow{
- 0%{box-shadow:0 0 5px #00ffcc}
- 50%{box-shadow:0 0 20px #00ff66}
- 100%{box-shadow:0 0 5px #00ffcc}
-}
+.ban-btn{background:#333;color:#999;cursor:not-allowed}
 
 /* ===== PAGINATION ===== */
 .pagination{text-align:center;margin:25px 0}
 .pagination a,.pagination span{
  display:inline-block;margin:0 6px;
- padding:8px 14px;
- background:#121821;
- color:#00ffcc;
- border-radius:6px;
- font-weight:bold
+ padding:8px 14px;border-radius:6px;
+ background:#121821;color:#00ffcc;font-weight:bold
 }
 .pagination span{background:#00ffcc;color:#000}
 
-/* ===== FOOTER ===== */
-footer{
- background:#000;
- text-align:center;
- padding:15px;
- color:#aaa
-}
-
-/* ===== FLOAT CONTACT ===== */
-.float-contact{
- position:fixed;
- right:18px;
- bottom:20px;
- display:flex;
- flex-direction:column;
- gap:14px;
- z-index:99999
-}
-.float-btn{
- width:56px;height:56px;
- border-radius:50%;
- display:flex;
- align-items:center;
- justify-content:center;
- color:#fff;
- font-size:26px;
- animation:pulse 1.5s infinite;
-}
-.float-btn.zalo{background:#00c853}
-.float-btn.fb{background:#1877f2}
-
-@keyframes pulse{
- 0%{transform:scale(1);opacity:.7}
- 50%{transform:scale(1.15);opacity:1}
- 100%{transform:scale(1);opacity:.7}
-}
-
 /* ===== POPUP ===== */
 #popup{
- display:none;
- position:fixed;
- inset:0;
- background:rgba(0,0,0,.9);
- z-index:999999;
- overflow:auto
+ display:none;position:fixed;inset:0;
+ background:rgba(0,0,0,.9);z-index:9999
 }
 #popup-content{
- max-width:900px;
- margin:40px auto;
- background:#121821;
- padding:20px;
- border-radius:12px;
- position:relative
+ max-width:900px;margin:40px auto;
+ background:#121821;padding:20px;border-radius:12px;position:relative
 }
 #popupMain{width:100%;border-radius:10px}
-#popupThumbs{
- display:flex;
- gap:10px;
- overflow-x:auto;
- margin-top:10px
-}
-#popupThumbs img{
- width:90px;
- border-radius:8px;
- cursor:pointer;
- opacity:.6
-}
-#popupThumbs img:hover{opacity:1}
+#popupThumbs{display:flex;gap:10px;overflow-x:auto;margin-top:10px}
+#popupThumbs img{width:90px;border-radius:8px;cursor:pointer}
 #popup-close{
- position:absolute;
- top:8px;right:14px;
- font-size:30px;
- color:#ff4444;
- cursor:pointer
+ position:absolute;top:8px;right:14px;
+ font-size:30px;color:#ff4444;cursor:pointer
 }
+
+/* ===== FLOAT BTN ===== */
+.float-btn{
+ position:fixed;right:15px;bottom:15px;z-index:9999;
+ display:flex;flex-direction:column;gap:10px
+}
+.float-btn a{
+ width:52px;height:52px;border-radius:50%;
+ display:flex;align-items:center;justify-content:center;
+ color:#fff;font-size:22px
+}
+.zalo{background:#00c853}
+.fb{background:#1877f2}
+
+/* ===== FOOTER ===== */
+footer{background:#000;padding:30px;color:#aaa;text-align:center}
 </style>
 </head>
 
@@ -210,16 +133,25 @@ footer{
  <div class="pagination" id="pagination"></div>
 </section>
 
+<!-- ===== NỘI DUNG CUỐI ===== -->
+<section style="max-width:1200px;margin:40px auto;padding:0 15px">
+ <div style="background:#121821;border-radius:15px;padding:25px">
+  <h2 style="color:#00ffcc">🛒 SHOP THẾ CHÍÍ – FREE FIRE</h2>
+  <p>Acc uy tín – đúng ảnh – giao dịch nhanh</p>
+  <ul>
+   <li>✔ Không hack – không khóa</li>
+   <li>✔ Hỗ trợ sau mua</li>
+   <li>✔ Acc đúng mô tả</li>
+  </ul>
+ </div>
+</section>
+
 <footer>© 2026 Shop Thế Chíí</footer>
 
-<!-- ===== FLOAT BUTTON ===== -->
-<div class="float-contact">
- <a href="https://zalo.me/0325988875" target="_blank" class="float-btn zalo">
-  <i class="fa-solid fa-comment"></i>
- </a>
- <a href="https://www.facebook.com/thechi2k7dz" target="_blank" class="float-btn fb">
-  <i class="fa-brands fa-facebook-f"></i>
- </a>
+<!-- ===== FLOAT CONTACT ===== -->
+<div class="float-btn">
+ <a class="zalo" href="https://zalo.me/0325988875" target="_blank"><i class="fa-solid fa-comment"></i></a>
+ <a class="fb" href="https://www.facebook.com/thechi2k7dz" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
 </div>
 
 <!-- ===== POPUP ===== -->
