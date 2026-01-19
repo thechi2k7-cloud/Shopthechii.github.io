@@ -182,15 +182,34 @@ footer{background:#000;text-align:center;padding:20px;color:#aaa}
 
 <div class="footer-content">
 <div class="footer-box">
-<div class="footer-item"><h3>📌 Giới thiệu</h3><p>Shop Thế Chíí chuyên acc Free Fire uy tín</p></div>
-<div class="footer-item"><h3>🛡 Cam kết</h3><p>Acc đúng mô tả – hỗ trợ sau bán</p></div>
-<div class="footer-item"><h3>💳 Thanh toán</h3><p>Chuyển khoản – ví điện tử</p></div>
-<div class="footer-item"><h3>📞 Liên hệ</h3><p>Zalo: 0325988875<br>Facebook: thechi2k7dz</p></div>
+<div class="footer-item">
+<h3>📌 Giới thiệu</h3>
+<p>Shop Thế Chíí chuyên mua bán acc Free Fire uy tín<br>
+✔ Xem acc trước khi mua<br>
+✔ Bảo kê – hỗ trợ đổi thông tin sau bán</p>
+</div>
+<div class="footer-item">
+<h3>🛡 Cam kết</h3>
+<p>✔ Acc đúng mô tả 100%<br>
+✔ Góp log 7–14 ngày<br>
+✔ Có trách nhiệm xử lý sự cố</p>
+</div>
+<div class="footer-item">
+<h3>💳 Thanh toán</h3>
+<p>Techcombank<br>
+STK: 21200766668888<br>
+Mai Thế Chí</p>
+</div>
+<div class="footer-item">
+<h3>📞 Liên hệ</h3>
+<p>Zalo: 0325 988 875<br>
+Facebook: thechi2k7dz</p>
+</div>
 </div>
 </div>
 </div>
 
-<footer>© 2026 Shop Thế Chíí – Free Fire</footer>
+<footer>© <span id="year"></span> Shop Thế Chíí – Uy tín tạo nên thương hiệu</footer>
 
 <a class="zalo-float" href="https://zalo.me/0325988875" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 <a class="fb-float" href="https://www.facebook.com/thechi2k7dz" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
@@ -206,7 +225,9 @@ footer{background:#000;text-align:center;padding:20px;color:#aaa}
 </div>
 
 <script>
-/* ===== FULL 5 ACC – FULL ẢNH KHÔNG THIẾU ===== */
+document.getElementById("year").innerText=new Date().getFullYear();
+
+/* ================== ĐỦ 5 ACC – FULL ẢNH – KHÔNG CẮT ================== */
 const accs = [
 /* ===== ACC 1 ===== */
 {
@@ -227,7 +248,7 @@ status:'Còn ✔️',
 fanpage:'https://www.facebook.com/thechi2k7dz'
 },
 
-/* ===== ACC 2 (FULL 22 ẢNH) ===== */
+/* ===== ACC 2 ===== */
 {
 name:'Acc 2 🔥',
 mainImg:'https://i.postimg.cc/wxyB7zgD/e2e646a3-1a01-4d84-93f8-e4dd554fa1d1.jpg',
@@ -262,7 +283,7 @@ status:'Còn ✔️',
 fanpage:'https://www.facebook.com/thechi2k7dz'
 },
 
-/* ===== ACC 3 (FULL) ===== */
+/* ===== ACC 3 ===== */
 {
 name:'Acc 3 🔥',
 mainImg:'https://i.postimg.cc/NGpbsL16/70652ec2-08eb-4f46-92c3-0383688ba817.jpg',
@@ -291,7 +312,7 @@ status:'Còn ✔️',
 fanpage:'https://www.facebook.com/thechi2k7dz'
 },
 
-/* ===== ACC 4 (FULL) ===== */
+/* ===== ACC 4 ===== */
 {
 name:'Acc 4 🔥',
 mainImg:'https://i.postimg.cc/yNgJ31pv/e19d27f1-4f33-4570-8ff0-e8ae1aa9abe1.jpg',
@@ -322,7 +343,7 @@ status:'Còn ✔️',
 fanpage:'https://www.facebook.com/thechi2k7dz'
 },
 
-/* ===== ACC 5 (FULL) ===== */
+/* ===== ACC 5 ===== */
 {
 name:'Acc 5 🔥',
 mainImg:'https://i.postimg.cc/hvK2WHnS/fe08f046-b55d-4240-9292-e3bf6939cd15.jpg',
@@ -359,8 +380,17 @@ fanpage:'https://www.facebook.com/thechi2k7dz'
 }
 ];
 
+/* JS */
 const perPage=3;
 let currentPage=1;
+const accList=document.getElementById('accList');
+const pagination=document.getElementById('pagination');
+const popup=document.getElementById('popup');
+const popupMain=document.getElementById('popup-main');
+const popupThumbs=document.getElementById('popup-thumbs');
+const popupInfo=document.getElementById('popupInfo');
+const buyBtn=document.getElementById('buyBtn');
+const popupClose=document.getElementById('popup-close');
 
 function render(page){
  const start=(page-1)*perPage;
@@ -373,7 +403,8 @@ function render(page){
     <img src="${acc.mainImg}" onclick="openPopup(${start+i})">
    </div>
    <h3>${acc.name}</h3>
-   <p><span class="old-price">${acc.oldPrice}</span> <span class="new-price">${acc.newPrice}</span></p>
+   <p><span class="old-price">${acc.oldPrice}</span>
+   <span class="new-price">${acc.newPrice}</span></p>
    <p class="status">${acc.status}</p>
    <p>${acc.info}</p>
    <div class="btn" onclick="openPopup(${start+i})">XEM CHI TIẾT</div>
