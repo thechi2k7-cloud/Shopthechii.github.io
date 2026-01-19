@@ -55,7 +55,7 @@ a{text-decoration:none;color:inherit}
  background:linear-gradient(45deg,#ff0000,#ff9900);
  padding:6px 12px;border-radius:6px;
  font-size:12px;font-weight:bold;
- animation:hot 1.5s infinite;
+ animation:hot 1.2s infinite;
 }
 .badge-sold{
  position:absolute;top:10px;right:10px;
@@ -63,10 +63,17 @@ a{text-decoration:none;color:inherit}
  padding:6px 12px;border-radius:6px;
  font-size:12px;font-weight:bold;
 }
+
+/* Lấp lánh */
 @keyframes hot{
  0%{transform:scale(1)}
  50%{transform:scale(1.2)}
  100%{transform:scale(1)}
+}
+@keyframes shine{
+ 0%{box-shadow:0 0 5px #00ffcc}
+ 50%{box-shadow:0 0 20px #00ff66}
+ 100%{box-shadow:0 0 5px #00ffcc}
 }
 
 /* PRICE */
@@ -74,13 +81,8 @@ a{text-decoration:none;color:inherit}
 .new-price{color:#00ff66;font-weight:bold}
 
 /* STATUS */
-.status.con{color:#00ff66;font-weight:bold;animation:shine 2s infinite;}
-.status.ban{color:#ff4444;font-weight:bold;animation:shine 2s infinite;}
-@keyframes shine{
- 0%{box-shadow:0 0 5px #00ffcc}
- 50%{box-shadow:0 0 20px #00ff66}
- 100%{box-shadow:0 0 5px #00ffcc}
-}
+.status.con{color:#00ff66;font-weight:bold;animation:shine 1.5s infinite}
+.status.ban{color:#ff4444;font-weight:bold}
 
 /* BUTTON */
 .btn{
@@ -89,12 +91,7 @@ a{text-decoration:none;color:inherit}
  color:#000;border-radius:8px;
  display:flex;align-items:center;justify-content:center;
  font-weight:bold;cursor:pointer;
- animation:shine 2s infinite;
-}
-@keyframes shine{
- 0%{box-shadow:0 0 5px #00ffcc}
- 50%{box-shadow:0 0 20px #00ff66}
- 100%{box-shadow:0 0 5px #00ffcc}
+ animation:shine 1.5s infinite;
 }
 
 /* PAGINATION */
@@ -179,6 +176,7 @@ footer{
 </div>
 
 <script>
+// Format giá
 function formatPrice(k){
  return (k*1000).toLocaleString('vi-VN')+'đ';
 }
@@ -342,40 +340,25 @@ let currentPage = 1;
 const box = document.getElementById('accList');
 const pagi = document.getElementById('pagination');
 
-function filterPrice(val){
- filtered = val === 'all' 
-   ? [...accs]
-   : accs.filter(a => {
-     const p = a.newPrice;
-     return (val === '100-500' && p >= 100 && p <= 500) ||
-            (val === '500-1000' && p >= 500 && p <= 1000) ||
-            (val === '1000-5000' && p >= 1000 && p <= 5000) ||
-            (val === '5000-10000' && p >= 5000 && p <= 10000) ||
-            (val === '10000+' && p > 10000);
-   });
- currentPage = 1;
- render();
-}
-
+// Render tài khoản
 function render(){
- box.innerHTML = '';
+ box.innerHTML='';
  const start = (currentPage - 1) * perPage;
 
- filtered.slice(start, start + perPage).forEach((a) => {
-  const realIndex = accs.indexOf(a);
+ filtered.slice(start, start + perPage).forEach((a, index)=>{
   box.innerHTML += `
    <div class="acc">
-     <div class="acc-img">
-       <span class="badge-hot">HOT</span>
-       <img src="${a.mainImg}" onclick="openPopup(${realIndex})">
-     </div>
-     <h3>${a.name}</h3>
-     <p>
-       <span class="old-price">${formatPrice(a.oldPrice)}</span> →
-       <span class="new-price">${formatPrice(a.newPrice)}</span>
-     </p>
-     <p class="status ${a.status.includes('Còn') ? 'con' : 'ban'}">${a.status}</p>
-     <div class="btn" onclick="openPopup(${realIndex})">XEM CHI TIẾT</div>
+    <div class="acc-img">
+     <span class="badge-hot">HOT</span>
+     <img src="${a.mainImg}" onclick="openPopup(${index})">
+    </div>
+    <h3>${a.name}</h3>
+    <p>
+     <span class="old-price">${formatPrice(a.oldPrice)}</span> →
+     <span class="new-price">${formatPrice(a.newPrice)}</span>
+    </p>
+    <p class="status ${a.status.includes('Còn') ? 'con' : 'ban'}">${a.status}</p>
+    <div class="btn" onclick="openPopup(${index})">XEM CHI TIẾT</div>
    </div>
   `;
  });
@@ -383,21 +366,25 @@ function render(){
  renderPage();
 }
 
+// Render phân trang
 function renderPage(){
- pagi.innerHTML = '';
+ pagi.innerHTML='';
  const pages = Math.ceil(filtered.length / perPage);
- for(let i = 1; i <= pages; i++){
-   pagi.innerHTML += i === currentPage 
-     ? `<span>${i}</span>` 
-     : `<a href="#" onclick="go(${i})">${i}</a>`;
+ for(let i=1;i<=pages;i++){
+  pagi.innerHTML +=
+   i === currentPage
+    ? `<span>${i}</span>`
+    : `<a href="#" onclick="go(${i})">${i}</a>`;
  }
 }
 
+// Chuyển trang
 function go(i){
  currentPage = i;
  render();
 }
 
+// Mở Popup xem ảnh
 function openPopup(i){
  const acc = accs[i];
  document.getElementById('popup').style.display = 'block';
@@ -405,22 +392,45 @@ function openPopup(i){
  const thumbs = document.getElementById('popupThumbs');
  thumbs.innerHTML = '';
  acc.thumbs.forEach(img => {
-   thumbs.innerHTML += `<img src="${img}" onclick="document.getElementById('popupMain').src='${img}'">`;
+  thumbs.innerHTML += `
+   <img src="${img}" onclick="document.getElementById('popupMain').src='${img}'">
+  `;
  });
 }
 
+// Đóng Popup
 function closePopup(){
  document.getElementById('popup').style.display = 'none';
 }
 
+// Lọc theo giá
+function filterPrice(val){
+ filtered = val === 'all'
+  ? [...accs]
+  : accs.filter(a => {
+      const p = a.newPrice;
+      return (
+        (val === '100-500' && p >= 100 && p <= 500) ||
+        (val === '500-1000' && p >= 500 && p <= 1000) ||
+        (val === '1000-5000' && p >= 1000 && p <= 5000) ||
+        (val === '5000-10000' && p >= 5000 && p <= 10000) ||
+        (val === '10000+' && p > 10000)
+      );
+  });
+ currentPage = 1;
+ render();
+}
+
+// Thực thi lần đầu
 render();
 </script>
 
-<div id="popup">
+<!-- ===== POPUP ===== -->
+<div id="popup" style="display:none">
  <div id="popup-content">
-   <div id="popup-close" onclick="closePopup()">×</div>
-   <img id="popupMain">
-   <div id="popupThumbs"></div>
+  <div id="popup-close" onclick="closePopup()">×</div>
+  <img id="popupMain">
+  <div id="popupThumbs"></div>
  </div>
 </div>
 
