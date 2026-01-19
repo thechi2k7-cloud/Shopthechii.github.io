@@ -4,143 +4,231 @@
 <meta charset="UTF-8">
 <title>Shop Thế Chíí – Acc Free Fire Uy Tín</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial;background:#0b0f14;color:#fff}
-a{text-decoration:none;color:inherit}
+* {box-sizing: border-box}
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0b0f14;
+  color: #fff;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
 /* ===== BANNER ===== */
-.banner{
- height:260px;
- background:url('https://i.postimg.cc/bJr5hzsY/ff31cd69-f0cf-4c13-ad3a-dd6ae8bef797.jpg') center/cover no-repeat
+.banner {
+  height: 260px;
+  background: url('https://i.postimg.cc/bJr5hzsY/ff31cd69-f0cf-4c13-ad3a-dd6ae8bef797.jpg') center/cover no-repeat;
 }
 
 /* ===== FILTER ===== */
-.filter-box{max-width:1200px;margin:20px auto;padding:0 15px}
-.filter-box select{
- padding:10px;
- background:#121821;
- color:#00ffcc;
- border:1px solid #00ffcc;
- border-radius:8px;
- font-weight:bold
+.filter-box {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+.filter-box select {
+  padding: 10px;
+  background: #121821;
+  color: #00ffcc;
+  border: 1px solid #00ffcc;
+  border-radius: 8px;
+  font-weight: bold;
 }
 
 /* ===== ACC LIST ===== */
-.acc-list{
- max-width:1200px;
- margin:auto;
- padding:0 15px;
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
- gap:20px
+.acc-list {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
 }
-.acc{
- background:#121821;
- border-radius:15px;
- padding:15px;
- box-shadow:0 0 15px rgba(0,255,204,.25);
- display:flex;
- flex-direction:column
+.acc {
+  background: #121821;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 0 15px rgba(0,255,204,.25);
+  display: flex;
+  flex-direction: column;
 }
-.acc-img{position:relative}
-.acc-img img{width:100%;border-radius:10px;cursor:pointer}
+.acc-img {
+  position: relative;
+}
+.acc-img img {
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+}
 
 /* HOT + SOLD */
-.badge-hot{
- position:absolute;top:10px;left:10px;
- background:linear-gradient(45deg,#ff0000,#ff9900);
- padding:6px 12px;border-radius:6px;
- font-size:12px;font-weight:bold;
- animation:hot 1.2s infinite;
+.badge-hot {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: linear-gradient(45deg, #ff0000, #ff9900);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  animation: hot 1.2s infinite;
 }
-.badge-sold{
- position:absolute;top:10px;right:10px;
- background:#ff4444;
- padding:6px 12px;border-radius:6px;
- font-size:12px;font-weight:bold;
+.badge-sold {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff4444;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
 }
-
-/* Lấp lánh */
-@keyframes hot{
- 0%{transform:scale(1)}
- 50%{transform:scale(1.2)}
- 100%{transform:scale(1)}
-}
-@keyframes shine{
- 0%{box-shadow:0 0 5px #00ffcc}
- 50%{box-shadow:0 0 20px #00ff66}
- 100%{box-shadow:0 0 5px #00ffcc}
+@keyframes hot {
+  0% {transform: scale(1)}
+  50% {transform: scale(1.2)}
+  100% {transform: scale(1)}
 }
 
 /* PRICE */
-.old-price{text-decoration:line-through;color:#aaa}
-.new-price{color:#00ff66;font-weight:bold}
+.old-price {
+  text-decoration: line-through;
+  color: #aaa;
+}
+.new-price {
+  color: #00ff66;
+  font-weight: bold;
+}
 
 /* STATUS */
-.status.con{color:#00ff66;font-weight:bold;animation:shine 1.5s infinite}
-.status.ban{color:#ff4444;font-weight:bold}
+.status.con {
+  color: #00ff66;
+  font-weight: bold;
+  animation: shine 1.5s infinite;
+}
+.status.ban {
+  color: #ff4444;
+  font-weight: bold;
+}
+
+@keyframes shine {
+  0% {box-shadow: 0 0 5px #00ffcc}
+  50% {box-shadow: 0 0 20px #00ff66}
+  100% {box-shadow: 0 0 5px #00ffcc}
+}
 
 /* BUTTON */
-.btn{
- margin-top:auto;height:44px;
- background:linear-gradient(45deg,#00ffcc,#00ff66);
- color:#000;border-radius:8px;
- display:flex;align-items:center;justify-content:center;
- font-weight:bold;cursor:pointer;
- animation:shine 1.5s infinite;
+.btn {
+  margin-top: auto;
+  height: 44px;
+  background: linear-gradient(45deg, #00ffcc, #00ff66);
+  color: #000;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  animation: shine 1.5s infinite;
 }
 
 /* PAGINATION */
-.pagination{text-align:center;margin:25px 0}
-.pagination a,.pagination span{
- display:inline-block;margin:0 6px;
- padding:8px 14px;background:#121821;
- color:#00ffcc;border-radius:6px;font-weight:bold
+.pagination {
+  text-align: center;
+  margin: 25px 0;
 }
-.pagination span{background:#00ffcc;color:#000}
+.pagination a, .pagination span {
+  display: inline-block;
+  margin: 0 6px;
+  padding: 8px 14px;
+  background: #121821;
+  color: #00ffcc;
+  border-radius: 6px;
+  font-weight: bold;
+}
+.pagination span {
+  background: #00ffcc;
+  color: #000;
+}
 
 /* FOOTER */
-footer{
- background:#000;
- padding:25px;
- text-align:center;
- color:#aaa;
+footer {
+  background: #000;
+  padding: 25px;
+  text-align: center;
+  color: #aaa;
 }
 
 /* ===== POPUP ===== */
-#popup{
- display:none;position:fixed;inset:0;
- background:rgba(0,0,0,.9);z-index:9999
+#popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.9);
+  z-index: 9999;
 }
-#popup-content{
- max-width:900px;margin:40px auto;
- background:#121821;padding:20px;
- border-radius:12px;position:relative
+#popup-content {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #121821;
+  padding: 20px;
+  border-radius: 12px;
+  position: relative;
 }
-#popupMain{width:100%;border-radius:10px}
-#popupThumbs{display:flex;gap:10px;overflow-x:auto;margin-top:10px}
-#popupThumbs img{width:90px;border-radius:8px;cursor:pointer}
-#popup-close{
- position:absolute;top:8px;right:14px;
- font-size:30px;color:#ff4444;cursor:pointer
+#popupMain {
+  width: 100%;
+  border-radius: 10px;
+}
+#popupThumbs {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  margin-top: 10px;
+}
+#popupThumbs img {
+  width: 90px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#popup-close {
+  position: absolute;
+  top: 8px;
+  right: 14px;
+  font-size: 30px;
+  color: #ff4444;
+  cursor: pointer;
 }
 
 /* ===== FLOAT BTN ===== */
-.float-btns{
- position:fixed;right:15px;bottom:20px;
- display:flex;flex-direction:column;gap:12px;z-index:999
+.float-btns {
+  position: fixed;
+  right: 15px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 999;
 }
-.float-btns a{
- width:50px;height:50px;border-radius:50%;
- display:flex;align-items:center;justify-content:center;
- font-size:24px;color:#fff
+.float-btns a {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #fff;
 }
-.zalo{background:#0068ff}
-.fb{background:#1877f2}
+.zalo {
+  background: #0068ff;
+}
+.fb {
+  background: #1877f2;
+}
 </style>
 </head>
 
@@ -149,36 +237,35 @@ footer{
 <header class="banner"></header>
 
 <div class="filter-box">
- <select onchange="filterPrice(this.value)">
-  <option value="all">💰 Tất cả giá</option>
-  <option value="100-500">100k – 500k</option>
-  <option value="500-1000">500k – 1tr</option>
-  <option value="1000-5000">1tr – 5tr</option>
-  <option value="5000-10000">5tr – 10tr</option>
-  <option value="10000+">Trên 10tr</option>
- </select>
+  <select onchange="filterPrice(this.value)">
+    <option value="all">💰 Tất cả giá</option>
+    <option value="100-500">100k – 500k</option>
+    <option value="500-1000">500k – 1tr</option>
+    <option value="1000-5000">1tr – 5tr</option>
+    <option value="5000-10000">5tr – 10tr</option>
+    <option value="10000+">Trên 10tr</option>
+  </select>
 </div>
 
 <section>
- <div class="acc-list" id="accList"></div>
- <div class="pagination" id="pagination"></div>
+  <div class="acc-list" id="accList"></div>
+  <div class="pagination" id="pagination"></div>
 </section>
 
 <footer>
- <p>© 2026 Shop Thế Chíí</p>
- <p>Uy tín – Nhanh gọn – Hỗ trợ 24/7</p>
+  <p>© 2026 Shop Thế Chíí</p>
+  <p>Uy tín – Nhanh gọn – Hỗ trợ 24/7</p>
 </footer>
 
 <!-- ===== FLOAT CONTACT ===== -->
 <div class="float-btns">
- <a class="zalo" href="https://zalo.me/yourzalo" target="_blank"><i class="fa-solid fa-comment"></i></a>
- <a class="fb" href="https://www.facebook.com/thechi2k7dz" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+  <a class="zalo" href="https://zalo.me/yourzalo" target="_blank"><i class="fa-solid fa-comment"></i></a>
+  <a class="fb" href="https://www.facebook.com/thechi2k7dz" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
 </div>
 
 <script>
-// Format giá
 function formatPrice(k){
- return (k*1000).toLocaleString('vi-VN')+'đ';
+  return (k * 1000).toLocaleString('vi-VN') + 'đ';
 }
 const accs = [
 
