@@ -150,26 +150,35 @@ footer{
 
 /* ===== NHẤP NHÁY NHƯ HOT ===== */
 /* ===== NHẤP NHÁY NHẸ – KHÔNG LỐ ===== */
-@keyframes softPulse{
- 0%{transform:scale(1); filter:brightness(1)}
- 50%{transform:scale(1.08); filter:brightness(1.25)}
- 100%{transform:scale(1); filter:brightness(1)}
+@keyframes pulseEven{
+  0%{
+    transform:scale(1);
+    filter:brightness(1);
+  }
+  50%{
+    transform:scale(1.06);
+    filter:brightness(1.2);
+  }
+  100%{
+    transform:scale(1);
+    filter:brightness(1);
+  }
 }
 
-/* CÒN */
-.status.con{
- animation:softPulse 1.8s infinite;
+/* HOT */
+.badge-hot{
+ animation:pulseEven 1.6s infinite;
 }
 
-/* ĐÃ BÁN (NHẸ HƠN) */
+/* TRẠNG THÁI */
+.status.con,
 .status.ban{
- animation:softPulse 2.5s infinite;
- opacity:.85;
+ animation:pulseEven 1.6s infinite;
 }
 
-/* NÚT XEM CHI TIẾT */
+/* NÚT */
 .btn{
- animation:softPulse 2s infinite;
+ animation:pulseEven 1.6s infinite;
 }
 
 </style>
