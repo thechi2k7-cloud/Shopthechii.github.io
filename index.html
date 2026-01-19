@@ -149,25 +149,27 @@ footer{
 }
 
 /* ===== NHẤP NHÁY NHƯ HOT ===== */
-@keyframes jump{
- 0%{transform:scale(1)}
- 50%{transform:scale(1.25)}
- 100%{transform:scale(1)}
+/* ===== NHẤP NHÁY NHẸ – KHÔNG LỐ ===== */
+@keyframes softPulse{
+ 0%{transform:scale(1); filter:brightness(1)}
+ 50%{transform:scale(1.08); filter:brightness(1.25)}
+ 100%{transform:scale(1); filter:brightness(1)}
 }
 
 /* CÒN */
 .status.con{
- animation:jump 1.1s infinite;
+ animation:softPulse 1.8s infinite;
 }
 
-/* ĐÃ BÁN */
+/* ĐÃ BÁN (NHẸ HƠN) */
 .status.ban{
- animation:jump 1.1s infinite;
+ animation:softPulse 2.5s infinite;
+ opacity:.85;
 }
 
 /* NÚT XEM CHI TIẾT */
 .btn{
- animation:jump 1.2s infinite;
+ animation:softPulse 2s infinite;
 }
 
 </style>
