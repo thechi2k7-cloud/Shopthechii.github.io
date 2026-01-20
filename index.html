@@ -9,18 +9,10 @@
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;
- font-family:Arial;
- background:#0b0f14;
- color:#fff;
+ margin:0;font-family:Arial;
+ background:#0b0f14;color:#fff;
 }
-
-/* ===== EFFECT ===== */
-@keyframes glow{
- 0%{box-shadow:0 0 5px rgba(0,255,204,.4)}
- 50%{box-shadow:0 0 14px rgba(0,255,204,1)}
- 100%{box-shadow:0 0 5px rgba(0,255,204,.4)}
-}
+a{text-decoration:none;color:inherit}
 
 /* ===== BANNER ===== */
 .banner{
@@ -28,176 +20,188 @@ body{
  background:url('https://i.postimg.cc/bJr5hzsY/ff31cd69-f0cf-4c13-ad3a-dd6ae8bef797.jpg') center/cover no-repeat;
 }
 
-/* ===== ACC LIST ===== */
+/* ===== FILTER ===== */
+.filter-box{
+ max-width:1200px;margin:20px auto;padding:0 15px;
+ display:flex;gap:10px;flex-wrap:wrap
+}
+.filter-box select,.filter-box input{
+ padding:10px;background:#121821;color:#00ffcc;
+ border:1px solid #00ffcc;border-radius:8px;font-weight:bold
+}
+
+/* ===== GRID ===== */
 .acc-list{
- max-width:1200px;
- margin:30px auto;
- padding:0 15px;
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:20px;
+ max-width:1200px;margin:auto;padding:0 15px;
+ display:grid;grid-template-columns:repeat(3,1fr);
+ gap:20px
 }
 @media(max-width:900px){.acc-list{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.acc-list{grid-template-columns:1fr}}
 
-/* ===== ACC CARD ===== */
+/* ===== CARD ===== */
 .acc{
- background:#121821;
- border-radius:15px;
- padding:15px;
- display:flex;
- flex-direction:column;
- height:100%;
+ background:#121821;border-radius:15px;padding:15px;
  box-shadow:0 0 15px rgba(0,255,204,.25);
+ display:flex;flex-direction:column;height:100%
 }
 
 /* ===== IMAGE ===== */
 .acc-img{position:relative}
 .acc-img img{
- width:100%;
- border-radius:10px;
- cursor:pointer;
+ width:100%;border-radius:10px;
+ cursor:pointer;display:block
 }
 
 /* ===== HOT ===== */
 .badge-hot{
- position:absolute;
- top:10px;left:10px;
+ position:absolute;top:10px;left:10px;
  background:linear-gradient(45deg,#ff0000,#ff9900);
- padding:6px 12px;
- border-radius:6px;
- font-size:12px;
- font-weight:bold;
- animation:glow 1.5s infinite;
+ padding:6px 12px;border-radius:6px;
+ font-size:12px;font-weight:bold;
+ animation:hot 1.2s infinite
+}
+@keyframes hot{
+ 0%{transform:scale(1)}
+ 50%{transform:scale(1.15)}
+ 100%{transform:scale(1)}
+}
+
+/* ===== PRICE ===== */
+.old-price{text-decoration:line-through;color:#aaa}
+.new-price{color:#00ff66;font-weight:bold}
+
+/* ===== GLOW ===== */
+@keyframes glow{
+ 0%{box-shadow:0 0 5px rgba(0,255,204,.4)}
+ 50%{box-shadow:0 0 14px rgba(0,255,204,1)}
+ 100%{box-shadow:0 0 5px rgba(0,255,204,.4)}
 }
 
 /* ===== STATUS ===== */
 .status{
  margin:8px 0;
- padding:6px;
+ font-weight:bold;
+ padding:6px 10px;
  border-radius:6px;
  text-align:center;
- font-weight:bold;
- animation:glow 1.8s infinite;
+ animation:glow 1.6s infinite
 }
-.con{color:#00ff66}
-.ban{color:#ff4444}
-
-/* ===== PRICE ===== */
-.old{text-decoration:line-through;color:#aaa}
-.new{color:#00ff66;font-weight:bold}
+.status.con{color:#00ff66;border:1px solid #00ff66}
+.status.ban{color:#ff4444;border:1px solid #ff4444}
 
 /* ===== BUTTON ===== */
 .btn{
- margin-top:auto;
- height:44px;
- border-radius:8px;
+ margin-top:auto;height:44px;
  background:linear-gradient(45deg,#00ffcc,#00ff66);
- color:#000;
- display:flex;
- align-items:center;
- justify-content:center;
- font-weight:bold;
- cursor:pointer;
- animation:glow 1.6s infinite;
+ color:#000;border-radius:8px;
+ display:flex;align-items:center;justify-content:center;
+ font-weight:bold;cursor:pointer;
+ animation:glow 1.6s infinite
 }
+
+/* ===== PAGINATION ===== */
+.pagination{text-align:center;margin:25px 0}
+.pagination a,.pagination span{
+ margin:0 6px;padding:8px 14px;
+ background:#121821;color:#00ffcc;
+ border-radius:6px;font-weight:bold
+}
+.pagination span{background:#00ffcc;color:#000}
 
 /* ===== POPUP ===== */
 #popup{
- display:none;
- position:fixed;
- inset:0;
- background:rgba(0,0,0,.9);
- z-index:9999;
+ display:none;position:fixed;inset:0;
+ background:rgba(0,0,0,.9);z-index:9999
 }
-#popup-box{
- max-width:900px;
- margin:40px auto;
- background:#121821;
- padding:20px;
- border-radius:12px;
- position:relative;
+#popup-content{
+ max-width:900px;margin:40px auto;
+ background:#121821;padding:20px;
+ border-radius:12px;position:relative
 }
-#popup-box img{width:100%;border-radius:10px}
-#close{
- position:absolute;
- top:10px;right:15px;
- font-size:28px;
- color:#ff4444;
- cursor:pointer;
+#popupMain{width:100%;border-radius:10px}
+#popupThumbs{
+ display:flex;gap:10px;overflow-x:auto;margin-top:10px
 }
-#thumbs{
- display:flex;
- gap:10px;
- margin-top:10px;
- overflow-x:auto;
+#popupThumbs img{
+ width:90px;border-radius:8px;cursor:pointer
 }
-#thumbs img{
- width:90px;
- border-radius:8px;
- cursor:pointer;
+#popup-close{
+ position:absolute;top:8px;right:14px;
+ font-size:30px;color:#ff4444;cursor:pointer
 }
 
 /* ===== FLOAT BTN ===== */
-.float{
- position:fixed;
- right:15px;
- bottom:20px;
- display:flex;
- flex-direction:column;
- gap:12px;
+@keyframes floatGlow{
+ 0%{box-shadow:0 0 6px rgba(255,255,255,.4)}
+ 50%{box-shadow:0 0 18px rgba(255,255,255,1)}
+ 100%{box-shadow:0 0 6px rgba(255,255,255,.4)}
 }
-.float a{
- width:50px;height:50px;
- border-radius:50%;
- display:flex;
- align-items:center;
- justify-content:center;
- color:#fff;
- font-size:24px;
- animation:glow 1.5s infinite;
+.float-btns{
+ position:fixed;right:15px;bottom:20px;
+ display:flex;flex-direction:column;gap:12px;z-index:999
+}
+.float-btns a{
+ width:52px;height:52px;border-radius:50%;
+ display:flex;align-items:center;justify-content:center;
+ font-size:24px;color:#fff;
+ animation:floatGlow 1.5s infinite
 }
 .zalo{background:#0068ff}
 .fb{background:#1877f2}
 
 /* ===== FOOTER ===== */
-footer{
- background:#000;
- padding:30px;
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:20px;
- color:#aaa;
+.footer{
+ background:#000;padding:30px;
+ display:grid;grid-template-columns:repeat(4,1fr);
+ gap:20px;color:#aaa
 }
-footer h3{color:#00ffcc}
-@media(max-width:800px){footer{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:500px){footer{grid-template-columns:1fr}}
+.footer h3{color:#00ffcc}
+.footer p{margin:6px 0}
+@media(max-width:900px){.footer{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.footer{grid-template-columns:1fr}}
+.footer .copy{text-align:center;grid-column:1/-1;margin-top:10px}
 </style>
 </head>
 
 <body>
 
-<div class="banner"></div>
+<header class="banner"></header>
 
-<div class="acc-list" id="list"></div>
+<div class="filter-box">
+ <select onchange="filterPrice(this.value)">
+  <option value="all">💰 Tất cả giá</option>
+  <option value="0-1000">Dưới 1tr</option>
+  <option value="1000-5000">1tr – 5tr</option>
+  <option value="5000+">Trên 5tr</option>
+ </select>
+ <input placeholder="🔍 Tìm acc..." oninput="searchAcc(this.value)">
+</div>
 
-<footer>
- <div><h3>SHOP</h3><p>Acc FF uy tín</p></div>
- <div><h3>DỊCH VỤ</h3><p>Bán acc VIP</p></div>
- <div><h3>LIÊN HỆ</h3><p>Zalo 0325988875</p></div>
- <div><h3>CAM KẾT</h3><p>Hoàn tiền nếu lỗi</p></div>
-</footer>
+<div class="acc-list" id="accList"></div>
+<div class="pagination" id="pagination"></div>
 
-<div class="float">
+<!-- FOOTER -->
+<div class="footer">
+ <div><h3>SHOP THẾ CHÍÍ</h3><p>Acc Free Fire uy tín</p></div>
+ <div><h3>DỊCH VỤ</h3><p>Bán acc FF</p><p>Acc VIP</p></div>
+ <div><h3>LIÊN HỆ</h3><p>Zalo: 0325988875</p><p>FB: thechi2k7dz</p></div>
+ <div><h3>CAM KẾT</h3><p>Hoàn tiền nếu lỗi</p><p>Đúng mô tả</p></div>
+ <div class="copy">© 2026 Shop Thế Chíí</div>
+</div>
+
+<!-- FLOAT -->
+<div class="float-btns">
  <a class="zalo" href="https://zalo.me/0325988875" target="_blank"><i class="fa-solid fa-comment"></i></a>
  <a class="fb" href="https://facebook.com/thechi2k7dz" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
 </div>
 
+<!-- POPUP -->
 <div id="popup">
- <div id="popup-box">
-  <div id="close" onclick="popup.style.display='none'">✖</div>
-  <img id="main">
-  <div id="thumbs"></div>
+ <div id="popup-content">
+  <div id="popup-close" onclick="closePopup()">×</div>
+  <img id="popupMain">
+  <div id="popupThumbs"></div>
  </div>
 </div>
 
@@ -356,29 +360,58 @@ const accs=[
 ];
 
 let filtered=[...accs],page=1,per=3;
-const box=document.getElementById("list");
-accs.forEach((a,i)=>{
- box.innerHTML+=`
- <div class="acc">
-  <div class="acc-img">
-   ${a.status==="Còn"?'<div class="badge-hot">HOT</div>':''}
-   <img src="${a.img}" onclick="openPop(${i})">
-  </div>
-  <h3>${a.name}</h3>
-  <p><span class="old">${a.old}k</span> → <span class="new">${a.new}k</span></p>
-  <div class="status ${a.status==="Còn"?"con":"ban"}">${a.status}</div>
-  <div class="btn" onclick="openPop(${i})">XEM CHI TIẾT</div>
- </div>`;
-});
+const box=document.getElementById('accList');
+const pagi=document.getElementById('pagination');
 
-function openPop(i){
- popup.style.display="block";
- main.src=accs[i].img;
- thumbs.innerHTML="";
- accs[i].thumbs.forEach(t=>{
-  thumbs.innerHTML+=`<img src="${t}" onclick="main.src='${t}'">`;
+function format(k){return (k*1000).toLocaleString('vi-VN')+'đ'}
+
+function render(){
+ box.innerHTML='';
+ let start=(page-1)*per;
+ filtered.slice(start,start+per).forEach((a,i)=>{
+  let idx=start+i;
+  box.innerHTML+=`
+  <div class="acc">
+   <div class="acc-img">
+    ${a.status==='Còn'?'<span class="badge-hot">HOT</span>':''}
+    <img src="${a.mainImg}" onclick="openPopup(${idx})">
+   </div>
+   <h3>${a.name}</h3>
+   <p><span class="old-price">${format(a.oldPrice)}</span> → <span class="new-price">${format(a.newPrice)}</span></p>
+   <div class="status ${a.status==='Còn'?'con':'ban'}">${a.status}</div>
+   <div class="btn" onclick="openPopup(${idx})">XEM CHI TIẾT</div>
+  </div>`;
+ });
+ renderPage();
+}
+
+function renderPage(){
+ pagi.innerHTML='';
+ for(let i=1;i<=Math.ceil(filtered.length/per);i++){
+  pagi.innerHTML+=i===page?`<span>${i}</span>`:`<a href="#" onclick="page=${i};render()">${i}</a>`;
+ }
+}
+
+function openPopup(i){
+ popup.style.display='block';
+ popupMain.src=accs[i].mainImg;
+ popupThumbs.innerHTML='';
+ accs[i].thumbs.forEach(img=>{
+  popupThumbs.innerHTML+=`<img src="${img}" onclick="popupMain.src='${img}'">`;
  });
 }
+function closePopup(){popup.style.display='none'}
+
+function filterPrice(v){
+ filtered=v==='all'?accs:accs.filter(a=>v==='5000+'?a.newPrice>5000:a.newPrice>=v.split('-')[0]&&a.newPrice<=v.split('-')[1]);
+ page=1;render();
+}
+function searchAcc(k){
+ filtered=accs.filter(a=>a.name.toLowerCase().includes(k.toLowerCase()));
+ page=1;render();
+}
+
+render();
 </script>
 
 </body>
