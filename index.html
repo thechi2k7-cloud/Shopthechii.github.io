@@ -399,9 +399,11 @@ function render(){
    <h3>${a.name}</h3>
 
    <p>
-    <span class="old-price">${format(a.oldPrice)}</span> →
-    <span class="new-price">${format(a.newPrice)}</span>
-   </p>
+ <span class="old-price">${format(a.oldPrice)}</span> →
+ <span class="new-price">${format(a.newPrice)}</span>
+</p>
+
+<p class="acc-info">${a.info}</p>
 
    <div class="status ${a.status.includes('Còn')?'con':'ban'}">
     ${a.status}
