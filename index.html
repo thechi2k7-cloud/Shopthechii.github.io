@@ -218,7 +218,8 @@ footer{
 </section>
 
 <footer>
- <p><b>SHOP THẾ CHÍÍ – ACC FREE FIRE UY TÍN</b></p>
+ <p><b>© <span id="year"></span> Shop Thế Chíí</b></p>
+ <p>ACC FREE FIRE UY TÍN</p>
  <p>✔ Giao dịch nhanh – ✔ Hỗ trợ 24/7 – ✔ Hoàn tiền nếu lỗi</p>
  <p>📞 Zalo: 0325988875 | 📘 Facebook: thechi2k7dz</p>
 </footer>
@@ -470,6 +471,9 @@ render();
   <div id="popupThumbs"></div>
  </div>
 </div>
+<script>
+ document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
