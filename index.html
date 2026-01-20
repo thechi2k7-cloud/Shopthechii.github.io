@@ -356,50 +356,29 @@ const accs=[
 ];
 
 let filtered=[...accs],page=1,per=3;
-const box=accList,pagi=pagination;
+const box=document.getElementById("list");
+accs.forEach((a,i)=>{
+ box.innerHTML+=`
+ <div class="acc">
+  <div class="acc-img">
+   ${a.status==="Còn"?'<div class="badge-hot">HOT</div>':''}
+   <img src="${a.img}" onclick="openPop(${i})">
+  </div>
+  <h3>${a.name}</h3>
+  <p><span class="old">${a.old}k</span> → <span class="new">${a.new}k</span></p>
+  <div class="status ${a.status==="Còn"?"con":"ban"}">${a.status}</div>
+  <div class="btn" onclick="openPop(${i})">XEM CHI TIẾT</div>
+ </div>`;
+});
 
-function format(k){return (k*1000).toLocaleString('vi-VN')+'đ'}
-function filterPrice(v){
- filtered=v==='all'?accs:accs.filter(a=>v==='5000+'?a.newPrice>5000:a.newPrice>=v.split('-')[0]&&a.newPrice<=v.split('-')[1]);
- page=1;render();
-}
-function searchAcc(k){
- filtered=accs.filter(a=>a.name.toLowerCase().includes(k.toLowerCase()));
- page=1;render();
-}
-function render(){
- box.innerHTML='';
- filtered.slice((page-1)*per,page*per).forEach((a,i)=>{
-  box.innerHTML+=`
-  <div class="acc">
-   <div class="acc-img">
-    ${a.status.includes('Còn')?'<span class="badge-hot">HOT</span>':''}
-    <img src="${a.mainImg}" onclick="openPopup(${i})">
-   </div>
-   <h3>${a.name}</h3>
-   <p><span class="old-price">${format(a.oldPrice)}</span> → <span class="new-price">${format(a.newPrice)}</span></p>
-   <p class="status ${a.status.includes('Còn')?'con':'ban'}">${a.status}</p>
-   <div class="btn" onclick="openPopup(${i})">XEM CHI TIẾT</div>
-  </div>`;
- });
- renderPage();
-}
-function renderPage(){
- pagi.innerHTML='';
- for(let i=1;i<=Math.ceil(filtered.length/per);i++)
-  pagi.innerHTML+=i===page?`<span>${i}</span>`:`<a href="#" onclick="page=${i};render()">${i}</a>`;
-}
-function openPopup(i){
- popup.style.display='block';
- popupMain.src=filtered[i].mainImg;
- popupThumbs.innerHTML='';
- filtered[i].thumbs.forEach(img=>{
-  popupThumbs.innerHTML+=`<img src="${img}" onclick="popupMain.src='${img}'">`;
+function openPop(i){
+ popup.style.display="block";
+ main.src=accs[i].img;
+ thumbs.innerHTML="";
+ accs[i].thumbs.forEach(t=>{
+  thumbs.innerHTML+=`<img src="${t}" onclick="main.src='${t}'">`;
  });
 }
-function closePopup(){popup.style.display='none'}
-document.getElementById("year").textContent=new Date().getFullYear();
-render();
 </script>
 
 </body>
