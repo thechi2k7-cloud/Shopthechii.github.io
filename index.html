@@ -115,11 +115,22 @@ a{text-decoration:none;color:inherit}
  background:rgba(0,0,0,.9);z-index:9999
 }
 #popup-content{
- max-width:900px;margin:40px auto;
- background:#121821;padding:20px;
- border-radius:12px;position:relative
+ max-width:900px;
+ max-height:90vh;          /* QUAN TRỌNG */
+ margin:40px auto;
+ background:#121821;
+ padding:20px;
+ border-radius:12px;
+ position:relative;
+ overflow-y:auto;          /* QUAN TRỌNG */
 }
-#popupMain{width:100%;border-radius:10px}
+
+#popupMain{
+ width:100%;
+ max-height:60vh;
+ object-fit:contain;
+}
+
 #popupThumbs{
  display:flex;gap:10px;overflow-x:auto;margin-top:10px
 }
@@ -206,7 +217,11 @@ a{text-decoration:none;color:inherit}
 </div>
 
 <script>
-const accs=[
+const popup = document.getElementById('popup');
+const popupMain = document.getElementById('popupMain');
+const popupThumbs = document.getElementById('popupThumbs');
+
+ const accs=[
 
 /* ===== ACC 1 ===== */
 {
@@ -368,20 +383,32 @@ function format(k){return (k*1000).toLocaleString('vi-VN')+'đ'}
 function render(){
  box.innerHTML='';
  let start=(page-1)*per;
+
  filtered.slice(start,start+per).forEach((a,i)=>{
-  let idx=start+i;
   box.innerHTML+=`
   <div class="acc">
    <div class="acc-img">
-    ${a.status==='Còn'?'<span class="badge-hot">HOT</span>':''}
-    <img src="${a.mainImg}" onclick="openPopup(${idx})">
+    ${a.status.includes('Còn')?'<span class="badge-hot">HOT</span>':''}
+    <img src="${a.mainImg}" onclick="openPopupObj(${start+i})">
    </div>
+
    <h3>${a.name}</h3>
-   <p><span class="old-price">${format(a.oldPrice)}</span> → <span class="new-price">${format(a.newPrice)}</span></p>
-   <div class="status ${a.status==='Còn'?'con':'ban'}">${a.status}</div>
-   <div class="btn" onclick="openPopup(${idx})">XEM CHI TIẾT</div>
+
+   <p>
+    <span class="old-price">${format(a.oldPrice)}</span> →
+    <span class="new-price">${format(a.newPrice)}</span>
+   </p>
+
+   <div class="status ${a.status.includes('Còn')?'con':'ban'}">
+    ${a.status}
+   </div>
+
+   <div class="btn" onclick="openPopupObj(${start+i})">
+    XEM CHI TIẾT
+   </div>
   </div>`;
  });
+
  renderPage();
 }
 
@@ -392,15 +419,25 @@ function renderPage(){
  }
 }
 
-function openPopup(i){
- popup.style.display='block';
- popupMain.src=accs[i].mainImg;
- popupThumbs.innerHTML='';
- accs[i].thumbs.forEach(img=>{
-  popupThumbs.innerHTML+=`<img src="${img}" onclick="popupMain.src='${img}'">`;
+function openPopupObj(i){
+ const acc = filtered[i];
+ if(!acc) return;
+
+ popup.style.display = 'block';
+ popupMain.src = acc.mainImg;
+ popupThumbs.innerHTML = '';
+
+ acc.thumbs.forEach(img=>{
+  popupThumbs.innerHTML += `
+   <img src="${img}" onclick="popupMain.src='${img}'">
+  `;
  });
 }
-function closePopup(){popup.style.display='none'}
+function closePopup(){
+ popup.style.display='none';
+ popupMain.src='';
+ popupThumbs.innerHTML='';
+}
 
 function filterPrice(v){
  filtered=v==='all'?accs:accs.filter(a=>v==='5000+'?a.newPrice>5000:a.newPrice>=v.split('-')[0]&&a.newPrice<=v.split('-')[1]);
