@@ -251,6 +251,10 @@ a{text-decoration:none;color:inherit}
   <div id="popup-close" onclick="closePopup()">×</div>
   <img id="popupMain">
   <div id="popupThumbs"></div>
+
+  <!-- THÔNG TIN ACC -->
+  <div id="popupInfo"></div>
+
  </div>
 </div>
 
@@ -472,6 +476,19 @@ function openPopupObj(i){
    <img src="${img}" onclick="popupMain.src='${img}'">
   `;
  });
+
+ document.getElementById('popupInfo').innerHTML = `
+  <h3 style="color:#00ffcc;margin-top:15px">${acc.name}</h3>
+  <p>💰 Giá: <b style="color:#00ff66">${format(acc.newPrice)}</b></p>
+  <p>📌 ${acc.info}</p>
+  <p>📦 Trạng thái: <b>${acc.status}</b></p>
+  <hr>
+  <p>🏦 <b>Techcombank</b></p>
+  <p>🔢 <b>21200766668888</b></p>
+  <p>👤 Mai Thế Chí</p>
+  <p>📱 Zalo: <b>0325988875</b></p>
+  <p>📱 FB: thechi2k7dz</p>
+ `;
 }
 function closePopup(){
  popup.style.display='none';
