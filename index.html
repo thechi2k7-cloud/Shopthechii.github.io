@@ -13,11 +13,7 @@ body{
  font-family:Arial;
  background:#0b0f14;
  color:#fff;
- min-height:100vh;
- display:flex;
- flex-direction:column;
 }
-a{text-decoration:none;color:inherit}
 
 /* ===== BANNER ===== */
 .banner{
@@ -34,8 +30,7 @@ a{text-decoration:none;color:inherit}
  gap:10px;
  flex-wrap:wrap;
 }
-.filter-box select,
-.filter-box input{
+.filter-box select,.filter-box input{
  padding:10px;
  background:#121821;
  color:#00ffcc;
@@ -53,12 +48,8 @@ a{text-decoration:none;color:inherit}
  grid-template-columns:repeat(3,1fr);
  gap:20px;
 }
-@media(max-width:1024px){
- .acc-list{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:600px){
- .acc-list{grid-template-columns:1fr}
-}
+@media(max-width:900px){.acc-list{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.acc-list{grid-template-columns:1fr}}
 
 /* ===== ACC CARD ===== */
 .acc{
@@ -77,10 +68,14 @@ a{text-decoration:none;color:inherit}
  width:100%;
  border-radius:10px;
  cursor:pointer;
- display:block;
 }
 
 /* ===== HOT ===== */
+@keyframes hot{
+ 0%{transform:scale(1)}
+ 50%{transform:scale(1.15)}
+ 100%{transform:scale(1)}
+}
 .badge-hot{
  position:absolute;
  top:10px;left:10px;
@@ -91,28 +86,25 @@ a{text-decoration:none;color:inherit}
  font-weight:bold;
  animation:hot 1.3s infinite;
 }
-@keyframes hot{
- 0%{transform:scale(1)}
- 50%{transform:scale(1.15)}
- 100%{transform:scale(1)}
+
+/* ===== GLOW ===== */
+@keyframes glow{
+ 0%{box-shadow:0 0 5px rgba(0,255,204,.4)}
+ 50%{box-shadow:0 0 14px rgba(0,255,204,.9)}
+ 100%{box-shadow:0 0 5px rgba(0,255,204,.4)}
 }
 
 /* ===== PRICE ===== */
 .old-price{text-decoration:line-through;color:#aaa}
 .new-price{color:#00ff66;font-weight:bold}
 
-/* ===== STATUS + BTN GLOW ===== */
-@keyframes glow{
- 0%{box-shadow:0 0 5px rgba(0,255,204,.4)}
- 50%{box-shadow:0 0 12px rgba(0,255,204,.9)}
- 100%{box-shadow:0 0 5px rgba(0,255,204,.4)}
-}
-
+/* ===== STATUS ===== */
 .status{
- font-weight:bold;
- padding:4px 8px;
+ margin-top:5px;
+ padding:5px 10px;
  border-radius:6px;
- display:inline-block;
+ font-weight:bold;
+ width:fit-content;
  animation:glow 1.8s infinite;
 }
 .status.con{color:#00ff66}
@@ -122,9 +114,9 @@ a{text-decoration:none;color:inherit}
 .btn{
  margin-top:auto;
  height:44px;
+ border-radius:8px;
  background:linear-gradient(45deg,#00ffcc,#00ff66);
  color:#000;
- border-radius:8px;
  display:flex;
  align-items:center;
  justify-content:center;
@@ -134,10 +126,10 @@ a{text-decoration:none;color:inherit}
 }
 
 /* ===== PAGINATION ===== */
-.pagination{text-align:center;margin:25px 0}
+.pagination{text-align:center;margin:25px}
 .pagination a,.pagination span{
- margin:0 6px;
  padding:8px 14px;
+ margin:0 4px;
  background:#121821;
  color:#00ffcc;
  border-radius:6px;
@@ -199,11 +191,12 @@ a{text-decoration:none;color:inherit}
  justify-content:center;
  font-size:24px;
  color:#fff;
+ animation:glow 1.8s infinite;
 }
 .zalo{background:#0068ff}
 .fb{background:#1877f2}
 
-/* ===== FOOTER 4 COL ===== */
+/* ===== FOOTER ===== */
 .footer-grid{
  background:#000;
  padding:30px;
@@ -213,12 +206,8 @@ a{text-decoration:none;color:inherit}
  color:#aaa;
 }
 .footer-grid h3{color:#00ffcc}
-@media(max-width:900px){
- .footer-grid{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:500px){
- .footer-grid{grid-template-columns:1fr}
-}
+@media(max-width:900px){.footer-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.footer-grid{grid-template-columns:1fr}}
 </style>
 </head>
 
@@ -229,51 +218,31 @@ a{text-decoration:none;color:inherit}
 <div class="filter-box">
  <select onchange="filterPrice(this.value)">
   <option value="all">💰 Tất cả giá</option>
-  <option value="100-500">100k – 500k</option>
-  <option value="500-1000">500k – 1tr</option>
+  <option value="0-1000">Dưới 1tr</option>
   <option value="1000-5000">1tr – 5tr</option>
   <option value="5000+">Trên 5tr</option>
  </select>
- <input placeholder="🔍 Tìm acc theo tên..." oninput="searchAcc(this.value)">
+ <input placeholder="🔍 Tìm acc..." oninput="searchAcc(this.value)">
 </div>
 
-<section>
- <div class="acc-list" id="accList"></div>
- <div class="pagination" id="pagination"></div>
-</section>
+<div class="acc-list" id="accList"></div>
+<div class="pagination" id="pagination"></div>
 
 <footer class="footer-grid">
- <div>
-  <h3>SHOP THẾ CHÍÍ</h3>
-  <p>Acc Free Fire uy tín – giao dịch nhanh – bảo hành đầy đủ.</p>
- </div>
- <div>
-  <h3>DỊCH VỤ</h3>
-  <p>Bán acc FF</p><p>Acc VIP – FULL đồ</p>
- </div>
- <div>
-  <h3>LIÊN HỆ</h3>
-  <p>Zalo: 0325 988 875</p>
-  <p>FB: thechi2k7dz</p>
- </div>
- <div>
-  <h3>CAM KẾT</h3>
-  <p>✔ Đúng mô tả</p>
-  <p>✔ Hoàn tiền nếu lỗi</p>
- </div>
- <p style="grid-column:1/-1;text-align:center">
-  © <span id="year"></span> Shop Thế Chíí
- </p>
+ <div><h3>SHOP THẾ CHÍÍ</h3><p>Acc Free Fire uy tín – bảo hành.</p></div>
+ <div><h3>DỊCH VỤ</h3><p>Bán acc FF</p></div>
+ <div><h3>LIÊN HỆ</h3><p>Zalo: 0325 988 875</p></div>
+ <div><h3>CAM KẾT</h3><p>✔ Hoàn tiền nếu lỗi</p></div>
 </footer>
 
 <div class="float-btns">
  <a class="zalo" href="https://zalo.me/0325988875" target="_blank"><i class="fa-solid fa-comment"></i></a>
- <a class="fb" href="https://www.facebook.com/thechi2k7dz" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+ <a class="fb" href="https://facebook.com/thechi2k7dz" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
 </div>
 
 <div id="popup">
  <div id="popup-content">
-  <div id="popup-close" onclick="closePopup()">×</div>
+  <div id="popup-close" onclick="popup.style.display='none'">×</div>
   <img id="popupMain">
   <div id="popupThumbs"></div>
  </div>
