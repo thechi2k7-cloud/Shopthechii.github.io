@@ -43,9 +43,24 @@ a{text-decoration:none;color:inherit}
  margin:auto;
  padding:0 15px;
  display:grid;
- grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+ grid-template-columns:repeat(4,1fr);
  gap:20px;
 }
+
+/* Tablet */
+@media(max-width:1024px){
+ .acc-list{
+  grid-template-columns:repeat(2,1fr);
+ }
+}
+
+/* Mobile */
+@media(max-width:600px){
+ .acc-list{
+  grid-template-columns:1fr;
+ }
+}
+/* ===== ACC CARD ===== */
 .acc{
  background:#121821;
  border-radius:15px;
@@ -54,17 +69,32 @@ a{text-decoration:none;color:inherit}
  display:flex;
  flex-direction:column;
 }
-.acc-img{position:relative}
-.acc-img img{width:100%;border-radius:10px;cursor:pointer}
+
+/* ===== IMAGE ===== */
+.acc-img{
+ position:relative; /* BẮT BUỘC cho badge-hot */
+}
+
+.acc-img img{
+ width:100%;
+ border-radius:10px;
+ cursor:pointer;
+ display:block;
+}
 
 /* ===== HOT ===== */
 .badge-hot{
- position:absolute;top:10px;left:10px;
+ position:absolute;
+ top:10px;
+ left:10px;
  background:linear-gradient(45deg,#ff0000,#ff9900);
- padding:6px 12px;border-radius:6px;
- font-size:12px;font-weight:bold;
+ padding:6px 12px;
+ border-radius:6px;
+ font-size:12px;
+ font-weight:bold;
  animation:hot 1.3s infinite;
 }
+
 @keyframes hot{
  0%{transform:scale(1)}
  50%{transform:scale(1.15)}
