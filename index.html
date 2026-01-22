@@ -463,7 +463,10 @@ function render(){
     <img src="${a.mainImg}" onclick="openPopupObj(${start+i})">
    </div>
 
-   <h3 class="acc-name">${a.name}</h3>
+   <h3 class="acc-name">
+ ACC #${start + i + 1} – ${a.name}
+</h3>
+
 
    <p>
  <span class="old-price">${format(a.oldPrice)}</span> →
