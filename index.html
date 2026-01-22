@@ -267,7 +267,7 @@ const popupThumbs = document.getElementById('popupThumbs');
 
 /* ===== ACC 1 ===== */
 {
- name:'Acc 1 🔥',
+ name:'Chuyên tử chiến 💎',
  mainImg:'https://i.postimg.cc/hGFQz7hL/85ae2bd2-da86-4f04-8a03-72543aefac43.jpg',
  thumbs:[
   'https://i.postimg.cc/hGFQz7hL/85ae2bd2-da86-4f04-8a03-72543aefac43.jpg',
@@ -279,14 +279,13 @@ const popupThumbs = document.getElementById('popupThumbs');
  ],
  oldPrice:850,
  newPrice:750,
- info:'Chuyên phòng tử chiến💎',
  status:'Đã bán ❌',
  fanpage:'https://www.facebook.com/thechi2k7dz'
 },
 
 /* ===== ACC 2 ===== */
 {
- name:'Acc 2 🔥',
+ name:'VIP8 | 12 súng nâng cấp | 4xx áo – 4xx súng 💎',
  mainImg:'https://i.postimg.cc/wxyB7zgD/e2e646a3-1a01-4d84-93f8-e4dd554fa1d1.jpg',
  thumbs:[
   'https://i.postimg.cc/wxyB7zgD/e2e646a3-1a01-4d84-93f8-e4dd554fa1d1.jpg',
@@ -314,14 +313,13 @@ const popupThumbs = document.getElementById('popupThumbs');
  ],
  oldPrice:6200,
  newPrice:5200,
- info:'Acc VIP8 – 12 súng nâng cấp hơn 4xx áo 4xx súng💎',
  status:'Còn ✅',
  fanpage:'https://www.facebook.com/thechi2k7dz'
 },
 
 /* ===== ACC 3 ===== */
 {
- name:'Acc 3 🔥',
+ name:'VIP8 | Hành động 10k KC | 5c7 💎',
  mainImg:'https://i.postimg.cc/NGpbsL16/70652ec2-08eb-4f46-92c3-0383688ba817.jpg',
  thumbs:[
   'https://i.postimg.cc/NGpbsL16/70652ec2-08eb-4f46-92c3-0383688ba817.jpg',
@@ -343,14 +341,13 @@ const popupThumbs = document.getElementById('popupThumbs');
  ],
  oldPrice:8600,
  newPrice:7000,
- info:'VIP8 – hành động10k kim cương 5c7💎',
  status:'Còn ✅',
  fanpage:'https://www.facebook.com/thechi2k7dz'
 },
 
 /* ===== ACC 4 ===== */
 {
- name:'Acc 4 🔥',
+ name:'VIP7 | 1c7 – 3ct7 | 2xx áo – 2xx súng 💎',
  mainImg:'https://i.postimg.cc/yNgJ31pv/e19d27f1-4f33-4570-8ff0-e8ae1aa9abe1.jpg',
  thumbs:[
   'https://i.postimg.cc/yNgJ31pv/e19d27f1-4f33-4570-8ff0-e8ae1aa9abe1.jpg',
@@ -374,14 +371,13 @@ const popupThumbs = document.getElementById('popupThumbs');
  ],
  oldPrice:3000,
  newPrice:2600,
- info:'VIP7 – 1c7 3ct7 2xx áo 2xx súng💎',
  status:'Còn ✅',
  fanpage:'https://www.facebook.com/thechi2k7dz'
 },
 
 /* ===== ACC 5 ===== */
 {
- name:'Acc 5 🔥',
+ name:'FULL nâng cấp 4 | ~400 áo nhiều trang phục hợp tác 💎',
  mainImg:'https://i.postimg.cc/hvK2WHnS/fe08f046-b55d-4240-9292-e3bf6939cd15.jpg',
  thumbs:[
   'https://i.postimg.cc/hvK2WHnS/fe08f046-b55d-4240-9292-e3bf6939cd15.jpg',
@@ -410,14 +406,13 @@ const popupThumbs = document.getElementById('popupThumbs');
  ],
  oldPrice:3500,
  newPrice:2500,
- info:'FULL nâng cấp4  – gần 400 áo nhiều trang phục hợp tác💎',
  status:'Còn ✅',
  fanpage:'https://www.facebook.com/thechi2k7dz'
 },
 
  /* ===== ACC 6 ===== */
 {
- name:'Acc 6 🔥',
+ name:'VIP5 – chuyên CUSS ST, TC | ~3xx áo & gần 300 súng 💎',
  mainImg:'https://i.postimg.cc/SNgrdyKX/1e960f6f-877e-4b81-bd5b-643e15c21b5f.jpg',
  thumbs:[
   'https://i.postimg.cc/mDSMrwzz/0aaea7e0-0ead-4c36-8528-a2ae3d6fd958.jpg',
@@ -445,7 +440,6 @@ const popupThumbs = document.getElementById('popupThumbs');
  ],
  oldPrice:1700,
  newPrice:1250,
- info:'VIP5 – chuyên CUSS ST, TC | ~3xx áo & gần 300 súng 💎',
  status:'Còn ✅',
  fanpage:'https://www.facebook.com/thechi2k7dz'
 }
@@ -469,14 +463,12 @@ function render(){
     <img src="${a.mainImg}" onclick="openPopupObj(${start+i})">
    </div>
 
-   <h3>${a.name}</h3>
+   <h3>ACC #${start + i + 1}</h3>
 
    <p>
  <span class="old-price">${format(a.oldPrice)}</span> →
  <span class="new-price">${format(a.newPrice)}</span>
 </p>
-
-<p class="acc-info">${a.info}</p>
 
    <div class="status ${a.status.includes('Còn')?'con':'ban'}">
     ${a.status}
