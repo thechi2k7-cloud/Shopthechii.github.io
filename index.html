@@ -205,10 +205,12 @@ a{text-decoration:none;color:inherit}
 <div class="filter-box">
  <select onchange="filterPrice(this.value)">
   <option value="all">💰 Tất cả giá</option>
-  <option value="0-1000">Dưới 1tr</option>
+  <option value="100-500">100k – 500k</option>
+  <option value="500-1000">500k – 1tr</option>
   <option value="1000-5000">1tr – 5tr</option>
-  <option value="5000+">Trên 5tr</option>
- </select>
+  <option value="5000-10000">5tr – 10tr</option>
+  <option value="10000+">Trên 10tr</option>
+</select>
  <input placeholder="🔍 Tìm acc..." oninput="searchAcc(this.value)">
 </div>
 
@@ -630,12 +632,27 @@ function closePopup(){
 }
 
 function filterPrice(v){
- filtered=v==='all'?accs:accs.filter(a=>v==='5000+'?a.newPrice>5000:a.newPrice>=v.split('-')[0]&&a.newPrice<=v.split('-')[1]);
- page=1;render();
+ if(v === 'all'){
+  filtered = accs;
+ }
+ else if(v.includes('+')){
+  const min = Number(v.replace('+',''));
+  filtered = accs.filter(a => a.newPrice >= min);
+ }
+ else{
+  const [min, max] = v.split('-').map(Number);
+  filtered = accs.filter(a => a.newPrice >= min && a.newPrice <= max);
+ }
+ page = 1;
+ render();
 }
+
 function searchAcc(k){
- filtered=accs.filter(a=>a.name.toLowerCase().includes(k.toLowerCase()));
- page=1;render();
+ filtered = accs.filter(a =>
+  a.name.toLowerCase().includes(k.toLowerCase())
+ );
+ page = 1;
+ render();
 }
 
 render();
