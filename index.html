@@ -14,6 +14,63 @@ body{
 }
 a{text-decoration:none;color:inherit}
 
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;font-family:Arial;
+ background:#0b0f14;color:#fff;
+}
+a{text-decoration:none;color:inherit}
+
+/* ===== TITLE ACC ===== */
+
+.title-con{
+ color:#00ff66;
+ text-shadow:0 0 10px #00ff66,0 0 20px #00ff66;
+ animation:glowCon 1.5s infinite alternate;
+}
+
+.title-ban{
+ color:#ff4444;
+ text-shadow:0 0 10px #ff4444,0 0 20px #ff4444;
+ animation:glowBan 1.5s infinite alternate;
+}
+
+@keyframes glowCon{
+ from{ text-shadow:0 0 5px #00ff66 }
+ to{ text-shadow:0 0 20px #00ff66 }
+}
+
+@keyframes glowBan{
+ from{ text-shadow:0 0 5px #ff4444 }
+ to{ text-shadow:0 0 20px #ff4444 }
+}
+
+
+/* ===== TITLE ACC ===== */
+
+.title-con{
+ color:#00ff66;
+ text-shadow:0 0 10px #00ff66,0 0 20px #00ff66;
+ animation:glowCon 1.5s infinite alternate;
+}
+
+.title-ban{
+ color:#ff4444;
+ text-shadow:0 0 10px #ff4444,0 0 20px #ff4444;
+ animation:glowBan 1.5s infinite alternate;
+}
+
+@keyframes glowCon{
+ from{ text-shadow:0 0 5px #00ff66 }
+ to{ text-shadow:0 0 20px #00ff66 }
+}
+
+@keyframes glowBan{
+ from{ text-shadow:0 0 5px #ff4444 }
+ to{ text-shadow:0 0 20px #ff4444 }
+}
+
 /* ===== BANNER ===== */
 .banner{
  height:260px;
@@ -217,12 +274,11 @@ a{text-decoration:none;color:inherit}
 <div style="max-width:1200px;margin:auto;padding:0 15px;display:grid;grid-template-columns:1fr 1fr;gap:30px">
 
 <div>
-<h2 style="color:#00ff66">🟢 ACC CÒN</h2>
+<h2 class="title-con">🔥 ACC ĐANG CÓ</h2>
 <div class="acc-list" id="accAvailable"></div>
 </div>
 
-<div>
-<h2 style="color:#ff4444">🔴 ACC ĐÃ BÁN</h2>
+<div><h2 class="title-ban">💰 ACC ĐÃ BÁN</h2>
 <div class="acc-list" id="accSold"></div>
 </div>
 
