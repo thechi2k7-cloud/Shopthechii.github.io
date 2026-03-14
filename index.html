@@ -249,8 +249,6 @@ a{text-decoration:none;color:inherit}
 }
 .footer h3{color:#00ffcc}
 .footer p{margin:6px 0}
-@media(max-width:900px){.footer{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:500px){.footer{grid-template-columns:1fr}}
 .footer .copy{text-align:center;grid-column:1/-1;margin-top:10px}
 </style>
 </head>
@@ -818,7 +816,7 @@ const popupThumbs = document.getElementById('popupThumbs');
  fanpage:'https://www.facebook.com/thechii07?locale=vi_VN'
 }
  ];
-let filtered=[...accs],page=1,per=15;
+let filtered=[...accs],page=1,per=7;
 const boxAvailable=document.getElementById('accAvailable');
 const boxSold=document.getElementById('accSold');
 const pagi=document.getElementById('pagination');
