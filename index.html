@@ -814,37 +814,6 @@ if(a.status.includes('Còn')){
 
 }
 
- filtered.slice(start,start+per).forEach((a,i)=>{
-  box.innerHTML+=`
-  <div class="acc">
-   <div class="acc-img">
-    ${a.status.includes('Còn')?'<span class="badge-hot">HOT</span>':''}
-    <img src="${a.mainImg}" onclick="openPopupObj(${start+i})">
-   </div>
-
-   <h3 class="acc-name">
- ACC #${start + i + 1} – ${a.name}
-</h3>
-
-
-   <p>
- <span class="old-price">${format(a.oldPrice)}</span> →
- <span class="new-price">${format(a.newPrice)}</span>
-</p>
-
-   <div class="status ${a.status.includes('Còn')?'con':'ban'}">
-    ${a.status}
-   </div>
-
-   <div class="btn" onclick="openPopupObj(${start+i})">
-    XEM CHI TIẾT
-   </div>
-  </div>`;
- });
-
- renderPage();
-}
-
 function renderPage(){
  pagi.innerHTML='';
  for(let i=1;i<=Math.ceil(filtered.length/per);i++){
