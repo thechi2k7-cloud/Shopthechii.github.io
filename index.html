@@ -1,141 +1,200 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Shop Thế Chíí</title>
+<title>Shop Thế Chíí – Acc Free Fire Uy Tín</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-
 *{box-sizing:border-box}
 body{
- margin:0;
- font-family:Arial;
- background:#0b0f14;
- color:#fff;
+ margin:0;font-family:Arial;
+ background:#0b0f14;color:#fff;
 }
-
 a{text-decoration:none;color:inherit}
 
 /* ===== BANNER ===== */
-
 .banner{
  height:260px;
  background:url('https://i.postimg.cc/bJr5hzsY/ff31cd69-f0cf-4c13-ad3a-dd6ae8bef797.jpg') center/cover no-repeat;
 }
 
 /* ===== FILTER ===== */
-
 .filter-box{
- max-width:1200px;
- margin:20px auto;
- padding:0 15px;
- display:flex;
- gap:10px;
- flex-wrap:wrap
+ max-width:1200px;margin:20px auto;padding:0 15px;
+ display:flex;gap:10px;flex-wrap:wrap
 }
-
-.filter-box select,
-.filter-box input{
- padding:10px;
- background:#121821;
- color:#00ffcc;
- border:1px solid #00ffcc;
- border-radius:8px;
- font-weight:bold
+.filter-box select,.filter-box input{
+ padding:10px;background:#121821;color:#00ffcc;
+ border:1px solid #00ffcc;border-radius:8px;font-weight:bold
 }
 
 /* ===== GRID ===== */
-
 .acc-list{
- max-width:1200px;
- margin:auto;
- padding:0 15px;
- display:grid;
- grid-template-columns:repeat(3,1fr);
+ max-width:1200px;margin:auto;padding:0 15px;
+ display:grid;grid-template-columns:repeat(3,1fr);
  gap:20px
 }
-
-@media(max-width:900px){
- .acc-list{grid-template-columns:repeat(2,1fr)}
-}
-
-@media(max-width:600px){
- .acc-list{grid-template-columns:1fr}
-}
+@media(max-width:900px){.acc-list{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.acc-list{grid-template-columns:1fr}}
 
 /* ===== CARD ===== */
-
 .acc{
- background:#121821;
- border-radius:15px;
- padding:15px;
+ background:#121821;border-radius:15px;padding:15px;
  box-shadow:0 0 15px rgba(0,255,204,.25);
+ display:flex;flex-direction:column;height:100%
+}
+
+/* ===== IMAGE ===== */
+.acc-img{position:relative}
+.acc-img img{
+ width:100%;border-radius:10px;
+ cursor:pointer;display:block
+}
+
+/* ===== HOT ===== */
+.badge-hot{
+ position:absolute;top:10px;left:10px;
+ background:linear-gradient(45deg,#ff0000,#ff9900);
+ padding:6px 12px;border-radius:6px;
+ font-size:12px;font-weight:bold;
+ animation:hot 1.2s infinite
+}
+@keyframes hot{
+ 0%{transform:scale(1)}
+ 50%{transform:scale(1.15)}
+ 100%{transform:scale(1)}
+}
+
+/* ===== PRICE ===== */
+.old-price{text-decoration:line-through;color:#aaa}
+.new-price{color:#00ff66;font-weight:bold}
+
+/* ===== GLOW ===== */
+@keyframes glow{
+ 0%{box-shadow:0 0 5px rgba(0,255,204,.4)}
+ 50%{box-shadow:0 0 14px rgba(0,255,204,1)}
+ 100%{box-shadow:0 0 5px rgba(0,255,204,.4)}
+}
+
+/* ===== STATUS ===== */
+.status{
+ margin-top:auto;        /* ⭐ DÒNG FIX LỆCH */
+ margin-bottom:8px;
+ font-weight:bold;
+ padding:6px 10px;
+ border-radius:6px;
+ text-align:center;
+ animation:glow 1.6s infinite;
+}
+.status.con{color:#00ff66;border:1px solid #00ff66}
+.status.ban{color:#ff4444;border:1px solid #ff4444}
+
+/* ===== BUTTON ===== */
+.btn{
+ height:44px;                    /* ❗ KHÔNG margin-top:auto */
+ background:linear-gradient(45deg,#00ffcc,#00ff66);
+ color:#000;border-radius:8px;
  display:flex;
- flex-direction:column;
- height:100%
-}
-
-/* ===== TITLE ===== */
-
-.title-con{
- color:#00ff66;
- text-shadow:0 0 10px #00ff66,0 0 20px #00ff66;
- animation:glowCon 1.5s infinite alternate;
-}
-
-.title-ban{
- color:#ff4444;
- text-shadow:0 0 10px #ff4444,0 0 20px #ff4444;
- animation:glowBan 1.5s infinite alternate;
-}
-
-@keyframes glowCon{
- from{ text-shadow:0 0 5px #00ff66 }
- to{ text-shadow:0 0 20px #00ff66 }
-}
-
-@keyframes glowBan{
- from{ text-shadow:0 0 5px #ff4444 }
- to{ text-shadow:0 0 20px #ff4444 }
+ align-items:center;
+ justify-content:center;
+ font-weight:bold;
+ cursor:pointer;
+ animation:glow 1.6s infinite;
 }
 
 /* ===== PAGINATION ===== */
-
-#page-con,#page-ban{
- text-align:center;
- margin:20px 0;
+.pagination{text-align:center;margin:25px 0}
+.pagination a,.pagination span{
+ margin:0 6px;padding:8px 14px;
+ background:#121821;color:#00ffcc;
+ border-radius:6px;font-weight:bold
 }
+.pagination span{background:#00ffcc;color:#000}
 
-#page-con button,#page-ban button{
- padding:8px 14px;
- margin:4px;
- background:#00ffcc;
- border:none;
- border-radius:6px;
- cursor:pointer;
+/* ===== POPUP ===== */
+#popup{
+ display:none;position:fixed;inset:0;
+ background:rgba(0,0,0,.9);z-index:9999
 }
+#popup-content{
+ max-width:900px;
+ max-height:90vh;          /* QUAN TRỌNG */
+ margin:40px auto;
+ background:#121821;
+ padding:20px;
+ border-radius:12px;
+ position:relative;
+ overflow-y:auto;          /* QUAN TRỌNG */
+}
+/* ===== CHỈ PC – NỚI RỘNG POPUP ===== */
+@media (min-width: 768px){
+ #popup-content{
+  width:95vw;        /* gần full màn hình */
+  max-width:1800px; /* 👈 PC to cỡ nào cũng bung */
+ }
+}
+#popupMain{
+ width:100%;
+ max-height:60vh;
+ object-fit:contain;
+}
+/* 💻 CHỈ PC – MOBILE GIỮ NGUYÊN */
+@media (min-width: 768px){
+ #popupMain{
+  max-height:85vh;
+ }
+}
+#popupThumbs{
+ display:flex;gap:10px;overflow-x:auto;margin-top:10px
+}
+#popupThumbs img{
+ width:90px;border-radius:8px;cursor:pointer
+}
+#popup-close{
+ position:absolute;top:8px;right:14px;
+ font-size:30px;color:#ff4444;cursor:pointer
+}
+/* ===== SHOW POPUP ===== */
+#popup{
+ display:none;
+}
+#popup.show{
+ display:flex;
+ justify-content:center;
+ align-items:flex-start;
+}
+/* ===== FLOAT BTN ===== */
+@keyframes floatGlow{
+ 0%{box-shadow:0 0 6px rgba(255,255,255,.4)}
+ 50%{box-shadow:0 0 18px rgba(255,255,255,1)}
+ 100%{box-shadow:0 0 6px rgba(255,255,255,.4)}
+}
+.float-btns{
+ position:fixed;right:15px;bottom:20px;
+ display:flex;flex-direction:column;gap:12px;z-index:999
+}
+.float-btns a{
+ width:52px;height:52px;border-radius:50%;
+ display:flex;align-items:center;justify-content:center;
+ font-size:24px;color:#fff;
+ animation:floatGlow 1.5s infinite
+}
+.zalo{background:#0068ff}
+.fb{background:#1877f2}
 
 /* ===== FOOTER ===== */
-
 .footer{
- background:#000;
- padding:30px;
- display:grid;
- grid-template-columns:1fr;
- gap:20px;
- color:#aaa;
+ background:#000;padding:30px;
+ display:grid;grid-template-columns:repeat(4,1fr);
+ gap:20px;color:#aaa
 }
-
-.footer h3{
- color:#00ffcc;
- font-size:22px;
-}
-
-.footer p{
- margin:6px 0;
- font-size:16px;
-}
-
+.footer h3{color:#00ffcc}
+.footer p{margin:6px 0}
+@media(max-width:900px){.footer{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.footer{grid-template-columns:1fr}}
+.footer .copy{text-align:center;grid-column:1/-1;margin-top:10px}
 </style>
 </head>
 
@@ -144,86 +203,34 @@ a{text-decoration:none;color:inherit}
 <header class="banner"></header>
 
 <div class="filter-box">
-<select>
-<option>💰 Tất cả giá</option>
-<option>100k – 500k</option>
-<option>500k – 1tr</option>
-<option>1tr – 5tr</option>
-<option>5tr – 10tr</option>
-<option>Trên 10tr</option>
+ <select onchange="filterPrice(this.value)">
+  <option value="all">💰 Tất cả giá</option>
+  <option value="100-500">100k – 500k</option>
+  <option value="500-1000">500k – 1tr</option>
+  <option value="1000-5000">1tr – 5tr</option>
+  <option value="5000-10000">5tr – 10tr</option>
+  <option value="10000+">Trên 10tr</option>
 </select>
-
-<input placeholder="🔍 Tìm acc...">
+ <input placeholder="🔍 Tìm acc..." oninput="searchAcc(this.value)">
 </div>
 
 <div style="max-width:1200px;margin:auto;padding:0 15px;display:grid;grid-template-columns:1fr 1fr;gap:30px">
 
 <div>
-
-<h2 class="title-con">🔥 ACC ĐANG CÓ</h2>
-
-<div id="acc-con" class="acc-list">
-
-<div class="acc-con acc">ACC 1</div>
-<div class="acc-con acc">ACC 2</div>
-<div class="acc-con acc">ACC 3</div>
-<div class="acc-con acc">ACC 4</div>
-<div class="acc-con acc">ACC 5</div>
-<div class="acc-con acc">ACC 6</div>
-<div class="acc-con acc">ACC 7</div>
-<div class="acc-con acc">ACC 8</div>
-
-</div>
-
-<div id="page-con"></div>
-
+<h2 style="color:#00ff66">🟢 ACC CÒN</h2>
+<div class="acc-list" id="accAvailable"></div>
 </div>
 
 <div>
-
-<h2 class="title-ban">💰 ACC ĐÃ BÁN</h2>
-
-<div id="acc-ban" class="acc-list">
-
-<div class="acc-ban acc">ACC 1</div>
-<div class="acc-ban acc">ACC 2</div>
-<div class="acc-ban acc">ACC 3</div>
-<div class="acc-ban acc">ACC 4</div>
-<div class="acc-ban acc">ACC 5</div>
-<div class="acc-ban acc">ACC 6</div>
-<div class="acc-ban acc">ACC 7</div>
-
-</div>
-
-<div id="page-ban"></div>
-
+<h2 style="color:#ff4444">🔴 ACC ĐÃ BÁN</h2>
+<div class="acc-list" id="accSold"></div>
 </div>
 
 </div>
-
 <!-- FOOTER -->
-
 <div class="footer">
 
-<div>
-<h3>🛒 SHOP THẾ CHÍÍ</h3>
-<p>🎮 Chuyên bán acc Free Fire uy tín</p>
-<p>💎 Acc xịn – giá tốt – giao dịch nhanh</p>
-<p>🔒 Cam kết an toàn</p>
-</div>
-
-<div>
-<h3>🔥 DỊCH VỤ</h3>
-<p>💰 Bán acc FF</p>
-<p>🔥 Thu mua acc</p>
-<p>🤝 Giao dịch trực tiếp</p>
-</div>
-
-<div>
-<h3>📞 LIÊN HỆ</h3>
-<p>Zalo: 0325988875</p>
-<p>Facebook: thechi2k7dz</p>
-</div>
+  <div>
     <h3>🛒 SHOP THẾ CHÍÍ</h3>
     <p>🎮 Chuyên bán acc Free Fire uy tín</p>
     <p>💎 Acc xịn – giá tốt – giao dịch nhanh</p>
@@ -755,7 +762,7 @@ const popupThumbs = document.getElementById('popupThumbs');
  fanpage:'https://www.facebook.com/thechii07?locale=vi_VN'
 }
  ];
-let filtered=[...accs],page=1,per=7;
+let filtered=[...accs],page=1,per=15;
 const boxAvailable=document.getElementById('accAvailable');
 const boxSold=document.getElementById('accSold');
 const pagi=document.getElementById('pagination');
@@ -883,4 +890,4 @@ render();
 </script>
 
 </body>
-</html>
+</html> 
