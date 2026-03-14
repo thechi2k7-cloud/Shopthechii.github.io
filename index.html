@@ -214,9 +214,19 @@ a{text-decoration:none;color:inherit}
  <input placeholder="🔍 Tìm acc..." oninput="searchAcc(this.value)">
 </div>
 
-<div class="acc-list" id="accList"></div>
-<div class="pagination" id="pagination"></div>
+<div style="max-width:1200px;margin:auto;padding:0 15px;display:grid;grid-template-columns:1fr 1fr;gap:30px">
 
+<div>
+<h2 style="color:#00ff66">🟢 ACC CÒN</h2>
+<div class="acc-list" id="accAvailable"></div>
+</div>
+
+<div>
+<h2 style="color:#ff4444">🔴 ACC ĐÃ BÁN</h2>
+<div class="acc-list" id="accSold"></div>
+</div>
+
+</div>
 <!-- FOOTER -->
 <div class="footer">
 
@@ -753,14 +763,56 @@ const popupThumbs = document.getElementById('popupThumbs');
 }
  ];
 let filtered=[...accs],page=1,per=15;
-const box=document.getElementById('accList');
+const boxAvailable=document.getElementById('accAvailable');
+const boxSold=document.getElementById('accSold');
 const pagi=document.getElementById('pagination');
 
 function format(k){return (k*1000).toLocaleString('vi-VN')+'đ'}
 
 function render(){
- box.innerHTML='';
- let start=(page-1)*per;
+
+boxAvailable.innerHTML='';
+boxSold.innerHTML='';
+
+filtered.forEach((a,i)=>{
+
+const card = `
+<div class="acc">
+
+<div class="acc-img">
+${a.status.includes('Còn')?'<span class="badge-hot">HOT</span>':''}
+<img src="${a.mainImg}" onclick="openPopupObj(${i})">
+</div>
+
+<h3 class="acc-name">
+ACC #${i+1} – ${a.name}
+</h3>
+
+<p>
+<span class="old-price">${format(a.oldPrice)}</span> →
+<span class="new-price">${format(a.newPrice)}</span>
+</p>
+
+<div class="status ${a.status.includes('Còn')?'con':'ban'}">
+${a.status}
+</div>
+
+<div class="btn" onclick="openPopupObj(${i})">
+XEM CHI TIẾT
+</div>
+
+</div>
+`;
+
+if(a.status.includes('Còn')){
+ boxAvailable.innerHTML += card;
+}else{
+ boxSold.innerHTML += card;
+}
+
+});
+
+}
 
  filtered.slice(start,start+per).forEach((a,i)=>{
   box.innerHTML+=`
