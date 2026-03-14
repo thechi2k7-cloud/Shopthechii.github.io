@@ -8,19 +8,18 @@
 
 <style>
 *{box-sizing:border-box}
-body{
- margin:0;font-family:Arial;
- background:#0b0f14;color:#fff;
-}
-a{text-decoration:none;color:inherit}
 
-<style>
-*{box-sizing:border-box}
 body{
- margin:0;font-family:Arial;
- background:#0b0f14;color:#fff;
+ margin:0;
+ font-family:Arial;
+ background:#0b0f14;
+ color:#fff;
 }
-a{text-decoration:none;color:inherit}
+
+a{
+ text-decoration:none;
+ color:inherit
+}
 
 /* ===== TITLE ACC ===== */
 
@@ -46,30 +45,23 @@ a{text-decoration:none;color:inherit}
  to{ text-shadow:0 0 20px #ff4444 }
 }
 
+/* ===== PHÂN TRANG ===== */
 
-/* ===== TITLE ACC ===== */
-
-.title-con{
- color:#00ff66;
- text-shadow:0 0 10px #00ff66,0 0 20px #00ff66;
- animation:glowCon 1.5s infinite alternate;
+#page-con,#page-ban{
+ text-align:center;
+ margin:20px 0;
 }
 
-.title-ban{
- color:#ff4444;
- text-shadow:0 0 10px #ff4444,0 0 20px #ff4444;
- animation:glowBan 1.5s infinite alternate;
+#page-con button,#page-ban button{
+ padding:8px 14px;
+ margin:4px;
+ background:#00ffcc;
+ border:none;
+ border-radius:6px;
+ cursor:pointer;
 }
 
-@keyframes glowCon{
- from{ text-shadow:0 0 5px #00ff66 }
- to{ text-shadow:0 0 20px #00ff66 }
-}
-
-@keyframes glowBan{
- from{ text-shadow:0 0 5px #ff4444 }
- to{ text-shadow:0 0 20px #ff4444 }
-}
+</style>
 
 /* ===== BANNER ===== */
 .banner{
@@ -262,7 +254,46 @@ a{text-decoration:none;color:inherit}
 }
 </style>
 </head>
+<script>
 
+function paginate(itemClass,pageBox){
+
+const items=document.querySelectorAll(itemClass);
+const box=document.querySelector(pageBox);
+
+const perPage=6;
+
+function show(page){
+
+items.forEach((item,i)=>{
+item.style.display=(i>=(page-1)*perPage && i<page*perPage)?"block":"none";
+});
+
+}
+
+const total=Math.ceil(items.length/perPage);
+
+for(let i=1;i<=total;i++){
+
+const btn=document.createElement("button");
+btn.innerText=i;
+
+btn.onclick=function(){
+show(i);
+};
+
+box.appendChild(btn);
+
+}
+
+show(1);
+
+}
+
+paginate(".acc-con","#page-con");
+paginate(".acc-ban","#page-ban");
+
+</script>
 <body>
 
 <header class="banner"></header>
@@ -283,11 +314,33 @@ a{text-decoration:none;color:inherit}
 
 <div>
 <h2 class="title-con">🔥 ACC ĐANG CÓ</h2>
-<div class="acc-list" id="accAvailable"></div>
+<div id="acc-con">
+<div class="ACC ĐANG CÓ">ACC 1</div>
+<div class="ACC ĐANG CÓ">ACC 2</div>
+<div class="ACC ĐANG CÓ">ACC 3</div>
+<div class="ACC ĐANG CÓ">ACC 4</div>
+<div class="ACC ĐANG CÓ">ACC 5</div>
+<div class="ACC ĐANG CÓ">ACC 6</div>
+<div class="ACC ĐANG CÓ">ACC 7</div>
+<div class="ACC ĐANG CÓ">ACC 8</div>
+</div>
+
+<div id="page-con"></div>
 </div>
 
 <div><h2 class="title-ban">💰 ACC ĐÃ BÁN</h2>
-<div class="acc-list" id="accSold"></div>
+
+<div id="acc-ban">
+<div class="ACC ĐÃ BÁN">ACC 1</div>
+<div class="ACC ĐÃ BÁN">ACC 2</div>
+<div class="ACC ĐÃ BÁN">ACC 3</div>
+<div class="ACC ĐÃ BÁN">ACC 4</div>
+<div class="ACC ĐÃ BÁN">ACC 5</div>
+<div class="ACC ĐÃ BÁN">ACC 6</div>
+<div class="ACC ĐÃ BÁN">ACC 7</div>
+</div>
+
+<div id="page-ban"></div>
 </div>
 
 </div>
