@@ -195,6 +195,29 @@ a{text-decoration:none;color:inherit}
 @media(max-width:900px){.footer{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:500px){.footer{grid-template-columns:1fr}}
 .footer .copy{text-align:center;grid-column:1/-1;margin-top:10px}
+/* ===== TITLE GLOW ===== */
+
+.title-con{
+ color:#00ff66;
+ letter-spacing:1px;
+ animation:glowGreen 1.5s infinite alternate;
+}
+
+.title-ban{
+ color:#ff4444;
+ letter-spacing:1px;
+ animation:glowRed 1.5s infinite alternate;
+}
+
+@keyframes glowGreen{
+ from{ text-shadow:0 0 5px #00ff66,0 0 10px #00ff66; }
+ to{ text-shadow:0 0 20px #00ff66,0 0 40px #00ff66; }
+}
+
+@keyframes glowRed{
+ from{ text-shadow:0 0 5px #ff4444,0 0 10px #ff4444; }
+ to{ text-shadow:0 0 20px #ff4444,0 0 40px #ff4444; }
+}
 </style>
 </head>
 
@@ -217,12 +240,12 @@ a{text-decoration:none;color:inherit}
 <div style="max-width:1200px;margin:auto;padding:0 15px;display:grid;grid-template-columns:1fr 1fr;gap:30px">
 
 <div>
-<h2 style="color:#00ff66;letter-spacing:1px">🛒 "ACC CÒN"</h2>
+<h2 class="title-con">🛒 ACC CÒN</h2>
 <div class="acc-list" id="accAvailable"></div>
 </div>
 
 <div>
-<h2 style="color:#ff4444;letter-spacing:1px">🚫 "ACC ĐÃ BÁN"</h2>
+<h2 class="title-ban">🚫 ACC ĐÃ BÁN</h2>
 <div class="acc-list" id="accSold"></div>
 </div>
 
