@@ -196,7 +196,6 @@ a{text-decoration:none;color:inherit}
 @media(max-width:500px){.footer{grid-template-columns:1fr}}
 .footer .copy{text-align:center;grid-column:1/-1;margin-top:10px}
 /* ===== TITLE GLOW ===== */
-
 .title-con{
  color:#00ff66;
  letter-spacing:1px;
@@ -218,9 +217,61 @@ a{text-decoration:none;color:inherit}
  from{ text-shadow:0 0 5px #ff4444,0 0 10px #ff4444; }
  to{ text-shadow:0 0 20px #ff4444,0 0 40px #ff4444; }
 }
+
+/* ===== HOA RƠI + SPARKLE ===== */
+.flower{
+ position:fixed;
+ top:-40px;
+ pointer-events:none;
+ z-index:1;
+ animation:fall linear infinite;
+}
+.sparkle{
+ position:fixed;
+ width:6px;
+ height:6px;
+ background:white;
+ border-radius:50%;
+ box-shadow:0 0 10px white;
+ pointer-events:none;
+ animation:fall linear infinite;
+}
+@keyframes fall{
+ 0%{ transform:translateY(-40px) rotate(0deg); opacity:1; }
+ 100%{ transform:translateY(110vh) rotate(360deg); opacity:0; }
+}
 </style>
 </head>
+<script>
+const flowers=[
+"https://i.imgur.com/4NZ6uLY.png",
+"https://i.imgur.com/M6rwarW.png",
+"https://i.imgur.com/9XnK4bH.png"
+];
 
+function createFlower(){
+ const f=document.createElement("img");
+ f.src=flowers[Math.floor(Math.random()*flowers.length)];
+ f.className="flower";
+ f.style.left=Math.random()*100+"vw";
+ f.style.width=(18+Math.random()*20)+"px";
+ f.style.animationDuration=(6+Math.random()*6)+"s";
+ document.body.appendChild(f);
+ setTimeout(()=>{f.remove()},12000);
+}
+
+function createSparkle(){
+ const s=document.createElement("div");
+ s.className="sparkle";
+ s.style.left=Math.random()*100+"vw";
+ s.style.animationDuration=(4+Math.random()*4)+"s";
+ document.body.appendChild(s);
+ setTimeout(()=>{s.remove()},8000);
+}
+
+setInterval(createFlower,900);
+setInterval(createSparkle,700);
+</script>
 <body>
 
 <header class="banner"></header>
@@ -271,7 +322,7 @@ a{text-decoration:none;color:inherit}
   <div>
     <h3>📞 LIÊN HỆ & HỖ TRỢ</h3>
     <p>📱 Zalo: <b>0325988875</b></p>
-    <p>📱 Facebook: thechi2k7dz</p>
+    <p>📱 Facebook: thechii07</p>
     <p>💳 Techcombank: <b>21200766668888</b></p>
     <p>👤 Mai The Chi</p>
     <p>⏰ 8h – 22h | Phản hồi nhanh</p>
