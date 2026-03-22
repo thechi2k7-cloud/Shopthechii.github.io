@@ -825,25 +825,40 @@ const popupThumbs = document.getElementById('popupThumbs');
  fanpage:'https://www.facebook.com/thechii07?locale=vi_VN'
 }
  ];
+<!-- POPUP HTML + CSS -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span class="popup-close" onclick="closePopup()">×</span>
+    <img id="popupMain" src="" class="popup-main">
+    <div id="popupThumbs" class="popup-thumbs"></div>
+    <div id="popupInfo" class="popup-info"></div>
+  </div>
+</div>
+
+<style>
+/* Popup cơ bản */
+.popup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:9999; }
+.popup.show { display:flex; }
+.popup-content { background:#fff; padding:20px; position:relative; max-width:600px; width:90%; border-radius:5px; }
+.popup-close { position:absolute; top:10px; right:10px; cursor:pointer; font-size:24px; font-weight:bold; }
+.popup-main { width:100%; height:auto; margin-bottom:10px; }
+.popup-thumbs img { width:50px; margin-right:5px; cursor:pointer; border:1px solid #ccc; border-radius:3px; }
+.popup-info { margin-top:10px; font-size:14px; line-height:1.5; }
+.popup-info a { color:#0077ff; text-decoration:none; }
+</style>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
 let filtered = [...accs];
-
-// 👉 phân trang riêng
 let pageAvailable = 1;
 let pageSold = 1;
 const per = 6;
 
 const boxAvailable = document.getElementById('accAvailable');
 const boxSold = document.getElementById('accSold');
-
 const pagiA = document.getElementById('paginationAvailable');
 const pagiS = document.getElementById('paginationSold');
-
-const popup = document.getElementById('popup');
-const popupMain = document.getElementById('popupMain');
-const popupThumbs = document.getElementById('popupThumbs');
 
 function format(k) {
   return (k * 1000).toLocaleString('vi-VN') + 'đ';
@@ -866,10 +881,14 @@ function createCard(a, i) {
   </div>`;
 }
 
-// 👉 popup
+// 👉 popup chi tiết
 window.openPopupObj = function(i) {
   const acc = filtered[i];
   if (!acc) return;
+
+  const popup = document.getElementById('popup');
+  const popupMain = document.getElementById('popupMain');
+  const popupThumbs = document.getElementById('popupThumbs');
 
   popup.classList.add('show');
   popupMain.src = acc.mainImg;
@@ -880,20 +899,20 @@ window.openPopupObj = function(i) {
   });
 
   document.getElementById('popupInfo').innerHTML = `
-    <h3 style="color:#00ffcc;margin-top:15px">${acc.name}</h3>
+    <h3 style="color:#00cc99; margin-top:10px">${acc.name}</h3>
     <p>💰 Giá: <b style="color:#00ff66">${format(acc.newPrice)}</b></p>
     <p>📦 Trạng thái: <b>${acc.status}</b></p>
     <hr>
-    <p>🏦 <b>Techcombank</b></p>
-    <p>💳 <b>21200766668888</b></p>
-    <p>👤 Mai Thế Chí</p>
+    <p>🏦 Ngân hàng: <b>Techcombank</b></p>
+    <p>💳 Số tài khoản: <b>21200766668888</b></p>
+    <p>👤 Người bán: <b>Mai Thế Chí</b></p>
     <p>📱 Zalo: <a href="https://zalo.me/0325988875" target="_blank">0325988875</a></p>
-    <p>📱 FB: <a href="${acc.fanpage}" target="_blank">thechii07</a></p>
+    <p>📱 Facebook: <a href="${acc.fanpage}" target="_blank">thechii07</a></p>
   `;
 }
 
 window.closePopup = function() {
-  popup.classList.remove('show');
+  document.getElementById('popup').classList.remove('show');
 }
 
 // 👉 render chính
@@ -904,18 +923,11 @@ function render() {
   const available = filtered.filter(a => a.status.includes('Còn'));
   const sold = filtered.filter(a => !a.status.includes('Còn'));
 
-  // 👉 chia riêng từng bên
-  const startA = (pageAvailable - 1) * per;
-  const endA = startA + per;
-
-  const startS = (pageSold - 1) * per;
-  const endS = startS + per;
-
-  available.slice(startA, endA).forEach(a => {
+  available.slice((pageAvailable-1)*per, pageAvailable*per).forEach(a => {
     boxAvailable.innerHTML += createCard(a, filtered.indexOf(a));
   });
 
-  sold.slice(startS, endS).forEach(a => {
+  sold.slice((pageSold-1)*per, pageSold*per).forEach(a => {
     boxSold.innerHTML += createCard(a, filtered.indexOf(a));
   });
 
@@ -923,54 +935,45 @@ function render() {
   renderPageSold(sold.length);
 }
 
-// 👉 pagination CÒN
+// 👉 phân trang riêng
 function renderPageAvailable(total) {
   pagiA.innerHTML = '';
-  const max = Math.ceil(total / per);
-
-  for (let i = 1; i <= max; i++) {
-    pagiA.innerHTML += i === pageAvailable
+  const max = Math.ceil(total/per);
+  for(let i=1;i<=max;i++){
+    pagiA.innerHTML += i===pageAvailable
       ? `<span>${i}</span>`
       : `<a href="#" onclick="pageAvailable=${i};render()">${i}</a>`;
   }
 }
 
-// 👉 pagination ĐÃ BÁN
 function renderPageSold(total) {
   pagiS.innerHTML = '';
-  const max = Math.ceil(total / per);
-
-  for (let i = 1; i <= max; i++) {
-    pagiS.innerHTML += i === pageSold
+  const max = Math.ceil(total/per);
+  for(let i=1;i<=max;i++){
+    pagiS.innerHTML += i===pageSold
       ? `<span>${i}</span>`
       : `<a href="#" onclick="pageSold=${i};render()">${i}</a>`;
   }
 }
 
 // 👉 filter giá
-window.filterPrice = function(v) {
-  if (v === 'all') filtered = [...accs];
-  else if (v.includes('+')) {
-    const min = Number(v.replace('+', ''));
-    filtered = accs.filter(a => a.newPrice >= min);
-  } else {
-    const [min, max] = v.split('-').map(Number);
-    filtered = accs.filter(a => a.newPrice >= min && a.newPrice <= max);
+window.filterPrice = function(v){
+  if(v==='all') filtered=[...accs];
+  else if(v.includes('+')){
+    const min = Number(v.replace('+',''));
+    filtered = accs.filter(a=>a.newPrice>=min);
+  }else{
+    const [min,max]=v.split('-').map(Number);
+    filtered = accs.filter(a=>a.newPrice>=min && a.newPrice<=max);
   }
-
-  pageAvailable = 1;
-  pageSold = 1;
+  pageAvailable=1; pageSold=1;
   render();
 }
 
 // 👉 search
-window.searchAcc = function(k) {
-  filtered = accs.filter(a =>
-    a.name.toLowerCase().includes(k.toLowerCase())
-  );
-
-  pageAvailable = 1;
-  pageSold = 1;
+window.searchAcc = function(k){
+  filtered = accs.filter(a=>a.name.toLowerCase().includes(k.toLowerCase()));
+  pageAvailable=1; pageSold=1;
   render();
 }
 
@@ -979,6 +982,5 @@ render();
 
 });
 </script>
-
 </body>
-</html> 
+</html>
