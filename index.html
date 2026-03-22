@@ -828,127 +828,154 @@ const popupThumbs = document.getElementById('popupThumbs');
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
-  // accs phải được khai báo trước script này
-  let filtered = [...accs], page = 1, per = 6;
+let filtered = [...accs];
 
-  const boxAvailable = document.getElementById('accAvailable');
-  const boxSold = document.getElementById('accSold');
-  const pagi = document.getElementById('pagination');
-  const popup = document.getElementById('popup');
-  const popupMain = document.getElementById('popupMain');
-  const popupThumbs = document.getElementById('popupThumbs');
+// 👉 phân trang riêng
+let pageAvailable = 1;
+let pageSold = 1;
+const per = 6;
 
-  function format(k) {
-    return (k * 1000).toLocaleString('vi-VN') + 'đ';
+const boxAvailable = document.getElementById('accAvailable');
+const boxSold = document.getElementById('accSold');
+
+const pagiA = document.getElementById('paginationAvailable');
+const pagiS = document.getElementById('paginationSold');
+
+const popup = document.getElementById('popup');
+const popupMain = document.getElementById('popupMain');
+const popupThumbs = document.getElementById('popupThumbs');
+
+function format(k) {
+  return (k * 1000).toLocaleString('vi-VN') + 'đ';
+}
+
+function createCard(a, i) {
+  return `
+  <div class="acc">
+    <div class="acc-img">
+      ${a.status.includes('Còn') ? '<span class="badge-hot">HOT</span>' : ''}
+      <img src="${a.mainImg}" onclick="openPopupObj(${i})">
+    </div>
+    <h3 class="acc-name">${a.name}</h3>
+    <p>
+      <span class="old-price">${format(a.oldPrice)}</span>
+      → <span class="new-price">${format(a.newPrice)}</span>
+    </p>
+    <div class="status ${a.status.includes('Còn') ? 'con' : 'ban'}">${a.status}</div>
+    <div class="btn" onclick="openPopupObj(${i})">XEM CHI TIẾT</div>
+  </div>`;
+}
+
+// 👉 popup
+window.openPopupObj = function(i) {
+  const acc = filtered[i];
+  if (!acc) return;
+
+  popup.classList.add('show');
+  popupMain.src = acc.mainImg;
+  popupThumbs.innerHTML = '';
+
+  acc.thumbs.forEach(img => {
+    popupThumbs.innerHTML += `<img src="${img}" onclick="popupMain.src='${img}'">`;
+  });
+
+  document.getElementById('popupInfo').innerHTML = `
+    <h3 style="color:#00ffcc;margin-top:15px">${acc.name}</h3>
+    <p>💰 Giá: <b style="color:#00ff66">${format(acc.newPrice)}</b></p>
+    <p>📦 Trạng thái: <b>${acc.status}</b></p>
+    <hr>
+    <p>🏦 <b>Techcombank</b></p>
+    <p>💳 <b>21200766668888</b></p>
+    <p>👤 Mai Thế Chí</p>
+    <p>📱 Zalo: <a href="https://zalo.me/0325988875" target="_blank">0325988875</a></p>
+    <p>📱 FB: <a href="${acc.fanpage}" target="_blank">thechii07</a></p>
+  `;
+}
+
+window.closePopup = function() {
+  popup.classList.remove('show');
+}
+
+// 👉 render chính
+function render() {
+  boxAvailable.innerHTML = '';
+  boxSold.innerHTML = '';
+
+  const available = filtered.filter(a => a.status.includes('Còn'));
+  const sold = filtered.filter(a => !a.status.includes('Còn'));
+
+  // 👉 chia riêng từng bên
+  const startA = (pageAvailable - 1) * per;
+  const endA = startA + per;
+
+  const startS = (pageSold - 1) * per;
+  const endS = startS + per;
+
+  available.slice(startA, endA).forEach(a => {
+    boxAvailable.innerHTML += createCard(a, filtered.indexOf(a));
+  });
+
+  sold.slice(startS, endS).forEach(a => {
+    boxSold.innerHTML += createCard(a, filtered.indexOf(a));
+  });
+
+  renderPageAvailable(available.length);
+  renderPageSold(sold.length);
+}
+
+// 👉 pagination CÒN
+function renderPageAvailable(total) {
+  pagiA.innerHTML = '';
+  const max = Math.ceil(total / per);
+
+  for (let i = 1; i <= max; i++) {
+    pagiA.innerHTML += i === pageAvailable
+      ? `<span>${i}</span>`
+      : `<a href="#" onclick="pageAvailable=${i};render()">${i}</a>`;
+  }
+}
+
+// 👉 pagination ĐÃ BÁN
+function renderPageSold(total) {
+  pagiS.innerHTML = '';
+  const max = Math.ceil(total / per);
+
+  for (let i = 1; i <= max; i++) {
+    pagiS.innerHTML += i === pageSold
+      ? `<span>${i}</span>`
+      : `<a href="#" onclick="pageSold=${i};render()">${i}</a>`;
+  }
+}
+
+// 👉 filter giá
+window.filterPrice = function(v) {
+  if (v === 'all') filtered = [...accs];
+  else if (v.includes('+')) {
+    const min = Number(v.replace('+', ''));
+    filtered = accs.filter(a => a.newPrice >= min);
+  } else {
+    const [min, max] = v.split('-').map(Number);
+    filtered = accs.filter(a => a.newPrice >= min && a.newPrice <= max);
   }
 
-  function createCard(a, i) {
-    return `
-      <div class="acc">
-        <div class="acc-img">
-          ${a.status.includes('Còn') ? '<span class="badge-hot">HOT</span>' : ''}
-          <img src="${a.mainImg}" onclick="openPopupObj(${i})">
-        </div>
-        <h3 class="acc-name">${a.name}</h3>
-        <p>
-          <span class="old-price">${format(a.oldPrice)}</span> →
-          <span class="new-price">${format(a.newPrice)}</span>
-        </p>
-        <div class="status ${a.status.includes('Còn') ? 'con' : 'ban'}">${a.status}</div>
-        <div class="btn" onclick="openPopupObj(${i})">XEM CHI TIẾT</div>
-      </div>
-    `;
-  }
-
-  window.openPopupObj = function(i) {
-    const acc = filtered[i];
-    if (!acc) return;
-
-    popup.classList.add('show');
-    popupMain.src = acc.mainImg;
-    popupThumbs.innerHTML = '';
-
-    acc.thumbs.forEach(img => {
-      popupThumbs.innerHTML += `<img src="${img}" onclick="popupMain.src='${img}'">`;
-    });
-
-    document.getElementById('popupInfo').innerHTML = `
-      <h3 style="color:#00ffcc;margin-top:15px">${acc.name}</h3>
-      <p>💰 Giá: <b style="color:#00ff66">${format(acc.newPrice)}</b></p>
-      <p>📦 Trạng thái: <b>${acc.status}</b></p>
-      <hr>
-      <p>🏦 <b>Techcombank</b></p>
-      <p>💳 <b>21200766668888</b></p>
-      <p>👤 Mai Thế Chí</p>
-      <p>📱 Zalo: 
-        <a href="https://zalo.me/0325988875" target="_blank" style="color:#00ffcc">0325988875</a>
-      </p>
-      <p>📱 FB: 
-        <a href="${acc.fanpage}" target="_blank" style="color:#00ffcc">thechii07</a>
-      </p>
-    `;
-  }
-
-  window.closePopup = function() {
-    popup.classList.remove('show');
-    popupMain.src = '';
-    popupThumbs.innerHTML = '';
-  }
-
-  function render() {
-    if (!boxAvailable || !boxSold) return;
-
-    boxAvailable.innerHTML = '';
-    boxSold.innerHTML = '';
-
-    const available = filtered.filter(a => a.status.includes('Còn'));
-    const sold = filtered.filter(a => !a.status.includes('Còn'));
-
-    const start = (page - 1) * per;
-    const end = start + per;
-
-    available.slice(start, end).forEach(a => {
-      boxAvailable.innerHTML += createCard(a, filtered.indexOf(a));
-    });
-
-    sold.slice(start, end).forEach(a => {
-      boxSold.innerHTML += createCard(a, filtered.indexOf(a));
-    });
-
-    renderPage(available.length);
-  }
-
-  function renderPage(total) {
-    pagi.innerHTML = '';
-    const maxPage = Math.ceil(total / per);
-    for (let i = 1; i <= maxPage; i++) {
-      pagi.innerHTML += i === page
-        ? `<span>${i}</span>`
-        : `<a href="#" onclick="page=${i};render()">${i}</a>`;
-    }
-  }
-
-  window.filterPrice = function(v) {
-    if (v === 'all') filtered = accs;
-    else if (v.includes('+')) {
-      const min = Number(v.replace('+', ''));
-      filtered = accs.filter(a => a.newPrice >= min);
-    } else {
-      const [min, max] = v.split('-').map(Number);
-      filtered = accs.filter(a => a.newPrice >= min && a.newPrice <= max);
-    }
-    page = 1;
-    render();
-  }
-
-  window.searchAcc = function(k) {
-    filtered = accs.filter(a => a.name.toLowerCase().includes(k.toLowerCase()));
-    page = 1;
-    render();
-  }
-
-  // lần đầu render
+  pageAvailable = 1;
+  pageSold = 1;
   render();
+}
+
+// 👉 search
+window.searchAcc = function(k) {
+  filtered = accs.filter(a =>
+    a.name.toLowerCase().includes(k.toLowerCase())
+  );
+
+  pageAvailable = 1;
+  pageSold = 1;
+  render();
+}
+
+// 👉 chạy lần đầu
+render();
 
 });
 </script>
