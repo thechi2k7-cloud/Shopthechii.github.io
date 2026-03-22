@@ -826,10 +826,7 @@ const popupThumbs = document.getElementById('popupThumbs');
 }
  ];
 <script>
-// ===== FIX BIẾN BẮT BUỘC =====
-const popup = document.getElementById('popup');
-const popupMain = document.getElementById('popupMain');
-const popupThumbs = document.getElementById('popupThumbs');
+window.onload = () => {
 
 let filtered = [...accs], page = 1, per = 6;
 
@@ -837,20 +834,20 @@ const boxAvailable = document.getElementById('accAvailable');
 const boxSold = document.getElementById('accSold');
 const pagi = document.getElementById('pagination');
 
-// ===== FORMAT =====
+const popup = document.getElementById('popup');
+const popupMain = document.getElementById('popupMain');
+const popupThumbs = document.getElementById('popupThumbs');
+
 function format(k) {
   return (k * 1000).toLocaleString('vi-VN') + 'đ';
 }
 
-// ===== CARD =====
 function createCard(a, i) {
   return `
   <div class="acc">
     <div class="acc-img">
       ${a.status.includes('Còn') ? '<span class="badge-hot">HOT</span>' : ''}
-      <img src="${a.mainImg}" 
-           onerror="this.src='https://via.placeholder.com/400x250?text=Loi+Anh'"
-           onclick="openPopupObj(${i})">
+      <img src="${a.mainImg}" onclick="openPopupObj(${i})">
     </div>
     <h3 class="acc-name">${a.name}</h3>
     <p>
@@ -863,53 +860,8 @@ function createCard(a, i) {
   `;
 }
 
-// ===== RENDER =====
-function render() {
-  if (!boxAvailable || !boxSold) return; // ⭐ chống crash
-
-  boxAvailable.innerHTML = '';
-  boxSold.innerHTML = '';
-
-  const available = filtered.filter(a => a.status.includes('Còn'));
-  const sold = filtered.filter(a => !a.status.includes('Còn'));
-
-  const start = (page - 1) * per;
-  const end = start + per;
-
-  const availablePage = available.slice(start, end);
-  const soldPage = sold.slice(start, end);
-
-  // ACC CÒN
-  availablePage.forEach(a => {
-    const realIndex = filtered.indexOf(a);
-    boxAvailable.innerHTML += createCard(a, realIndex);
-  });
-
-  // ACC ĐÃ BÁN
-  soldPage.forEach(a => {
-    const realIndex = filtered.indexOf(a);
-    boxSold.innerHTML += createCard(a, realIndex);
-  });
-
-  renderPage(available.length);
-}
-
-// ===== PAGINATION =====
-function renderPage(total) {
-  if (!pagi) return; // ⭐ FIX LỖI CHÍNH
-
-  pagi.innerHTML = '';
-  const maxPage = Math.ceil(total / per);
-
-  for (let i = 1; i <= maxPage; i++) {
-    pagi.innerHTML += i === page
-      ? `<span>${i}</span>`
-      : `<a href="#" onclick="page=${i};render()">${i}</a>`;
-  }
-}
-
-// ===== POPUP =====
-function openPopupObj(i) {
+// 👉 FIX onclick
+window.openPopupObj = function(i) {
   const acc = filtered[i];
   if (!acc) return;
 
@@ -918,13 +870,10 @@ function openPopupObj(i) {
   popupThumbs.innerHTML = '';
 
   acc.thumbs.forEach(img => {
-    popupThumbs.innerHTML += `
-      <img src="${img}" 
-           onerror="this.src='https://via.placeholder.com/100x80?text=Loi'"
-           onclick="popupMain.src='${img}'">
-    `;
+    popupThumbs.innerHTML += `<img src="${img}" onclick="popupMain.src='${img}'">`;
   });
 
+  // 👉 FULL INFO (có Zalo + FB)
   document.getElementById('popupInfo').innerHTML = `
     <h3 style="color:#00ffcc;margin-top:15px">${acc.name}</h3>
     <p>💰 Giá: <b style="color:#00ff66">${format(acc.newPrice)}</b></p>
@@ -942,14 +891,47 @@ function openPopupObj(i) {
   `;
 }
 
-function closePopup() {
+window.closePopup = function() {
   popup.classList.remove('show');
   popupMain.src = '';
   popupThumbs.innerHTML = '';
 }
 
-// ===== FILTER =====
-function filterPrice(v) {
+function render() {
+  if (!boxAvailable || !boxSold) return;
+
+  boxAvailable.innerHTML = '';
+  boxSold.innerHTML = '';
+
+  const available = filtered.filter(a => a.status.includes('Còn'));
+  const sold = filtered.filter(a => !a.status.includes('Còn'));
+
+  const start = (page - 1) * per;
+  const end = start + per;
+
+  available.slice(start, end).forEach(a => {
+    boxAvailable.innerHTML += createCard(a, filtered.indexOf(a));
+  });
+
+  sold.slice(start, end).forEach(a => {
+    boxSold.innerHTML += createCard(a, filtered.indexOf(a));
+  });
+
+  renderPage(available.length);
+}
+
+function renderPage(total) {
+  pagi.innerHTML = '';
+  const maxPage = Math.ceil(total / per);
+
+  for (let i = 1; i <= maxPage; i++) {
+    pagi.innerHTML += i === page
+      ? `<span>${i}</span>`
+      : `<a href="#" onclick="page=${i};render()">${i}</a>`;
+  }
+}
+
+window.filterPrice = function(v) {
   if (v === 'all') filtered = accs;
   else if (v.includes('+')) {
     const min = Number(v.replace('+', ''));
@@ -962,15 +944,15 @@ function filterPrice(v) {
   render();
 }
 
-// ===== SEARCH =====
-function searchAcc(k) {
+window.searchAcc = function(k) {
   filtered = accs.filter(a => a.name.toLowerCase().includes(k.toLowerCase()));
   page = 1;
   render();
 }
 
-// ===== LOAD =====
-document.addEventListener("DOMContentLoaded", render);
+render();
+
+}
 </script>
 
 </body>
